@@ -1,5 +1,10 @@
 <?php
 require_once("config.php");
+/**
+ * build database connection
+ * @param $active_db, reference
+ * @return n.a
+ */
 
 function build_connection(&$active_db){
 	$active_db = mysql_pconnect(D_HOST, D_USER, D_PASS); 	
@@ -7,7 +12,30 @@ function build_connection(&$active_db){
 	mysql_query("SET NAMES utf8",$active_db);
 }
 
-
+/**
+ * Runs a basic query in the active database.
+ *
+ * User-supplied arguments to the query should be passed in as separate
+ * parameters so that they can be properly escaped to avoid SQL injection
+ * attacks.
+ *
+ * @param $query
+ *   A string containing an SQL query.
+ * @param ...
+ *   A variable number of arguments which are substituted into the query
+ *   using printf() syntax. Instead of a variable number of query arguments,
+ *   you may also pass a single array containing the query arguments.
+ *
+ *   Valid %-modifiers are: %s, %d, %f, %b (binary data, do not enclose
+ *   in '') and %%.
+ *
+ *   NOTE: using this syntax will cast NULL and FALSE values to decimal 0,
+ *   and TRUE values to decimal 1.
+ *
+ * @return
+ *   A database query result resource, or FALSE if the query was not
+ *   executed correctly.
+ */
 
 function db_query($query) {
   $args = func_get_args();
@@ -88,6 +116,19 @@ function simple_db_query($query){
 function db_escape_string($text) {
   global $active_db;
   return mysql_real_escape_string($text, $active_db);
+}
+
+/**
+ * Returns a properly formatted Binary Large OBject value.
+ *
+ * @param $data
+ *   Data to encode.
+ * @return
+ *  Encoded data.
+ */
+function db_encode_blob($data) {
+  global $active_db;
+  return "'". mysql_real_escape_string($data, $active_db) ."'";
 }
 	
 ?>
