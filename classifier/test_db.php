@@ -5,7 +5,11 @@ require_once("./include/init.php");
 echo "This test programme will list out all users in your database";
 
 //testing the replace function, it works!
-$result = db_query("SELECT * FROM `%s`", "user");
+
+$query = "SELECT * FROM user WHERE uid > %d";
+
+// this is the standard way to construct a query, logic is a bit funny
+$result = db_query($query, "0");
 
 // this is the right way to write the select user query
 //$result = db_query("SELECT * FROM user");
