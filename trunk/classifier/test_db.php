@@ -16,7 +16,7 @@ if (mysql_num_rows($result) == 0)
 else	
 	while ($row = db_fetch_array($result)){	
 		echo('<div><h3>user name:</h3> '. $row['username']."<br>");
-		echo('<h3>password:</h3> '.$row['password']."<br></div>");
+		echo('<h4>password:</h4> '.$row['password']."<br></div>");
 	}
 
 ?>
