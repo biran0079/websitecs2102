@@ -1,6 +1,7 @@
 <?php
 //  THIS FILE USED TO DEFINE CONFIGURATION RELATED VARIABLE
 
+// copy out this file to localhost folder, don't commit your changes into SVN
 
 // database host
 define('D_HOST','localhost');
