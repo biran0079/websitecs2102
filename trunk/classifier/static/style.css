@@ -275,6 +275,12 @@ hr {
 		*/
 	}
 
+#sidebar .section1 .warning{
+	background-color : red;
+	font-size:15px;
+	text-align: center;
+}
+
 #sidebar .section1 input{
 	width: 90px;
 }

@@ -49,4 +49,15 @@ function check_logged_in(){
 		return false;	
 }
 
+
+/**
+ * check if last operation is an unsuccessful login attempt
+ * @return bolean
+ */
+function login_fail(){
+	if ($_GET['op']== 'login' && $_GET['result']=='fail')
+		return true;
+	else
+		return false;		
+}
 ?>
