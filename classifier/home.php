@@ -1,6 +1,7 @@
 <?php 
 	require_once("template/header.php");
-	$login = false;
+	require_once("include/init.php");
+	$login = check_logged_in();
 ?>
 	
 	<!-- content start -->	
@@ -38,13 +39,14 @@
 			<div class="section1">
 			<?php 
 				if (!$login){
-					$name = "Zhao Cong";
+					$name = g_get_username();
 					echo '
 						<h2>Login</h2>
-						<form action="">
+						<form action="checkin.php" method="post">
+						<input type="hidden" value="login" name="op">
 						<table><tr>
 									<td>Username:</td> 
-									<td><input type="text" name="user"></td>
+									<td><input type="text" name="user_name"></td>
 									<td>Password:</td>
 									<td><input type="password" name="password"></td>
 								</tr>
@@ -58,8 +60,12 @@
 				}
 				else
 				{
-					$name = "Zhao Cong";
+					$name = g_get_username();
 					echo "<div><h2> Hello, $name!</h2></div>";
+					echo '<form action="checkin.php" method="post">
+							<input type="submit" value="Log out" style="width:70px">
+							<input type="hidden" value="logout" name="op">
+						  </form>';	
 				}
 				?>	
 			</div>

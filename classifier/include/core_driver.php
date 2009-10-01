@@ -9,5 +9,44 @@ function  d_get_user_name(){
 	return $user_name;
 }
 
+/**
+ * validate function
+ * @param $user_name
+ * @param $pwd
+ * @return boolean, indicate whether the user is a valid user or not
+ */
+
+function validate_login_user($user_name,$pwd){
+	$query_user_check = "SELECT * FROM user WHERE username = '%s' AND password='%s' LIMIT 1";
+	$result = db_query($query_user_check,$user_name,$pwd);
+	if ($row = db_fetch_array($result)){
+		// set this user is a login user
+		
+		// clean up the session storage
+		session_start();
+		$uid = $row['uid'];
+		
+		// store information into $_SESSION
+		session_name('Global'); 
+		$_SESSION['user'] = $row;
+		$_SESSION['uid'] = $uid;
+		session_write_close(); 
+		return true;
+	}
+	else
+		return false;
+}
+
+/**
+ * check login status
+ * @return true if current viewer is login user
+ */
+function check_logged_in(){
+	
+	if (isset($_SESSION['uid']))
+		return true;
+	else
+		return false;	
+}
 
 ?>

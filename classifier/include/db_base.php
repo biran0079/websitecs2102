@@ -105,6 +105,7 @@ function db_fetch_array($result) {
 function simple_db_query($query){
 	global $active_db;
 	//echo $query;
+	//die();
 	$rv = mysql_query($query, $active_db);  
 	return $rv;
 }
