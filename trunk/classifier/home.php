@@ -27,22 +27,6 @@
 				<p class="caption"><strong>Random Macro Photo</strong> provided by <a href="http://pdphoto.org/">PDPhoto.org</a></p>
 			</div>
 		-->
-			<div class="search_box">
-				<form action="">
-					<table>
-						<tr><td>
-					<div>
-						<input type="text" name="search_text"/>
-					</div>
-						</td>
-						<td>
-					<div class="search_btn">
-						<input type="submit" name="search_text" value="Search"/>
-					</div>
-						</td>
-						</tr></table>
-				</form>	
-			</div>	
 			<div class="post">
 				<div class="title">
 					<h2>Sports</h2>
