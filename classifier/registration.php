@@ -4,7 +4,8 @@ require_once("./include/init.php");
 require_once('template/header.php');
 ?>
 <div class="register">
-	<h2>Registration</h2>
+	<div><h2>Registration</h2></div>
+	<div class="form">
 	<form name="user_input" action="#" method="post">
 		<div>User Name*:</div>
 		<input type="text" name="name" />
@@ -25,7 +26,7 @@ require_once('template/header.php');
 			<input type="submit" value="Submit" />
 		</div>
 	</form> 
-
+	</div>
 	
 </div>
 

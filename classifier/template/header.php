@@ -40,7 +40,7 @@
 			</div>
 			<div>
 			<ul>
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active"><a href="home.php">Home</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Contact</a></li>
 			</ul>
