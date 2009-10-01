@@ -2,53 +2,38 @@
 	require_once("template/header.php");
 	$login = false;
 ?>
-	<div id="page" class="container">
+	
+	<!-- content start -->	
 		<div id="content">
-		 <!--  
-			<div class="photo"> <a href="#"><img src="images/homepage02.jpg" width="442" height="84" alt="" /></a>
-				<p class="caption"><strong>Random Macro Photo</strong> provided by <a href="http://pdphoto.org/">PDPhoto.org</a></p>
-			</div>
-		-->
 			<div class="post">
 				<div class="title">
 					<h2>Sports</h2>
 					<p>Last updated by <a href="#">admin</a> 4 hours 8 minutes ago</p>
 				</div>
 				<div class="entry">
-				<p>
-					<a href="#">Google Sport</a> 
-					<a href="#">mysport</a>
-					<a href="#">Singapore GP</a>
-					<a href="#">ESPN</a>
-					<a href="#">Yahoo!</a>
-					<a href="#">mysport</a>
-					<a href="#">网球</a>
-					<a href="#">Tennis Live</a>
-					<a href="#">极限体育</a>
-					<a href="#">mysport</a>
-					<a href="#">新浪网球</a>
-					<a href="#">ESPN</a>
-				</p>	
+					<p>
+						<a href="#">Google Sport</a> 
+						<a href="#">mysport</a>
+						<a href="#">Singapore GP</a>
+						<a href="#">ESPN</a>
+						<a href="#">Yahoo!</a>
+						<a href="#">mysport</a>
+						<a href="#">网球</a>
+						<a href="#">Tennis Live</a>
+						<a href="#">极限体育</a>
+						<a href="#">mysport</a>
+						<a href="#">新浪网球</a>
+						<a href="#">ESPN</a>
+					</p>	
 				</div>
 				
 				<div class="meta">
 					<p><a href="#" class="more">Add More</a> </p>
 				</div> 
 			</div>
-			<!--  
-			<div class="post">
-				<div class="title">
-					<h2>Lorem ipsum dolor sit amet</h2>
-					<p>Posted by <a href="#">enks</a> 16 hours 23 minutes ago</p>
-				</div>
-				<div class="entry">
-					<p>Volutpat at varius sed sollicitudin et, arcu. Vivamus viverra. Nullam turpis. Aenean felis. Quisque eros. Cras lobortis <a href="#">commodo metus</a>. Vestibulum vel purus. Vestibulum sed etiam. Lorem ipsum sit amet dolore. Nulla facilisi.</p>
-				</div>
-				<div class="meta">
-					<p><a href="#" class="more">Read More</a> <a href="#" class="comments">Comments (42)</a></p>
-				</div>
-			</div> -->
 		</div>
+		<!-- content end -->	
+		<!-- sidebar start -->	
 		<div id="sidebar">
 			<div class="section1">
 			<?php 
@@ -65,7 +50,7 @@
 								</tr>
 								<tr>
 									<td><input type="submit" value="Log in" style="width:50px"></td>
-									<td><a href="#">Register Here</a></td>	
+									<td><a href="registration.php">Register Here</a></td>	
 									<td colspan="2"><a href="#">Forget Password?</a></td>
 								</tr>
 						</table> 
@@ -123,11 +108,8 @@
 				</ul>
 			</div>
 		</div>
+		<!-- sidebar end -->	
 		<div class="clearfix">&nbsp;</div>
-	</div>
-	<div id="footer" class="container">
-		<p>(c) 2009 Sitename.com. Design by <a href="http://www.nodethirtythree.com/">nodethirtythree</a> and <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
-	</div>
-</div>
-</body>
-</html>
+<?php 
+require_once('template/footer.php');
+?>	
