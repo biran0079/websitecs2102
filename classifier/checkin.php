@@ -18,6 +18,6 @@ if ($op =='login'){
 		header( "Location: ".SITE_ROOT."/home.php");
 	}
 	else
-		header( "Location: ".SITE_ROOT."/home.php?op=fail");
+		header( "Location: ".SITE_ROOT."/home.php?op=login&result=fail");
 	}
 ?>

@@ -39,7 +39,10 @@
 			<div class="section1">
 			<?php 
 				if (!$login){
-					$name = g_get_username();
+					if (login_fail()){
+						echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';	
+					}
+					
 					echo '
 						<h2>Login</h2>
 						<form action="checkin.php" method="post">
