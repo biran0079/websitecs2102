@@ -1,25 +1,7 @@
 <?php 
 	require_once("template/header.php");
-	$login = true;
+	$login = false;
 ?>
-
-<body>
-<div id="wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<h1><a href="#">My Development Site</a></h1>
-			<p>Proudly brought you by br,pwx,zd,zxl,zc</p>
-		</div>
-		<div id="menu">
-			<ul>
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Most Popular</a></li>
-				<li><a href="#">Login</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</div>
-	</div>
 	<div id="page" class="container">
 		<div id="content">
 		 <!--  
@@ -70,9 +52,8 @@
 		<div id="sidebar">
 			<div class="section1">
 			<?php 
-				
 				if (!$login){
-					echo "<div>Hello,".$name."</div>";
+					$name = "Zhao Cong";
 					echo '
 						<h2>Login</h2>
 						<form action="">
@@ -91,21 +72,10 @@
 						</form>';
 				}
 				else
-					echo '	
-				<form action="">
-					<table>
-						<tr><td>
-					<div class="search_box">
-						<input type="text" name="search_text"/>
-					</div> 
-						</td>
-						<td>
-					<div class="search_btn">
-						<input type="submit" name="search_text" value="Search"/>
-					</div>
-						</td>
-						</tr></table>
-				</form>';
+				{
+					$name = "Zhao Cong";
+					echo "<div><h2> Hello, $name!</h2></div>";
+				}
 				?>	
 			</div>
 			<div class="section2">
