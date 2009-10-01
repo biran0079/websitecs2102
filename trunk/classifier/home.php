@@ -1,12 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CS2102 Devlopment Site</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />
-</head>
+<?php 
+	require_once("template/header.php");
+	$login = true;
+?>
+
 <body>
 <div id="wrapper">
 	<div id="header" class="container">
@@ -89,21 +85,44 @@
 		</div>
 		<div id="sidebar">
 			<div class="section1">
-				<h2>Login</h2>
+			<?php 
+				
+				if (!$login){
+					echo "<div>Hello,".$name."</div>";
+					echo '
+						<h2>Login</h2>
+						<form action="">
+						<table><tr>
+									<td>Username:</td> 
+									<td><input type="text" name="user"></td>
+									<td>Password:</td>
+									<td><input type="password" name="password"></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="Log in" style="width:50px"></td>
+									<td><a href="#">Register Here</a></td>	
+									<td colspan="2"><a href="#">Forget Password?</a></td>
+								</tr>
+						</table> 
+						</form>';
+				}
+				else
+					echo '	
 				<form action="">
-					<table><tr>
-								<td>Username:</td> 
-								<td><input type="text" name="user"></td>
-								<td>Password:</td>
-								<td><input type="password" name="password"></td>
-							</tr>
-							<tr>
-								<td><input type="submit" value="Log in" style="width:50px"></td>
-								<td><a href="#">Register Here</a></td>	
-								<td colspan="2"><a href="#">Forget Password?</a></td>
-						</tr>
-					</table> 
-				</form>
+					<table>
+						<tr><td>
+					<div class="search_box">
+						<input type="text" name="search_text"/>
+					</div> 
+						</td>
+						<td>
+					<div class="search_btn">
+						<input type="submit" name="search_text" value="Search"/>
+					</div>
+						</td>
+						</tr></table>
+				</form>';
+				?>	
 			</div>
 			<div class="section2">
 				<ul>
