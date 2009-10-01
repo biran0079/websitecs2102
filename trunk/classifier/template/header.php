@@ -8,5 +8,5 @@
 <title>CS2102 Devlopment Site</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="static/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
