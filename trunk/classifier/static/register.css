@@ -5,11 +5,20 @@
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-weight: normal;
 	color: #2D2D2D;
-	padding-left:130px;
+	
 }
 
-.register form {
-	padding-top:30px;
+.register .form {
+	padding-top:130px;
+	padding-left:130px;
+
+}
+
+.register h2 {
+	float: left;
+	width: 442px;
+	padding: 47px 26px 30px 82px;
+	background: url(images/bg06.jpg) no-repeat;
 
 }
 
