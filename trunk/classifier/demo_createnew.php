@@ -1,7 +1,6 @@
 <?php
 // for every single file, include this file
 require_once("./include/init.php");
-
 $usrname = $_GET['name'];
 $password = $_GET['pwd'];
 $email = $_GET['email'];

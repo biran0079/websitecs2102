@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+.register {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	color: #2D2D2D;
+	padding-left:130px;
+}
+
+.register form {
+	padding-top:30px;
+
+}
+
+.register .submit {
+	padding-top:30px;
+}
