@@ -126,9 +126,14 @@ hr {
 	background: url(images/bg04.jpg) no-repeat;
 }
 
+#menu .search_box {
+	padding-top:30px; 
+	padding-left:230px;	
+}	
+
 #menu ul {
 	margin: 0;
-	padding: 99px 0 0 54px;
+	padding: 44px 0 0 54px;
 	list-style: none;
 	line-height: normal;
 	font: 14px Georgia, "Times New Roman", Times, serif;
@@ -136,7 +141,7 @@ hr {
 
 #menu li {
 	float: left;
-	width: 121px;
+	width: 80px;
 	height: 20px;
 	margin: 0 10px 0 0;
 	padding: 4px 0 0 10px;

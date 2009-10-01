@@ -10,3 +10,36 @@
 <meta name="description" content="" />
 <link href="static/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
+<body>
+<div id="wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">My Development Site</a></h1>
+			<p>Proudly brought you by br,pwx,zd,zxl,zc</p>
+		</div>
+		<div id="menu">
+			<div class="search_box">
+				<form action="">
+					<table>
+						<tr><td>
+					<div>
+						<input type="text" name="search_text"/>
+					</div>
+						</td>
+						<td>
+					<div class="search_btn">
+						<input type="submit" name="search_text" value="Search"/>
+					</div>
+						</td>
+						</tr></table>
+				</form>	
+			</div>
+			<div>
+			<ul>
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">Profile</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+			</div>	
+		</div>
+	</div>

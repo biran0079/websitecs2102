@@ -1,4 +1,13 @@
 <?php
-// this is the driver file, all sql processing should be hidden here
+
+/**
+ * return user name of the client
+ * @return string username
+ */
+function  d_get_user_name(){
+	
+	return $user_name;
+}
+
 
 ?>
