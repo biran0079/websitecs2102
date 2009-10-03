@@ -21,17 +21,19 @@ function email_crush($email){
 }
 
 
-$query="INSERT into user(username,password,email,register_date,last_update_date) values('%s','%s','%s',NOW(),NOW())";
+$query="insert into user(username,password,email,register_date,last_update_date) values('%s','%s','%s',NOW(),NOW())";
 $username=$_POST["name"];
 $password=$_POST["password"];
 $email=$_POST["email"];
-
 if(username_crush($username)){
-	echo "WARNING: username exists already<br \>";
+	echo"WARNING: username exists already<br \>";
 }else if(email_crush($email)){
 	echo"WARNING: email exists already<br \>";
 }else{
 	db_query($query,$username,$password,$email);
-	header( "Location: ".SITE_ROOT."/home.php?op=add");
+	$uid=db_last_insert_id("user","uid");
+	g_check_in_by_userid($uid);
+	//echo $uid;
+	header( "Location: ".SITE_ROOT."/home.php");
 }
 ?>
