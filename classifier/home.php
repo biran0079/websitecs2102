@@ -72,7 +72,18 @@
 							&nbsp
 							<td><a href="deactive_profile_confirmation.php">deactive profile</a></td>	
 						  </form>';	
-					
+					$role=g_get_user_role();
+					if($role=='0'){			//super user
+						echo'
+						<table>
+								<tr>
+									<td><a href="grant_admin.php">Grant admin privilege</a></td>
+								</tr>
+						</table> ';
+					}else if($role=='1'){	//admin
+					}else if($role=='3'){	//normal user
+						
+					}
 				}
 				?>	
 			</div>
