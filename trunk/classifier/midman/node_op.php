@@ -14,7 +14,8 @@
 
 
         if($result) {
-        	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
+        	$last_nid =db_last_insert_id($table, $field);
+        	header( "Location: ".SITE_ROOT."/nodes.php?nid=$last_nid");
         	print "A new entry has been successfully added.";
         }
         else{
