@@ -6,6 +6,7 @@
    $op = $_POST['op'];
    $titel = $_POST['title'];
    $url = $_POST['url'];
+   $uid = g_get_login_uid();
 
    
 function op_on_nodes($op,$nid){
