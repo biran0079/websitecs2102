@@ -1,7 +1,7 @@
 <?php
    require_once("../include/init.php");
    
-   $nid = $_POST['node_id'];
+   $nid = $_GET['node_id'];
    $op = $_POST['op'];
    $title = $_POST['title'];
    $url = $_POST['url'];
