@@ -11,7 +11,7 @@ require_once('template/header.php');
 		<input type="text" name="name" />
 		<br/>
 		<div>Password:</div>
-		<input type="text" name="password" />
+		<input type="password" name="password"/>
 		<div>First Name*:</div>
 		<input type="text" name="first_name" />
 		<br/>
