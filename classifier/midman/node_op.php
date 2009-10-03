@@ -28,7 +28,7 @@
 		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s')";		
 	    $result = db_query($query_edit,$title,$url);
 	    
-	    if($result) print "An entry has been successfully deleted.";
+	    if($result) print "An entry has been successfully edited.";
         else print "Edit action fails";
 				
 	}
