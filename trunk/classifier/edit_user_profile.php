@@ -18,17 +18,11 @@ $arr=db_fetch_array($result);
 $username=$arr["username"];
 $email=$arr["email"];
 echo '
-		<div>User Name*:</div>
-		<input type="text" name="name" value='.$username.' />
+		<div>Login Name*:</div>
+		<input type="text" name="name" value='.$username.' disabled="disabled"/>
 		<br/>
 		<div>Password:</div>
-		<input type="text" name="password" />
-		<div>First Name*:</div>
-		<input type="text" name="first_name" />
-		<br/>
-		<div>Last Name*:</div>
-		<input type="text" name="last_name" />
-		<br/>
+		<input type="password" name="password"/>
 		<div>Email:</div>
 		<input type="text" name="email" value='.$email.' />
 		<br/>
