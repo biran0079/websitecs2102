@@ -23,7 +23,7 @@
 	    
         echo  '<div class="nodes_display">  
                <ul>dddd</ul>
-	           <form name="edit" action="midman/node_op.php" method="post">
+	           <form name="edit" action="node_edit.php" method="post">
 				    <input type="hidden" name="node_id" value="'.$nid.'" >
                     <input type="submit" name="op" value="Edit" /> 
 				</form>
