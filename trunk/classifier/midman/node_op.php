@@ -8,8 +8,6 @@
    $url = $_POST['url'];
    $uid = g_get_login_uid();
 
-   
-function op_on_nodes($op,$nid){
 	if ($op == 'Add'){
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times) VALUES($uid,$url,$title,0)";
         header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid")
