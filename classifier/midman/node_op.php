@@ -24,9 +24,9 @@
 	    $result = db_query($query_edit,$title,$url);
 				
 	}
-	    }
+	    
 
-}
+
 
 
 ?>
