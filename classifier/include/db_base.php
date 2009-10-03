@@ -132,4 +132,37 @@ function db_encode_blob($data) {
   return "'". mysql_real_escape_string($data, $active_db) ."'";
 }
 	
+/**
+ * Returns the last insert id.
+ *
+ * @param $table
+ *   The name of the table you inserted into.
+ * @param $field
+ *   The name of the autoincrement field.
+ */
+function db_last_insert_id($table, $field) {
+  return db_result(db_query('SELECT LAST_INSERT_ID()'));
+}
+
+/**
+ * Return an individual result field from the previous query.
+ *
+ * Only use this function if exactly one field is being selected; otherwise,
+ * use db_fetch_object() or db_fetch_array().
+ *
+ * @param $result
+ *   A database query result resource, as returned from db_query().
+ * @return
+ *   The resulting field or FALSE.
+ */
+function db_result($result) {
+  if ($result && mysql_num_rows($result) > 0) {
+    // The mysql_fetch_row function has an optional second parameter $row
+    // but that can't be used for compatibility with Oracle, DB2, etc.
+    $array = mysql_fetch_row($result);
+    return $array[0];
+  }
+  return FALSE;
+}
+
 ?>
