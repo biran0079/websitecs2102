@@ -10,7 +10,7 @@
    else
        {
 	    echo '<div class="add_nodes">
-	          <form name="add" action="op_on_nodes.php" method="post">
+	          <form name="add" action="midman/node_op.php" method="post">
 			     <input type="hidden" name="node_id" value="0" >
 				 <div>Title:</div>
 		         <input type="text" name="title" />
@@ -23,11 +23,11 @@
 	    
         echo  '<div class="nodes_display">  
                <ul>dddd</ul>;
-	           <form name="edit" action="op_on_nodes.php" method="post">
+	           <form name="edit" action="midman/node_op.php" method="post">
 				    <input type="hidden" name="node_id" value="'.$nid.'" >
                     <input type="submit" name="op" value="Edit" /> 
 				</form>
-				<form name="delete" action="op_on_nodes.php" method="post">
+				<form name="delete" action="midman/node_op.php" method="post">
 		            <input type="hidden" name="node_id" value="'.$nid.'">
                     <input type="submit" name="op" value="Delete" /> 
                 </form> 
