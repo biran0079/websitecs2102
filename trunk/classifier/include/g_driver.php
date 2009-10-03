@@ -17,6 +17,12 @@ function g_get_login_uid(){
 	return $_SESSION['user']['uid'];
 }
 
-
-function g_check_in_by_user($uid){};
+/**
+ * check in user by inputing uid
+ * @param $uid
+ * @return boolean, successful or not
+ */
+function g_check_in_by_user($uid){
+	return check_in_user_by_uid($uid);
+};
 ?>
