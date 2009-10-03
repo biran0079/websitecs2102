@@ -7,10 +7,10 @@
 define('D_HOST','localhost');
 
 //database username
-define('D_USER','zhaocong');
+define('D_USER','cs2102');
 
 //database password
-define('D_PASS','881213');
+define('D_PASS','cs2102');
 
 //database name
 define('D_DB_NAME','cs2102');
