@@ -1,7 +1,6 @@
 <?php
    require_once("../include/init.php");
    
-   
    $nid = $_POST['node_id'];
    $op = $_POST['op'];
    $title = $_POST['title'];
@@ -14,7 +13,7 @@
 
 
         if($result) {
-        	$last_nid =db_last_insert_id($table, $field);
+        	$last_nid =db_last_insert_id(post_node, nid);
         	header( "Location: ".SITE_ROOT."/nodes.php?nid=$last_nid");
         	print "A new entry has been successfully added.";
         }
