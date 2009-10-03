@@ -1,7 +1,7 @@
 <?php
    require_once("../include/init.php");
    
-   $nid = $_GET['node_id'];
+   $nid = $_POST['node_id'];
    $op = $_POST['op'];
    $title = $_POST['title'];
    $url = $_POST['url'];
@@ -34,11 +34,12 @@
     }
 
 	else{	
-		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update=NOW()WHERE nid=$nid";		
-        $result = db_query($query_edit,$title,$url);
+		
+		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update='NOW()' WHERE nid=%d";		
+        $result = db_query($query_edit,$title,$url,$nid);
 	    
 	    if($result){
-	    	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
+	    	//header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
 	    	print "An entry has been successfully edited.";
 	    }
         else print "Edit action fails";			
