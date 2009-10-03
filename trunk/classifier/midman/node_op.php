@@ -1,5 +1,5 @@
 <?php
-   require_once("./include/init.php");
+   require_once("../include/init.php");
    
    
    $nid = $_POST['node_id'];
