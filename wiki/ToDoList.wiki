@@ -1,8 +1,7 @@
-#summary One-sentence summary of this page.
 
 = Introduction =
 
-Add your content here.
+Add your own comments here.
 
 
 = Details =
