@@ -34,4 +34,9 @@ function g_check_out(){
 	session_destroy();
 }
 
+function g_get_user_role(){
+	return $_SESSION['user']['role'];
+}
+
+
 ?>
