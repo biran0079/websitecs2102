@@ -9,21 +9,21 @@
    }
    else
        {
-	    echo 	'<div class="nodes_display">   
-	         	</div>
-		      	<div class="op_on_nodes">
-	            	<form name="add" action="op_on_nodes.php" method="post">
-				    	<input type="hidden" name="node_id" value="0" >
-				    		<div>Title:</div>
-		            			<input type="text" name="title" />
-		            		<br/>
-		            		<div>URL:</div>
-		           				 <input type="text" name="url" />
-		            		<br/>
-				    	<input type="submit" name="op" value="Add" />
-					</form>';
+	    echo '<div class="add_nodes">
+	          <form name="add" action="op_on_nodes.php" method="post">
+			     <input type="hidden" name="node_id" value="0" >
+				 <div>Title:</div>
+		         <input type="text" name="title" />
+		         <br/>
+		         <div>URL:</div>
+		         <input type="text" name="url" />
+		         <br/>
+				 <input type="submit" name="op" value="Add" />
+			  </form>';
 	    
-        echo  '<form name="edit" action="op_on_nodes.php" method="post">
+        echo  '<div class="nodes_display">  
+               <ul>dddd</ul>;
+	           <form name="edit" action="op_on_nodes.php" method="post">
 				    <input type="hidden" name="node_id" value="'.$nid.'" >
                     <input type="submit" name="op" value="Edit" /> 
 				</form>
@@ -31,9 +31,8 @@
 		            <input type="hidden" name="node_id" value="'.$nid.'">
                     <input type="submit" name="op" value="Delete" /> 
                 </form> 
-	         </div>';
+	            </div>';
+           
 		}
 require_once('template/footer.php');
 ?>
-
-
