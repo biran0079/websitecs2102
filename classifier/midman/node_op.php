@@ -20,17 +20,27 @@
         else{
         	print "URL or topic already exists.";
         }
-        
-		
-	}
+    }
+    
     else if ($op =='Delete'){
 	    $query_delete = "DELETE FROM post_node WHERE nid=%d";
 	    $result= db_query($query_delete,$nid);
 	    
-	    if($result) print "An entry has been successfully deleted.";
-        else print "delete action fails";
+	    if($result){
+	        header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
+	        print "An entry has been successfully deleted.";
+	    }
+	    else print "delete action fails";
     }
 	else{
+		echo'<div class="edit_nodes">
+			     <input type="hidden" name="node_id" value="$nid" >
+				 <div>New Title:</div>
+		         <input type="text" name="title" />
+		         <br/>
+		         <div>New URL:</div>
+		         <input type="text" name="url" />
+		         <br/>'				
 		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s',date_update=NOW())";		
 	    $result = db_query($query_edit,$title,$url);
 	    
