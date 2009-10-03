@@ -60,4 +60,28 @@ function login_fail(){
 	else
 		return false;		
 }
+
+/**
+ * check the user by inputing uid
+ * @param $uid
+ * @return boolean 
+ */
+
+function check_in_user_by_uid($uid){
+	$query_user_check = "SELECT * FROM user WHERE uid = '%d' LIMIT 1";
+	$result = db_query($query_user_check,$uid);
+	if ($row = db_fetch_array($result)){
+		// set this user is a login user
+		
+		// clean up the session storage
+		session_start();
+		// store information into $_SESSION
+		$_SESSION['user'] = $row;
+		$_SESSION['uid'] = $uid;
+		session_write_close(); 
+		return true;
+	}
+	else
+		return false;	
+}
 ?>
