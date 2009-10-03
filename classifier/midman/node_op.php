@@ -18,7 +18,7 @@
         	print "A new entry has been successfully added.";
         }
         else{
-        	print "URL or topic already exists.";
+        	print "The URL already exists.";
         }
     }
     
@@ -40,8 +40,8 @@
 		         <br/>
 		         <div>New URL:</div>
 		         <input type="text" name="url" />
-		         <br/>'				
-		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s',date_update=NOW())";		
+		         <br/>';			
+		$query_edit = "UPDATE TABLE post_node SET n_name='%s',n_url='%s',date_add = NOW(),date_update = NOW()";		
 	    $result = db_query($query_edit,$title,$url);
 	    
 	    if($result) print "An entry has been successfully edited.";
