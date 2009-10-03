@@ -1,5 +1,5 @@
 <?php
-   require_once("../include/init.php");
+   require_once("./include/init.php");
    require_once('template/header.php');
    $login = check_logged_in(); 
    $nid = $_POST['node_id'];
