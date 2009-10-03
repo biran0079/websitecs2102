@@ -17,7 +17,8 @@ if ($op =='login'){
 		//print_r($_SESSION);  
 		header( "Location: ".SITE_ROOT."/home.php");
 	}
-	else
+	else{
 		header( "Location: ".SITE_ROOT."/home.php?op=login&result=fail");
 	}
+}
 ?>
