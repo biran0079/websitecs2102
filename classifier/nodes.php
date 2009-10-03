@@ -5,10 +5,12 @@
    $nid = 1;
 
     if (!$login){
-       if (login_fail()){};
+    }
     else
        {
 	    echo '<div class="nodes_display"> 
+	   
+	         </div>
 		      <div class="op_on_nodes">
 	            <form name="add" action="op_on_nodes.php" method="post">
 				    <input type="hidden" name="node_id" value="0" >
@@ -19,7 +21,7 @@
 		            <input type="text" name="url" />
 		            <br/>
 				    <input type="submit" name="op" value="Add" />
-				</form>'
+				</form>';
         echo  '<form name="edit" action="op_on_nodes.php" method="post">
 				    <input type="hidden" name="node_id" value="'.$nid.'" >
                     <input type="submit" name="op" value="Edit" /> 
