@@ -13,7 +13,7 @@
 
 
         if($result) {
-        	$last_nid =db_last_insert_id(post_node, nid);
+        	$last_nid =db_last_insert_id(post_node,nid);
         	header( "Location: ".SITE_ROOT."/nodes.php?nid=$last_nid");
         	print "A new entry has been successfully added.";
         }
