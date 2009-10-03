@@ -7,17 +7,11 @@ require_once('template/header.php');
 	<div><h2>Registration</h2></div>
 	<div class="form">
 	<form name="user_input" action="midman/submit_registration_form.php" method="post">
-		<div>User Name*:</div>
+		<div>Login Name*:</div>
 		<input type="text" name="name" />
 		<br/>
 		<div>Password:</div>
 		<input type="password" name="password"/>
-		<div>First Name*:</div>
-		<input type="text" name="first_name" />
-		<br/>
-		<div>Last Name*:</div>
-		<input type="text" name="last_name" />
-		<br/>
 		<div>Email:</div>
 		<input type="text" name="email" />
 		<br/>
