@@ -1,6 +1,7 @@
 <?php
    require_once("./include/init.php");
    require_once('template/header.php');
+   require_once('midman/user_nodes.php');
    $login = check_logged_in();   //where to go if login fail
    $nid = 1;
 
