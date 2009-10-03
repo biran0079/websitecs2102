@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1254605858647
+java.specification.version,sysinfo,,,"1.6",1254605858647
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1254605858647
+java.version,sysinfo,,,"1.6.0_15",1254605858647
+java.vm.info,sysinfo,,,"mixed mode",1254605858647
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1254605858647
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1254605858647
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1254605858647
+java.vm.specification.version,sysinfo,,,"1.0",1254605858647
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1254605858647
+java.vm.version,sysinfo,,,"14.1-b02",1254605858647
+activated,view,org.eclipse.php.ui,2.1.0.v20090617-2341,"org.eclipse.php.ui.explorer",1254605859152
+activated,view,org.eclipse.php.ui,2.1.0.v20090617-2341,"org.eclipse.php.ui.explorer",1254605859224
+closed,view,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.internal.introview",1254605859254
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254605890883
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254605914602
+started,bundle,org.eclipse.wst.xsl.debug.ui,1.0.0.v200904240436,"org.eclipse.wst.xsl.debug.ui",1254605917550
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254605934608
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254605969348
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254605973431
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254606058706
+closed,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1254606065320
+stopped,bundle,org.eclipse.compare.win32,1.0.0.I20090430-0408,"org.eclipse.compare.win32",1254606065737
+stopped,bundle,org.eclipse.dltk.testing,1.0.0.v20090610-1638,"org.eclipse.dltk.testing",1254606065741
+stopped,bundle,org.eclipse.dltk.debug.ui,1.0.0.v20090610-1638,"org.eclipse.dltk.debug.ui",1254606065744
