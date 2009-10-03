@@ -17,4 +17,6 @@ function g_get_login_uid(){
 	return $_SESSION['user']['uid'];
 }
 
+
+function g_check_in_by_user($uid){};
 ?>
