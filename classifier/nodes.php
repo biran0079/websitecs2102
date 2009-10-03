@@ -22,8 +22,7 @@
 				 <input type="submit" name="op" value="Add" />
 			  </form>';
 	    
-        echo  '<div class="nodes_display">  
-               <ul>dddd</ul>'.
+        echo  '<div class="nodes_display">'.
 	           node_search().'
 	           </div>';
            

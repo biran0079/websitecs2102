@@ -1,8 +1,8 @@
 <?php
    require_once("../include/init.php");
    
-   $nid = $_POST['node_id'];
-   $op = $_POST['op'];
+   $nid = isset($_POST['node_id'])?$_POST['node_id']:$_GET['nid'];
+   $op = isset($_POST['op'])?$_POST['op']:$_GET['op'];
    $title = $_POST['title'];
    $url = $_POST['url'];
    $uid = g_get_login_uid();
@@ -28,9 +28,11 @@
 	    
 	    if($result){
 	        header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
-	        print "An entry has been successfully deleted.";
+	        //print "An entry has been successfully deleted.";
 	    }
-	    else print "delete action fails";
+	    else{
+	    	print "delete action fails";
+	    }
     }
 
 	else{	
