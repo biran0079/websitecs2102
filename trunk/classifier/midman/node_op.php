@@ -23,8 +23,8 @@
     }
     
     else if ($op =='Delete'){
-	    $query_delete = "DELETE FROM post_node WHERE nid=%d";
-	    $result= db_query($query_delete,$nid);
+	    $query_delete = "DELETE FROM post_node WHERE nid=$nid";
+	    $result= db_query($query_delete);
 	    
 	    if($result){
 	        header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
