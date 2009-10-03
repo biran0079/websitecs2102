@@ -39,7 +39,7 @@
         $result = db_query($query_edit,$title,$url,$nid);
 	    
 	    if($result){
-	    	//header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
+	    	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
 	    	print "An entry has been successfully edited.";
 	    }
         else print "Edit action fails";			
