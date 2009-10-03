@@ -22,16 +22,9 @@
 			  </form>';
 	    
         echo  '<div class="nodes_display">  
-               <ul>dddd</ul>
-	           <form name="edit" action="node_edit.php" method="post">
-				    <input type="hidden" name="node_id" value="'.$nid.'" >
-                    <input type="submit" name="op" value="Edit" /> 
-				</form>
-				<form name="delete" action="midman/node_op.php" method="post">
-		            <input type="hidden" name="node_id" value="'.$nid.'">
-                    <input type="submit" name="op" value="Delete" /> 
-                </form> 
-	            </div>';
+               <ul>dddd</ul>'.
+	           node_search().'
+	           </div>';
            
 		}
 require_once('template/footer.php');
