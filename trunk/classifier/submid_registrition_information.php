@@ -11,7 +11,7 @@ function username_crush($username){
 	}
 }
 function email_crush($email){
-	$query="select * from user where email = $email".
+	$query="select * from user where email = '$email'".
 	$result=db_query($query);
 	if(db_fetch_array($result)){
 		return true;
@@ -21,7 +21,7 @@ function email_crush($email){
 }
 
 
-$query="insert into user(username,password,email) values('%s','%s','%s')";
+$query="insert into user(username,password,email,register_date,last_update_date) values('%s','%s','%s',NOW(),NOW())";
 $username=$_POST["name"];
 $password=$_POST["password"];
 $email=$_POST["email"];
