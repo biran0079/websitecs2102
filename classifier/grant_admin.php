@@ -10,6 +10,7 @@ $login = check_logged_in();
 	<tr>
 		<td>Login ID:</td>
 		<td><input type="text" name="user_name"></td>
+		<td><input type="submit" value="grant" style="width:50px"></td>
 	</tr>
 </table>
 </form>
