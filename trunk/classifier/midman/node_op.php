@@ -4,19 +4,22 @@
    
    $nid = $_POST['node_id'];
    $op = $_POST['op'];
-   $titel = $_POST['title'];
+   $title = $_POST['title'];
    $url = $_POST['url'];
    $uid = g_get_login_uid();
 
 	if ($op == 'Add'){
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
         $result= db_query($query_add,$uid,$url,$title,0);
-        
+
+
         if($result) {
         	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
         	print "A new entry has been successfully added.";
         }
-        else print "add action fails";
+        else{
+        	print "URL or topic already exists.";
+        }
         
 		
 	}
