@@ -133,7 +133,7 @@ hr {
 
 #menu ul {
 	margin: 0;
-	padding: 44px 0 0 54px;
+	padding: 24px 0 0 54px;
 	list-style: none;
 	line-height: normal;
 	font: 14px Georgia, "Times New Roman", Times, serif;
@@ -143,7 +143,7 @@ hr {
 	float: left;
 	width: 80px;
 	height: 20px;
-	margin: 0 10px 0 0;
+	margin: 20px 10px 0 0;
 	padding: 4px 0 0 10px;
 }
 
