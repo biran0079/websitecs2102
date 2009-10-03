@@ -6,17 +6,17 @@ require_once('template/header.php');
 <div class="register">
 	<div><h2>Registration</h2></div>
 	<div class="form">
-	<form name="user_input" action="#" method="post">
+	<form name="user_input" action="submid_registrition_information.php" method="post">
 		<div>User Name*:</div>
 		<input type="text" name="name" />
 		<br/>
 		<div>Password:</div>
-		<input type="text" name="pwd" />
+		<input type="text" name="password" />
 		<div>First Name*:</div>
-		<input type="text" name="name" />
+		<input type="text" name="first_name" />
 		<br/>
 		<div>Last Name*:</div>
-		<input type="text" name="name" />
+		<input type="text" name="last_name" />
 		<br/>
 		<div>Email:</div>
 		<input type="text" name="email" />
