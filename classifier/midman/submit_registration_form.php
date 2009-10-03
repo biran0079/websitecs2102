@@ -21,7 +21,8 @@ function email_crush($email){
 }
 
 
-$query="insert into user(username,password,email,register_date,last_update_date) values('%s','%s','%s',NOW(),NOW())";
+$query="insert into user(username,password,email,role,register_date,last_update_date) values('%s','%s','%s','%s',NOW(),NOW())";
+
 $username=$_POST["name"];
 $password=$_POST["password"];
 $email=$_POST["email"];
@@ -30,7 +31,7 @@ if(username_crush($username)){
 }else if(email_crush($email)){
 	echo"WARNING: email exists already<br \>";
 }else{
-	db_query($query,$username,$password,$email,$name);
+	db_query($query,$username,$password,$email,'2');
 	$uid=db_last_insert_id("user","uid");
 	g_check_in_by_userid($uid);
 	//echo $uid;

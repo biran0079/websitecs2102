@@ -72,6 +72,9 @@
 							&nbsp
 							<td><a href="deactive_profile_confirmation.php">deactive profile</a></td>	
 						  </form>';	
+					if(get_user_role()){
+						
+					}
 				}
 				?>	
 			</div>
