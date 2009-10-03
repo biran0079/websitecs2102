@@ -23,6 +23,10 @@ echo '
 		<br/>
 		<div>Password:</div>
 		<input type="password" name="password"/>
+		<br/>
+		<div>Repeat Password:</div>
+		<input type="password" name="repeat_password"/>
+		<br/>
 		<div>Email:</div>
 		<input type="text" name="email" value='.$email.' />
 		<br/>
