@@ -32,25 +32,15 @@
 	    }
 	    else print "delete action fails";
     }
-	else{
-		echo'<div class="edit_nodes">
-			     <input type="hidden" name="node_id" value="$nid" >
-				 <div>New Title:</div>
-		         <input type="text" name="title" />
-		         <br/>
-		         <div>New URL:</div>
-		         <input type="text" name="url" />
-		         <br/>';			
-		$query_edit = "UPDATE TABLE post_node SET n_name='%s',n_url='%s',date_add = NOW(),date_update = NOW()";		
+
+	else{	
+		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s',date_update=NOW())";		
+
 	    $result = db_query($query_edit,$title,$url);
 	    
 	    if($result) print "An entry has been successfully edited.";
-        else print "Edit action fails";
-				
+        else print "Edit action fails";			
 	}
 	    
-
-
-
 
 ?>
