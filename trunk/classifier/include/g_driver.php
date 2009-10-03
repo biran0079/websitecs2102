@@ -25,4 +25,13 @@ function g_get_login_uid(){
 function g_check_in_by_userid($uid){
 	return check_in_user_by_uid($uid);
 };
+
+/**
+ * check out loggin user
+ */
+function g_check_out(){
+	session_start();
+	session_destroy();
+}
+
 ?>
