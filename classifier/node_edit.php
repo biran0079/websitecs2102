@@ -14,7 +14,7 @@
 		         <input type="text" name="url" />
 		         <br/>
         <input type="submit" name="op" value="Edit" /> 
-		</form>'		
+		</form>';
 
 require_once('template/footer.php');
 ?>		         
