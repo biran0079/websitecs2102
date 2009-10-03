@@ -5,6 +5,7 @@
    $nid = 1;
 
    if (!$login){
+   	echo "login in fail";
    }
    else
        {
@@ -17,10 +18,11 @@
 		            			<input type="text" name="title" />
 		            		<br/>
 		            		<div>URL:</div>
-		            <input type="text" name="url" />
-		            <br/>
-				    <input type="submit" name="op" value="Add" />
-				</form>';
+		           				 <input type="text" name="url" />
+		            		<br/>
+				    	<input type="submit" name="op" value="Add" />
+					</form>';
+	    
         echo  '<form name="edit" action="op_on_nodes.php" method="post">
 				    <input type="hidden" name="node_id" value="'.$nid.'" >
                     <input type="submit" name="op" value="Edit" /> 
@@ -30,8 +32,7 @@
                     <input type="submit" name="op" value="Delete" /> 
                 </form> 
 	         </div>';
-			 }
-  
+		}
 require_once('template/footer.php');
 ?>
 
