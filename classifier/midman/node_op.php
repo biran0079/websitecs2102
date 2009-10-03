@@ -34,7 +34,7 @@
     }
 
 	else{	
-		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update=NOW()";		
+		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update=NOW()WHERE nid=$nid";		
         $result = db_query($query_edit,$title,$url);
 	    
 	    if($result){
