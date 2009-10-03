@@ -25,6 +25,7 @@ $query="INSERT into user(username,password,email,register_date,last_update_date)
 $username=$_POST["name"];
 $password=$_POST["password"];
 $email=$_POST["email"];
+
 if(username_crush($username)){
 	echo "WARNING: username exists already<br \>";
 }else if(email_crush($email)){
