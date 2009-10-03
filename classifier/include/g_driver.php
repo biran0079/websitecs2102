@@ -22,7 +22,7 @@ function g_get_login_uid(){
  * @param $uid
  * @return boolean, successful or not
  */
-function g_check_in_by_user($uid){
+function g_check_in_by_userid($uid){
 	return check_in_user_by_uid($uid);
 };
 ?>
