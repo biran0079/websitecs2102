@@ -34,12 +34,16 @@
     }
 
 	else{	
-		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s',date_update=NOW())";		
+		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update=NOW()";		
 
 	    $result = db_query($query_edit,$title,$url);
 	    
-	    if($result) print "An entry has been successfully edited.";
-        else print "Edit action fails";			
+	    if($result){
+	    	print "An entry has been successfully edited.";
+	    }
+        else{
+        	print "Edit action fails";			
+        }
 	}
 	    
 
