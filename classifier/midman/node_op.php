@@ -9,13 +9,16 @@
    $uid = g_get_login_uid();
 
 	if ($op == 'Add'){
-		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times) VALUES(%d,'%s','%s',%d)";
+		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
         $result= db_query($query_add,$uid,$url,$title,0);
         
-        if($result) print "A new entry has been successfully added.";
+        if($result) {
+        	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
+        	print "A new entry has been successfully added.";
+        }
         else print "add action fails";
         
-		//header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid")
+		
 	}
     else if ($op =='Delete'){
 	    $query_delete = "DELETE FROM post_node WHERE nid=%d";
@@ -25,7 +28,7 @@
         else print "delete action fails";
     }
 	else{
-		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s')";		
+		$query_edit = "UPDATE TABLE post_node SET (n_name='%s',n_url='%s',date_update=NOW())";		
 	    $result = db_query($query_edit,$title,$url);
 	    
 	    if($result) print "An entry has been successfully edited.";
