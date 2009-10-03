@@ -19,6 +19,6 @@ define('D_DB_NAME','cs2102');
 define('DB_QUERY_REGEXP', '/(%d|%s|%%|%f|%b|%n)/');
 
 // define root directory
-define('SITE_ROOT', 'http://localhost/classifier');
+define('SITE_ROOT', 'http://localhost/cs2102/classifier');
 
 ?>
