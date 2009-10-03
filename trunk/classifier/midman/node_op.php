@@ -36,15 +36,14 @@
 
 	else{	
 		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update=NOW()";		
-
-	    $result = db_query($query_edit,$title,$url);
+        $result = db_query($query_edit,$title,$url);
 	    
 	    if($result){
+	    	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
 	    	print "An entry has been successfully edited.";
 	    }
-        else{
-        	print "Edit action fails";			
-        }
+        else print "Edit action fails";			
+        
 	}
 	    
 
