@@ -2,6 +2,7 @@
 require_once("../include/init.php");
 
 $add_by=g_get_login_uid();
+$op = $_POST["op"];
 
 if ($op == 'add'){
 	$t_names=$_POST["t_names"];
