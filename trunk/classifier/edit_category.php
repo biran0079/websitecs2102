@@ -18,11 +18,12 @@ if (!$login){
 	<form name = "admin_input" action = "edit_category_convert.php" method = "post">
 	<div>$result[$i]</div>
 	<input type = "hidden" name = "c_name" value=".$result[$i]."/>
-	</form>
-	</div>';}
-		echo '<div class = "submit">
+	<div class = "submit">
 	<input type = "submit" value = "Edit" />
-	</div>'
-	 
+	</div>
+	</form>
+	</div>';
+	}
+
 }
 ?>
