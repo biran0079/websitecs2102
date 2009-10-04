@@ -23,7 +23,7 @@ if ($op == 'add'){
 if ($op =='edit'){
 	$t_name = $_POST["t_name"];
 	$t_name_pre = $_POST["t_name_pre"];
-	$query="UPDATE category SET t_name = '$t_name' WHERE t_name = '$t_name_pre'"
+	$query="UPDATE category SET t_name = '$t_name' WHERE t_name = '$t_name_pre'";
 	db_query($query);
 	//header( "Location: ".SITE_ROOT."/edit_tag.php");
 }
