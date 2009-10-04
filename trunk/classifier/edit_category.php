@@ -16,8 +16,8 @@ if (!$login){
 	for ($i = 0; $i < $num; $i++){
 		echo '	<div class = "edit_category">
 	<form name = "admin_input" action = "edit_category_convert.php" method = "post">
-	<div>$result[$i]</div>
-	<input type = "hidden" name = "c_name" value=".$result[$i]."/>
+	<div>'.$result[$i].'</div>
+	<input type = "hidden" name = "c_name" value="'.$result[$i].'"/>
 	<div class = "submit">
 	<input type = "submit" value = "Edit" />
 	</div>

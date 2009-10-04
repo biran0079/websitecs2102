@@ -12,7 +12,7 @@ echo '
 	<table>
 	     <tr>
 								<td>Old Category Name</td> 
-								<td><input type='text' name='c_name_pre', value="+'$c_name_pre'+"></td>
+								<td><input type="text" name="c_name_pre", value="'.$c_name_pre.'"></td>
 								</tr>
 		 <tr>
 								<td>New Category Name</td>
