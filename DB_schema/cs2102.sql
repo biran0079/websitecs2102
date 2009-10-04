@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `category` (
   `cid` int(11) NOT NULL auto_increment,
   `c_name` varchar(40) NOT NULL,
-  `add_by` varchar(40) NOT NULL,
+  `add_by` int(11) NOT NULL,
   PRIMARY KEY  (`cid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `post_node` (
 CREATE TABLE IF NOT EXISTS `tag` (
   `tid` int(11) NOT NULL auto_increment,
   `t_name` varchar(30) NOT NULL,
-  `add_by` varchar(40) NOT NULL,
+  `add_by` int(11) NOT NULL,
   PRIMARY KEY  (`tid`),
   UNIQUE KEY `t_name` (`t_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
