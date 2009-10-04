@@ -3,6 +3,7 @@ require_once("../include/init.php");
 
 $c_name=$_POST["c_name"];
 $add_by=g_get_login_uid();
+$op = $_POST["op"];
 
 if ($op == 'add'){
 	$query="INSERT IGNORE INTO categary(c_name, add_by) VALUES ('%s','%d')";
