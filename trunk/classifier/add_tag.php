@@ -17,5 +17,6 @@ if (!$login){
 	<input type = "submit" value = "Add" />
 	</div>
 	</form>
-	</div>'}
+	</div>';
+}
 	?>

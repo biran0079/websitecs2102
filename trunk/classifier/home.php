@@ -170,6 +170,8 @@ if($login && (($role = g_get_user_role()) == '1')){
 		<ul>
 					<li>
 						<h2>Tag</h2>
+						<a href="add_tag.php">add</a>
+						<a href="edit_tag.php">edit</a>
 						<ul>
 							<li><a href="#">Sports</a></li>
 							<li><a href="#">Books</a></li>
