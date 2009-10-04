@@ -1,49 +1,38 @@
-<?php 
-	require_once("template/header.php");
-	require_once("include/init.php");
-	$login = check_logged_in();
+<?php
+require_once("template/header.php");
+require_once("include/init.php");
+$login = check_logged_in();
 ?>
-	
-	<!-- content start -->	
-		<div id="content">
-			<div class="post">
-				<div class="title">
-					<h2>Sports</h2>
-					<p>Last updated by <a href="#">admin</a> 4 hours 8 minutes ago</p>
-				</div>
-				<div class="entry">
-					<p>
-						<a href="#">Google Sport</a> 
-						<a href="#">mysport</a>
-						<a href="#">Singapore GP</a>
-						<a href="#">ESPN</a>
-						<a href="#">Yahoo!</a>
-						<a href="#">mysport</a>
-						<a href="#">网球</a>
-						<a href="#">Tennis Live</a>
-						<a href="#">极限体育</a>
-						<a href="#">mysport</a>
-						<a href="#">新浪网球</a>
-						<a href="#">ESPN</a>
-					</p>	
-				</div>
-				
-				<div class="meta">
-					<p><a href="#" class="more">Add More</a> </p>
-				</div> 
-			</div>
-		</div>
-		<!-- content end -->	
-		<!-- sidebar start -->	
-		<div id="sidebar">
-			<div class="section1">
-			<?php 
-				if (!$login){
-					if (login_fail()){
-						echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';	
-					}
-					
-					echo '
+
+<!-- content start -->
+<div id="content">
+<div class="post">
+<div class="title">
+<h2>Sports</h2>
+<p>Last updated by <a href="#">admin</a> 4 hours 8 minutes ago</p>
+</div>
+<div class="entry">
+<p><a href="#">Google Sport</a> <a href="#">mysport</a> <a href="#">Singapore
+GP</a> <a href="#">ESPN</a> <a href="#">Yahoo!</a> <a href="#">mysport</a>
+<a href="#">网球</a> <a href="#">Tennis Live</a> <a href="#">极限体育</a> <a
+	href="#">mysport</a> <a href="#">新浪网球</a> <a href="#">ESPN</a></p>
+</div>
+
+<div class="meta">
+<p><a href="#" class="more">Add More</a></p>
+</div>
+</div>
+</div>
+<!-- content end -->
+<!-- sidebar start -->
+<div id="sidebar">
+<div class="section1"><?php 
+if (!$login){
+	if (login_fail()){
+		echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';
+	}
+
+	echo '
 						<h2>Login</h2>
 						<form action="checkin.php" method="post">
 						<input type="hidden" value="login" name="op">
@@ -60,64 +49,67 @@
 								</tr>
 						</table> 
 						</form>';
-				}
-				else
-				{
-					$name = g_get_username();
-					echo "<div><h2> Hello, $name!</h2></div>";
-					echo '<form action="checkin.php" method="post">
+}
+else
+{
+	$name = g_get_username();
+	echo "<div><h2> Hello, $name!</h2></div>";
+	echo '<form action="checkin.php" method="post">
 							<input type="submit" value="Log out" style="width:70px">
 							<input type="hidden" value="logout" name="op">
 							<td><a href="edit_user_profile.php">edit profile</a></td>
 							&nbsp
 							<td><a href="deactive_profile_confirmation.php">deactive profile</a></td>	
 						  </form>';	
-					$role=g_get_user_role();
-					if($role=='0'){			//super user
-						echo'
+	$role=g_get_user_role();
+	if($role=='0'){			//super user
+		echo'
 						<table>
 								<tr>
 									<td><a href="grant_admin.php">Grant admin privilege</a></td>
 								</tr>
 						</table> ';
-					}else if($role=='1'){	//admin
-					}else if($role=='3'){	//normal user
-						
-					}
-				}
-				?>	
-			</div>
-			<div class="section2">
-				<ul>
-					<li>
-						<h2>Most Popular</h2>
-						<ul>
-							<li><a href="#">F1</a></li>
-							<li><a href="#">Tennis</a></li>
-							<li><a href="#">Football</a></li>
-							<li><a href="#">Nascar</a></li>
-							<li><a href="#">Golf</a></li>
-							<li><a href="#">Basketball</a></li>
-						</ul>
-					</li>
-					<li>
-						<h2>Newly Added</h2>
-						<ul>
-							<li><a href="#">yahoo sport!</a></li>
-							<li><a href="#">mysport</a></li>
-							<li><a href="#">新浪网球</a></li>
-							<li><a href="#">ESPN</a></li>
-							<li><a href="#">动感体育</a></li>
-							<li><a href="#">BBC F1</a></li>
-							<li><a href="#">US Open 2009</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="section3">
-				<ul>
+	}else if($role=='1'){	//admin
+	}else if($role=='3'){	//normal user
+
+	}
+}
+?></div>
+<div class="section2">
+<ul>
+	<li>
+	<h2>Most Popular</h2>
+	<ul>
+		<li><a href="#">F1</a></li>
+		<li><a href="#">Tennis</a></li>
+		<li><a href="#">Football</a></li>
+		<li><a href="#">Nascar</a></li>
+		<li><a href="#">Golf</a></li>
+		<li><a href="#">Basketball</a></li>
+	</ul>
+	</li>
+	<li>
+	<h2>Newly Added</h2>
+	<ul>
+		<li><a href="#">yahoo sport!</a></li>
+		<li><a href="#">mysport</a></li>
+		<li><a href="#">新浪网球</a></li>
+		<li><a href="#">ESPN</a></li>
+		<li><a href="#">动感体育</a></li>
+		<li><a href="#">BBC F1</a></li>
+		<li><a href="#">US Open 2009</a></li>
+	</ul>
+	</li>
+</ul>
+</div>
+<?php
+if($login && (($role = g_get_user_role()) == '1')){
+	echo '<div class="section3">
+<ul>
 					<li>
 						<h2>Category</h2>
+						<a href="add_category.php">add</a>
+						<a href="edit_category.php">edit</a>
 						<ul>
 							<li><a href="#">Sports</a></li>
 							<li><a href="#">Books</a></li>
@@ -130,10 +122,70 @@
 						</ul>
 					</li>
 				</ul>
-			</div>
-		</div>
-		<!-- sidebar end -->	
-		<div class="clearfix">&nbsp;</div>
-<?php 
+				</div>';
+}else {
+	echo '<div class="section3">
+		<ul>
+					<li>
+						<h2>Category</h2>
+						<a href="add_category.php">add</a>
+						<a href="edit_category.php">edit</a>
+						<ul>
+							<li><a href="#">Sports</a></li>
+							<li><a href="#">Books</a></li>
+							<li><a href="#">IT</a></li>
+							<li><a href="#">Culture</a></li>
+							<li><a href="#">Photograph</a></li>
+							<li><a href="#">Life</a></li>
+							<li><a href="#">Animal</a></li>
+							<li><a href="#">Fun</a></li>
+						</ul>
+					</li>
+				</ul>
+				</div>';
+}
+?> <?php
+if($login && (($role = g_get_user_role()) == '1')){
+	echo '<div class="section4">
+<ul>
+					<li>
+						<h2>Tag</h2>
+						<a href="add_tag.php">add</a>
+						<a href="edit_tag.php">edit</a>
+						<ul>
+							<li><a href="#">Sports</a></li>
+							<li><a href="#">Books</a></li>
+							<li><a href="#">IT</a></li>
+							<li><a href="#">Culture</a></li>
+							<li><a href="#">Photograph</a></li>
+							<li><a href="#">Life</a></li>
+							<li><a href="#">Animal</a></li>
+							<li><a href="#">Fun</a></li>
+						</ul>
+					</li>
+				</ul>
+				</div>';
+}else {
+	echo '<div class="section4">
+		<ul>
+					<li>
+						<h2>Tag</h2>
+						<ul>
+							<li><a href="#">Sports</a></li>
+							<li><a href="#">Books</a></li>
+							<li><a href="#">IT</a></li>
+							<li><a href="#">Culture</a></li>
+							<li><a href="#">Photograph</a></li>
+							<li><a href="#">Life</a></li>
+							<li><a href="#">Animal</a></li>
+							<li><a href="#">Fun</a></li>
+						</ul>
+					</li>
+				</ul>
+				</div>';
+}?></div>
+<!-- sidebar end -->
+<div class="clearfix">&nbsp;</div>
+<?php
 require_once('template/footer.php');
-?>	
+?>
