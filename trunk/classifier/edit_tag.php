@@ -9,15 +9,21 @@ if (!$login){
 } else {
 	$query="SELECT t_name FROM tag";
 	$result=db_query($query);
-	$num = count($result);
+	
+	$rows = array();
+	while ($row = db_fetch_array($result)){
+		$rows[] = $row;
+	}
+	
+	$num = count($rows);
 
 	echo '<h2>Edit Tag</h2>';
 
 	for ($i = 0; $i < $num; $i++){
 		echo '	<div class = "edit_tag">
 				<form name = "admin_input" action = "edit_tag_convert.php" method = "post">
-					<div>$result[$i]</div>
-					<input type = "hidden" name = "t_name_pre" value=".$result[$i]."/>
+					<div>'.$rows[$i]['t_name'].'</div>
+					<input type = "hidden" name = "t_name_pre" value="'.$rows[$i]['t_id'].'"/>
 				</form>
 				</div>';
 	}

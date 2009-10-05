@@ -146,7 +146,7 @@ if($login && (($role = g_get_user_role()) == '1')){
 }
 ?> <?php
 if($login && (($role = g_get_user_role()) == '1')){
-	echo '<div class="section4">
+	echo '<div class="section3">
 <ul>
 					<li>
 						<h2>Tag</h2>
@@ -166,7 +166,7 @@ if($login && (($role = g_get_user_role()) == '1')){
 				</ul>
 				</div>';
 }else {
-	echo '<div class="section4">
+	echo '<div class="section3">
 		<ul>
 					<li>
 						<h2>Tag</h2>
