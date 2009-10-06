@@ -24,4 +24,7 @@ define('SITE_ROOT', 'http://localhost/CS2102_Website/classifier');
 // define debug sql
 define('PRINT_QUERY',FALSE);
 
+// define default key word
+define('DEFAULT_KEY_WORD','list_add_recently');
+
 ?>

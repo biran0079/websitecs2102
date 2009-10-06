@@ -2,20 +2,24 @@
 require_once("template/header.php");
 require_once("include/init.php");
 $login = check_logged_in();
+$page_section = g_get_section();
+$page_entry_title = g_get_entry_title();
 ?>
 
 <!-- content start -->
 <div id="content">
 <div class="post">
 <div class="title">
-<h2>Sports</h2>
+<h2><?php echo $page_entry_title;?></h2>
 <p>Last updated by <a href="#">admin</a> 4 hours 8 minutes ago</p>
 </div>
 <div class="entry">
-<p><a href="#">Google Sport</a> <a href="#">mysport</a> <a href="#">Singapore
-GP</a> <a href="#">ESPN</a> <a href="#">Yahoo!</a> <a href="#">mysport</a>
-<a href="#">网球</a> <a href="#">Tennis Live</a> <a href="#">极限体育</a> <a
-	href="#">mysport</a> <a href="#">新浪网球</a> <a href="#">ESPN</a></p>
+	<p>
+		<?php 
+			if ($page_section == DEFAULT_KEY_WORD)
+				echo g_formatter_list_add_recently();
+		?>
+	</p>
 </div>
 
 <div class="meta">

@@ -6,7 +6,7 @@ $add_by=g_get_login_uid();
 $op = $_POST["op"];
 
 if ($op == 'add'){
-	$query="INSERT IGNORE INTO categary(c_name, add_by) VALUES ('%s','%d')";
+	$query="INSERT IGNORE INTO category(c_name, add_by) VALUES ('%s','%d')";
 	db_query($query,$c_name,$add_by);
 	header( "Location: ".SITE_ROOT."/add_category.php");
 }
