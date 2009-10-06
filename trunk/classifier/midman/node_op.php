@@ -10,6 +10,9 @@
 	if ($op == 'Add'){
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
         $result= db_query($query_add,$uid,$url,$title,0);
+        $t_names=$_POST["t_names"];
+	    $tags = explode(",", $t_names);
+	    g_get_tag_by_node($tags, $nid);
 
 
         if($result) {

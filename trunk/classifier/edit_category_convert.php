@@ -2,7 +2,7 @@
 require_once("template/header.php");
 require_once("include/init.php");
 
-$c_name_pre = $POST["c_name"];
+$c_name_pre = $POST['c_name'];
 
 echo '
 	<div class = "form">

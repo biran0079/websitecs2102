@@ -19,6 +19,9 @@
 		         <div>URL:</div>
 		         <input type="text" name="url" />
 		         <br/>
+		         <div>Tag:</div>
+		         <input type="text" name="t_names" />
+		         <br/>
 				 <input type="submit" name="op" value="Add" />
 			  </form>';
 	    
