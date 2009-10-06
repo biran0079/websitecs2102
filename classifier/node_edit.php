@@ -17,6 +17,9 @@
 		         <div>New URL:</div>
 		         <input type="text" name="url" value = "'.$row['n_url'].'" >
 		         <br/>
+		         <div>New Tag:</div>
+		         <input type="text" name="t_names" />
+		         <br/>
         <input type="submit" name="op" value="Edit" /> 
 		</form>';
 

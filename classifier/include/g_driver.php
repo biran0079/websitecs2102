@@ -55,6 +55,46 @@ function g_get_entry_title(){
 	return "Recently Added";
 }
 
+function g_add_tag_by_node($tags, $nid){
+	
+    $add_by = g_get_user_id();
+	$num = count($tags);
+	$query_tag = "INSERT IGNORE INTO tag (t_name, add_by) VALUES ('%s', '%d')";
+	$query_node_tag = "INSERT IGNORE INTO node_tag (nid, tid) VALUES ('%d', '%d')";
+
+	for ($i=0; $i < $num; $i++){
+		db_query($query_tag, $tags[$i], $add_by);
+		$query = "SELECT tid FROM tag WHERE t_name = '$tags[$i]'";
+        $result = db_query($query);
+        $tid = db_fetch_array($result);
+        db_query($query_node_tag, $nid, $tid);
+	}
+	return;
+}
+
+function g_get_tag_by_node($nid){
+	$tags = '';
+	$query_node_tag = "SELECT tid FROM node_tag WHERE nid = '$nid'";
+	$result = db_query($query_node_tag);
+	
+	$rows = array();
+	while ($row = db_fetch_array($result)){
+		$rows[] = $row;
+	}
+	
+	$num = count($rows);
+	
+	for ($i = 0; $i < $num ; $i++){
+		$query_tag = "SELECT t_name FROM tag WHERE tid = '$row[$i]['tid']'";
+		$t_name_row = db_query($query_tag);
+		$t_name = db_fetch_array($t_name_row);
+		$tags .= $t_name;
+	}
+	
+	return $tags;
+	
+}
+
 /**
  * list
  */
