@@ -128,7 +128,7 @@ function g_formatter_sidebar_list_category(){
 	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 	
-	$default_url = '/home.php?op=show_category&cid=';
+	$default_url = SITE_ROOT.'/home.php?op=show_category&cid=';
 	
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$default_url.$row['cid']);
@@ -152,11 +152,57 @@ function g_formatter_sidebar_list_tags(){
 	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 	
-	$default_url = '/home.php?op=show_tag&tid=';
+	$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
 	
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$default_url.$row['tid']);
 		$formatter->addContent('t_2',$row['t_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+/**
+ * 
+ * list most popular page
+ * @location: home page
+ */
+function g_formatter_sidebar_list_most_popular_node(){
+	$query = " SELECT * FROM post_node ORDER BY visit_times DESC LIMIT 10";
+
+	$result = db_query($query);
+	
+	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$formatter = new Formatter($html_template);
+	
+	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+/**
+ * 
+ * list most popular page
+ * @location: home page
+ */
+function g_formatter_sidebar_list_newly_added_node(){
+	$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 10";
+
+	$result = db_query($query);
+	
+	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$formatter = new Formatter($html_template);
+	
+	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_2',$row['n_name']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
