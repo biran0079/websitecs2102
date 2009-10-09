@@ -113,91 +113,47 @@ $page_entry_title = g_get_entry_title();
 	</li>
 </ul>
 </div>
-<?php
-	if($login && ($role == '1' || $role == '0')){
-		echo '<div class="section3">
+	<div class="section3">
 				<ul>
 					<li>
 						<h2>Category</h2>
-						<div>
-							<a href="add_category.php">add</a>
-							<a href="edit_category.php">edit</a>
-						</div>	
-						<ul>
-							<li><a href="#">Sports</a></li>
-							<li><a href="#">Books</a></li>
-							<li><a href="#">IT</a></li>
-							<li><a href="#">Culture</a></li>
-							<li><a href="#">Photograph</a></li>
-							<li><a href="#">Life</a></li>
-							<li><a href="#">Animal</a></li>
-							<li><a href="#">Fun</a></li>
-						</ul>
+						<?php 
+							if($login && ($role == '1' || $role == '0'))
+								echo '
+									<div>
+										<a href="add_category.php">add</a>
+										<a href="edit_category.php">edit</a>
+									</div>'; 
+							?>	
+							<ul>
+								<?php 
+									echo g_formatter_sidebar_list_category();
+								?>
+							</ul>
 					</li>
 				</ul>
 			</div>';
-	}else {
-		// normal user
-		echo '<div class="section3">
-				<ul>
-					<li>
-						<h2>Category</h2>
-						<ul>
-							<li><a href="#">Sports</a></li>
-							<li><a href="#">Books</a></li>
-							<li><a href="#">IT</a></li>
-							<li><a href="#">Culture</a></li>
-							<li><a href="#">Photograph</a></li>
-							<li><a href="#">Life</a></li>
-							<li><a href="#">Animal</a></li>
-							<li><a href="#">Fun</a></li>
-						</ul>
-					</li>
-				</ul>
-				</div>';
-}
-?> <?php
-if($login && (($role = g_get_user_role()) == '1')){
-	echo '<div class="section3">
-<ul>
+	
+
+<div class="section3">
+			<ul>
 					<li>
 						<h2>Tag</h2>
-						<a href="add_tag.php">add</a>
-						<a href="edit_tag.php">edit</a>
+						<?php 
+							if($login && (($role = g_get_user_role()) == '1'))
+								echo 
+									'<a href="add_tag.php">add</a>
+									 <a href="edit_tag.php">edit</a>';
+						?>
 						<ul>
-							<li><a href="#">Sports</a></li>
-							<li><a href="#">Books</a></li>
-							<li><a href="#">IT</a></li>
-							<li><a href="#">Culture</a></li>
-							<li><a href="#">Photograph</a></li>
-							<li><a href="#">Life</a></li>
-							<li><a href="#">Animal</a></li>
-							<li><a href="#">Fun</a></li>
+							<?php 
+								echo g_formatter_sidebar_list_tags();
+							?>
 						</ul>
-					</li>
-				</ul>
-				</div>';
-}else {
-	echo '<div class="section3">
-		<ul>
-					<li>
-						<h2>Tag</h2>
-						<a href="add_tag.php">add</a>
-						<a href="edit_tag.php">edit</a>
-						<ul>
-							<li><a href="#">Sports</a></li>
-							<li><a href="#">Books</a></li>
-							<li><a href="#">IT</a></li>
-							<li><a href="#">Culture</a></li>
-							<li><a href="#">Photograph</a></li>
-							<li><a href="#">Life</a></li>
-							<li><a href="#">Animal</a></li>
-							<li><a href="#">Fun</a></li>
-						</ul>
-					</li>
-				</ul>
-				</div>';
-}?></div>
+					</li>	
+				</ul>	
+			</div>';
+</div>
 <!-- sidebar end -->
 <div class="clearfix">&nbsp;</div>
 <?php

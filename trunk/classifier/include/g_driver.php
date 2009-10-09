@@ -97,6 +97,7 @@ function g_get_tag_by_node($nid){
 
 /**
  * list
+ * @location: home page
  */
 function g_formatter_list_add_recently(){
 	$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 10";
@@ -109,6 +110,53 @@ function g_formatter_list_add_recently(){
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_url']);
 		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+/**
+ * 
+ * list all category
+ * @location: home page
+ */
+function g_formatter_sidebar_list_category(){
+	$query = " SELECT * FROM category";
+
+	$result = db_query($query);
+	
+	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$formatter = new Formatter($html_template);
+	
+	$default_url = '/home.php?op=show_category&cid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$default_url.$row['cid']);
+		$formatter->addContent('t_2',$row['c_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+
+/**
+ * 
+ * list all category
+ * @location: home page
+ */
+function g_formatter_sidebar_list_tags(){
+	$query = " SELECT * FROM tag";
+
+	$result = db_query($query);
+	
+	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$formatter = new Formatter($html_template);
+	
+	$default_url = '/home.php?op=show_tag&tid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$default_url.$row['tid']);
+		$formatter->addContent('t_2',$row['t_name']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
