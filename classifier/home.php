@@ -30,13 +30,14 @@ $page_entry_title = g_get_entry_title();
 <!-- content end -->
 <!-- sidebar start -->
 <div id="sidebar">
-<div class="section1"><?php 
-if (!$login){
-	if (login_fail()){
-		echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';
-	}
+<div class="section1">
+<?php 
+	if (!$login){
+		if (login_fail()){
+			echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';
+		}
 
-	echo '
+		echo '
 						<h2>Login</h2>
 						<form action="checkin.php" method="post">
 						<input type="hidden" value="login" name="op">
@@ -53,20 +54,26 @@ if (!$login){
 								</tr>
 						</table> 
 						</form>';
-}
-else
-{
+	}
+	else
+	{
+	// section shown to login user	
 	$name = g_get_username();
 	echo "<div><h2> Hello, $name!</h2></div>";
 	echo '<form action="checkin.php" method="post">
-							<input type="submit" value="Log out" style="width:70px">
-							<input type="hidden" value="logout" name="op">
+					<input type="submit" value="Log out" style="width:70px">
+				    <input type="hidden" value="logout" name="op">
 							<td><a href="edit_user_profile.php">edit profile</a></td>
 							&nbsp
 							<td><a href="deactive_profile_confirmation.php">deactive profile</a></td>	
-						  </form>';	
+		</form>';	
 	$role=g_get_user_role();
-	if($role=='0'){			//super user
+	// roles:
+	// 0: super user
+	// 1: administrator
+	// 2: normal user
+	
+	if($role=='0' || $role=='1'){			//super user
 		echo'
 						<table>
 								<tr>
@@ -107,13 +114,15 @@ else
 </ul>
 </div>
 <?php
-if($login && (($role = g_get_user_role()) == '1')){
-	echo '<div class="section3">
-<ul>
+	if($login && ($role == '1' || $role == '0')){
+		echo '<div class="section3">
+				<ul>
 					<li>
 						<h2>Category</h2>
-						<a href="add_category.php">add</a>
-						<a href="edit_category.php">edit</a>
+						<div>
+							<a href="add_category.php">add</a>
+							<a href="edit_category.php">edit</a>
+						</div>	
 						<ul>
 							<li><a href="#">Sports</a></li>
 							<li><a href="#">Books</a></li>
@@ -126,14 +135,13 @@ if($login && (($role = g_get_user_role()) == '1')){
 						</ul>
 					</li>
 				</ul>
-				</div>';
-}else {
-	echo '<div class="section3">
-		<ul>
+			</div>';
+	}else {
+		// normal user
+		echo '<div class="section3">
+				<ul>
 					<li>
 						<h2>Category</h2>
-						<a href="add_category.php">add</a>
-						<a href="edit_category.php">edit</a>
 						<ul>
 							<li><a href="#">Sports</a></li>
 							<li><a href="#">Books</a></li>
