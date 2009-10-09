@@ -23,7 +23,7 @@ $page_entry_title = g_get_entry_title();
 </div>
 
 <div class="meta">
-<p><a href="#" class="more">Add More</a></p>
+	<p><a href="nodes.php" class="more">Add More</a></p>
 </div>
 </div>
 </div>
@@ -91,24 +91,17 @@ $page_entry_title = g_get_entry_title();
 	<li>
 	<h2>Most Popular</h2>
 	<ul>
-		<li><a href="#">F1</a></li>
-		<li><a href="#">Tennis</a></li>
-		<li><a href="#">Football</a></li>
-		<li><a href="#">Nascar</a></li>
-		<li><a href="#">Golf</a></li>
-		<li><a href="#">Basketball</a></li>
+		<?php 
+			echo g_formatter_sidebar_list_most_popular_node();
+		?>
 	</ul>
 	</li>
 	<li>
 	<h2>Newly Added</h2>
 	<ul>
-		<li><a href="#">yahoo sport!</a></li>
-		<li><a href="#">mysport</a></li>
-		<li><a href="#">新浪网球</a></li>
-		<li><a href="#">ESPN</a></li>
-		<li><a href="#">动感体育</a></li>
-		<li><a href="#">BBC F1</a></li>
-		<li><a href="#">US Open 2009</a></li>
+		<?php 
+			echo g_formatter_sidebar_list_newly_added_node();
+		?>
 	</ul>
 	</li>
 </ul>
@@ -132,7 +125,7 @@ $page_entry_title = g_get_entry_title();
 							</ul>
 					</li>
 				</ul>
-			</div>';
+			</div>
 	
 
 <div class="section3">
@@ -152,7 +145,7 @@ $page_entry_title = g_get_entry_title();
 						</ul>
 					</li>	
 				</ul>	
-			</div>';
+			</div>
 </div>
 <!-- sidebar end -->
 <div class="clearfix">&nbsp;</div>
