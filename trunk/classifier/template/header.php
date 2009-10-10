@@ -24,7 +24,7 @@
 		</div>
 		<div id="menu">
 			<div class="search_box">
-				<form action="home.php?op=showsearchresults">
+				<form action="home.php" method="post">
 					<table>
 						<tr><td>
 							<div>
@@ -33,7 +33,8 @@
 							</td>
 							<td>
 							<div class="search_btn">
-								<input type="submit" name="search_text" value="Search"/>
+								<input type="submit" name="searchtext" value="Search"/>
+								<input type="hidden" name="op" value="show_search_result"/>
 							</div>
 							</td>
 						</tr>

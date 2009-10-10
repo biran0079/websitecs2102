@@ -22,9 +22,16 @@ define('DB_QUERY_REGEXP', '/(%d|%s|%%|%f|%b|%n)/');
 define('SITE_ROOT', 'http://localhost/CS2102_Website/classifier');
 
 // define debug sql
-define('PRINT_QUERY',False);
+define('PRINT_QUERY',FALSE);
 
+
+//-----------------------------------Key Word-----------------------
 // define default key word
 define('DEFAULT_KEY_WORD','list_add_recently');
+// search
+define('SHOW_SEARCH_RESULT','show_search_result');
+
+
+
 
 ?>

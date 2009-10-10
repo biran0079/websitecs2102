@@ -16,8 +16,7 @@ $page_entry_title = g_get_entry_title();
 <div class="entry">
 	<p>
 		<?php 
-			if ($page_section == DEFAULT_KEY_WORD)
-				echo g_formatter_list_add_recently();
+			echo g_get_section_content();
 		?>
 	</p>
 </div>
