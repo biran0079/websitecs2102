@@ -44,8 +44,11 @@ function g_get_user_role(){
 function g_get_section(){
 		if (isset($_POST['op']))
 			return $_POST['op'];
-		else	 	
-			return DEFAULT_KEY_WORD;
+		
+		if (isset($_GET['op']))
+			return $_GET['op'];
+			 	
+		return DEFAULT_KEY_WORD;
 }
 
 function g_get_section_content(){
@@ -54,14 +57,23 @@ function g_get_section_content(){
 		case DEFAULT_KEY_WORD:
 				return g_formatter_list_add_recently();
 		case SHOW_SEARCH_RESULT:
-				
 				return g_formatter_list_search_result();
+		case SHOW_NODES_BY_CATEGORY:
+				return g_formatter_list_nodes_by_category_id();	
 		default: 
 		//default action;
 				return g_formatter_list_add_recently();				
 	}
 }
 
+
+function g_get_category_name_by_cid($cid){
+	
+	$query = " SELECT * FROM category WHERE cid = %d LIMIT 1";
+	$result = db_query($query,$cid);
+	$row = db_fetch_array($result);
+	return $row['c_name'];
+}
 
 function g_get_entry_title(){
 $section = g_get_section();
@@ -70,6 +82,8 @@ $section = g_get_section();
 				return "Recently Added";
 		case SHOW_SEARCH_RESULT:
 				return "Search Result";
+		case SHOW_NODES_BY_CATEGORY:
+				return "Category: ".g_get_category_name_by_cid($_GET['cid']);		
 		default: 
 		//default action;
 				return "Recently Added";		
@@ -144,6 +158,34 @@ function g_formatter_list_search_result(){
 	//$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 10";
 
 	//$result = db_query($query);
+	
+	$html_template = '<a href="#t_1#">#t_2#</a>';
+	$formatter = new Formatter($html_template);
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+/**
+ * list nodes by category id 
+ * @return unknown_type
+ */
+
+function g_formatter_list_nodes_by_category_id(){
+	
+	$cid = $_GET['cid'];
+	
+	$query = " SELECT pn.* FROM post_node AS pn"; 
+	$query.= " INNER JOIN node_category AS nc ON (nc.nid = pn.nid)";
+	$query.= " INNER JOIN category AS c ON (c.cid = nc.cid)";
+	$query.= " WHERE c.cid = $cid ORDER BY date_add DESC";
+	
+	
+	$result = db_query($query);
 	
 	$html_template = '<a href="#t_1#">#t_2#</a>';
 	$formatter = new Formatter($html_template);

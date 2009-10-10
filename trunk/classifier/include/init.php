@@ -6,5 +6,8 @@
 	require_once("g_driver.php");
 	require_once("formatter.php");
 	global $active_db;
-	build_connection($active_db);	
+	build_connection($active_db);
+	// debugger
+	global $query_pool;
+	$query_pool = array();	
 ?>

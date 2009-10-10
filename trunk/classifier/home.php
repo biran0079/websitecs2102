@@ -7,6 +7,7 @@ $page_entry_title = g_get_entry_title();
 ?>
 
 <!-- content start -->
+
 <div id="content">
 <div class="post">
 <div class="title">
@@ -148,6 +149,7 @@ $page_entry_title = g_get_entry_title();
 </div>
 <!-- sidebar end -->
 <div class="clearfix">&nbsp;</div>
+
 <?php
 require_once('template/footer.php');
 ?>

@@ -18,12 +18,12 @@ function s_search(&$result){
 	
 	// dummy version
 	$sql_search_category.= " LOWER(c_name) LIKE LOWER('%$key_words%')";
+	
+	
 	$sql_search_tag.= " INNER JOIN node_tag AS nt ON (nt.nid = pn.nid)";
 	$sql_search_tag.= " INNER JOIN tag AS t ON (t.tid = nt.tid)";
 	
-	//$sql_search_base.= " nc"
 	$result = db_query($sql_search_category);
-	//die();
 }
 
 ?>

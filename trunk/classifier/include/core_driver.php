@@ -84,4 +84,22 @@ function check_in_user_by_uid($uid){
 	else
 		return false;	
 }
+/**
+ * This function must be included at the end of the whole page
+ * @return unknown_type
+ */
+function debugger_print_all_query(){
+	if (PRINT_QUERY==FALSE || !(isset($_SESSION['debug_queries']))){
+		return '';
+	}
+	$html = '<div style="width:100%; height:100px ;background-color:red; font-size:15px">';
+	$query_pool = $_SESSION['debug_queries'];
+	foreach ($query_pool AS $query){
+		$html.= "<li>$query</li>";	
+	}
+	$html.="</div>";
+	
+	unset($_SESSION['debug_queries']);
+	return $html;
+}
 ?>

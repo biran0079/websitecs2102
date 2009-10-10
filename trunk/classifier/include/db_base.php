@@ -50,6 +50,26 @@ function db_query($query) {
   return simple_db_query($query);
 }
 
+function db_query_debug($query) {
+  $args = func_get_args();
+  array_shift($args);
+  // this is Drupal specified
+  //$query = db_prefix_tables($query);
+  if (isset($args[0]) and is_array($args[0])) { // 'All arguments in one array' syntax
+    $args = $args[0];
+  }
+  _db_query_callback($args, TRUE);
+  $query = preg_replace_callback(DB_QUERY_REGEXP, '_db_query_callback', $query);
+  
+  // add debug information 
+  if (PRINT_QUERY){
+		if(!isset($_SESSION['debug_queries']))
+			$_SESSION['debug_queries'] = array();
+		$_SESSION['debug_queries'][]= $query;
+  }
+  return simple_db_query($query);
+}
+
 
 /**
  * Helper function for db_query().
@@ -104,9 +124,6 @@ function db_fetch_array($result) {
 
 function simple_db_query($query){
 	global $active_db;
-	if (PRINT_QUERY)
-		echo $query;
-	//die();
 	$rv = mysql_query($query, $active_db);  
 	return $rv;
 }
