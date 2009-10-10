@@ -42,17 +42,37 @@ function g_get_user_role(){
 }
 
 function g_get_section(){
-	session_start();
-	if (isset($_SESSION['keyword'])){
-		return $_SESSION['keyword'];
-	}	
-	else
-		return DEFAULT_KEY_WORD;
+		if (isset($_POST['op']))
+			return $_POST['op'];
+		else	 	
+			return DEFAULT_KEY_WORD;
+}
+
+function g_get_section_content(){
+	$section = g_get_section();
+	switch ($section){
+		case DEFAULT_KEY_WORD:
+				return g_formatter_list_add_recently();
+		case SHOW_SEARCH_RESULT:
+				return g_formatter_list_search_result();
+		default: 
+		//default action;
+				return g_formatter_list_add_recently();				
+	}
 }
 
 
 function g_get_entry_title(){
-	return "Recently Added";
+$section = g_get_section();
+	switch ($section){
+		case DEFAULT_KEY_WORD:
+				return "Recently Added";
+		case SHOW_SEARCH_RESULT:
+				return "Search Result";
+		default: 
+		//default action;
+				return "Recently Added";		
+	}
 }
 
 function g_add_tag_by_node($tags, $nid){
@@ -115,6 +135,23 @@ function g_formatter_list_add_recently(){
 	return $formatter->finalize();
 }
 
+
+function g_formatter_list_search_result(){
+	
+	$result = s_search();
+	
+	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$formatter = new Formatter($html_template);
+	
+	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
 /**
  * 
  * list all category
@@ -207,5 +244,9 @@ function g_formatter_sidebar_list_newly_added_node(){
 	}
 	return $formatter->finalize();
 }
+
+
+
+
 
 ?>
