@@ -24,19 +24,20 @@
 		</div>
 		<div id="menu">
 			<div class="search_box">
-				<form action="">
+				<form action="home.php?op=showsearchresults">
 					<table>
 						<tr><td>
-					<div>
-						<input type="text" name="search_text"/>
-					</div>
-						</td>
-						<td>
-					<div class="search_btn">
-						<input type="submit" name="search_text" value="Search"/>
-					</div>
-						</td>
-						</tr></table>
+							<div>
+								<input type="text" name="search_text"/>
+							</div>
+							</td>
+							<td>
+							<div class="search_btn">
+								<input type="submit" name="search_text" value="Search"/>
+							</div>
+							</td>
+						</tr>
+					</table>
 				</form>	
 			</div>
 			<div>
