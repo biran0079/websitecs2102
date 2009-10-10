@@ -31,7 +31,6 @@ define('DEFAULT_KEY_WORD','list_add_recently');
 // search
 define('SHOW_SEARCH_RESULT','show_search_result');
 
-
-
+define('SHOW_NODES_BY_CATEGORY','show_category');
 
 ?>
