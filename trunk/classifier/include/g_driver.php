@@ -54,6 +54,7 @@ function g_get_section_content(){
 		case DEFAULT_KEY_WORD:
 				return g_formatter_list_add_recently();
 		case SHOW_SEARCH_RESULT:
+				
 				return g_formatter_list_search_result();
 		default: 
 		//default action;
@@ -138,12 +139,14 @@ function g_formatter_list_add_recently(){
 
 function g_formatter_list_search_result(){
 	
-	$result = s_search();
+	s_search($result);
 	
-	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	//$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 10";
+
+	//$result = db_query($query);
+	
+	$html_template = '<a href="#t_1#">#t_2#</a>';
 	$formatter = new Formatter($html_template);
-	
-	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
 	
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_url']);
