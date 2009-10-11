@@ -5,7 +5,6 @@ function node_search(){
     $query_search = "SELECT * FROM post_node WHERE uid=$uid ORDER BY date_update";
     $result = db_query($query_search);
    
- 
     $html = '';
     while($row=db_fetch_array($result)){
     	$nid = $row['nid'];
