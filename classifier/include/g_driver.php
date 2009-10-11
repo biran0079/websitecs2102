@@ -95,6 +95,14 @@ function g_get_category_name_by_cid($cid){
 	return $row['c_name'];
 }
 
+function g_get_cid_by_nid($nid){
+	
+	$query = " SELECT * FROM node_category WHERE nid = %d";
+	$result = db_query($query,$nid);
+	$row = db_fetch_array($result);
+	return $row['cid'];
+}
+
 function g_get_tag_name_by_tid($tid){
 	
 	$query = " SELECT * FROM tag WHERE tid = %d LIMIT 1";
