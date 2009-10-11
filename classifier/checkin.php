@@ -15,6 +15,7 @@ if ($op =='login'){
 		//redirect to home page
 		$uid = $_SESSION['uid'];
 		//print_r($_SESSION);  
+		//die();
 		header( "Location: ".SITE_ROOT."/home.php");
 	}
 	else{
