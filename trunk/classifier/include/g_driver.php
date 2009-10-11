@@ -338,18 +338,32 @@ function g_formatter_sidebar_list_newly_added_node(){
  * list most popular page
  * @location: home page
  */
-function g_formatter_ui_list_all_category(){
+function g_formatter_ui_list_all_category($nid=0){
 	$query = " SELECT * FROM category";
 
 	$result = db_query($query);
 	
-	$html_template = '<option value="#t_1#">#t_2#</option>';
+	$html_template = '<option value="#t_1#" #t_2#>#t_3#</option>';
 	$formatter = new Formatter($html_template);
+	
+	
+	$query = " SELECT cid FROM node_category AS nc,post_node AS pn WHERE pn.nid= $nid AND nc.nid= $nid";
+	$select_result = db_query($query);
+	if ($row  = db_fetch_array($select_result))
+		$cid = $row['cid'];
+	else
+		$cid = 1;	
 	
 	
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['cid']);
-		$formatter->addContent('t_2',$row['c_name']);
+		
+		if ($cid == $row['cid'])
+			$formatter->addContent('t_2','selected="selected"');
+		else
+			$formatter->addContent('t_2',' ');
+			
+		$formatter->addContent('t_3',$row['c_name']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
