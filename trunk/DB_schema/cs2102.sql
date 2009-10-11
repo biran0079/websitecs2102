@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `node_tag` (
 --
 
 CREATE TABLE IF NOT EXISTS `post_node` (
-  `nid` int(11) NOT NULL,
+  `nid` int(11) NOT NULL AUTO_INCREMENT,
   `uid` int(11) NOT NULL,
   `n_url` varchar(200) NOT NULL,
   `n_name` varchar(100) NOT NULL,
