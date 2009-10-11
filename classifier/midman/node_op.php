@@ -12,7 +12,7 @@
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
         $result= db_query($query_add,$uid,$url,$title,0);
         $query_add_nc="INSERT INTO node_category(nid,cid)VALUES(%d,%d)";
-        $result= db_query($querry_add_nc,$nid,$cid);
+        $result_nc= db_query_debug($query_add_nc,$nid,$cid);
         $t_names=$_POST["t_names"];
 	    g_add_tag_by_node($t_names, $nid);
 
@@ -31,7 +31,7 @@
 	    $query_delete = "DELETE FROM post_node WHERE nid=$nid";
 	    $result= db_query($query_delete);
 	    $query_delete_nc = "DELETE FROM node_category WHERE nid=$nid";
-	    $result= db_query($query_delete_nc);
+	    $result_nc= db_query($query_delete_nc);
 	    
 	    if($result){
 	        header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
@@ -47,7 +47,7 @@
 		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update='NOW()' WHERE nid=%d";		
         $result = db_query($query_edit,$title,$url,$nid);
 	    $query_edit_nc = "UPDATE node_category SET cid=%d WHERE nid=%d";		
-        $result = db_query($query_edit_nc,$cid,$nid);
+        $result_nc = db_query($query_edit_nc,$cid,$nid);
         
 	    if($result){
 	    	header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
@@ -56,6 +56,5 @@
         else print "Edit action fails";			
         
 	}
-	    
-
+   
 ?>
