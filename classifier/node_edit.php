@@ -20,7 +20,7 @@
 		         <input type="text" name="url" value = "'.$row['n_url'].'" >
 		         <br/>
 		         <div>Select a Category:</div>
-                 <select name="category" value = $cid >'.
+                 <select name="category" value = '.$cid.' >'.
                  g_formatter_ui_list_all_category().
                  '</select>
                  </div>
