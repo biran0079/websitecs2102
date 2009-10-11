@@ -6,7 +6,7 @@
    $query_get = "SELECT n_name, n_url from post_node WHERE nid = $nid";
    $result = db_query($query_get);
    $row = db_fetch_array($result);
-   $cid = g_get_cid_by_nid($nid);
+   
    
    
 
@@ -20,7 +20,7 @@
 		         <input type="text" name="url" value = "'.$row['n_url'].'" >
 		         <br/>
 		         <div>Select a Category:</div>
-                 <select name="category" value = '.$cid.' >'.
+                 <select name="category">'.
                  g_formatter_ui_list_all_category($nid).
                  '</select>
                  </div>
