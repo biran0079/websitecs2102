@@ -15,5 +15,6 @@ $login = check_logged_in();
 </table>
 </form>
 <?php
+echo g_formatter_list_username_edit_delete();
 require_once('template/footer.php');
 ?>

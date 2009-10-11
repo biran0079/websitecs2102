@@ -20,10 +20,10 @@ $arr=db_fetch_array($result);
 $username=$arr["username"];
 $email=$arr["email"];
 if($role==2 && $login_uid!=$uid){
-	$role=
+	$html="you are not allowed to edit this user's profile";
 	
-}
-$html= '
+}else{
+	$html= '
 		<div>Login Name*:</div>
 		<input type="text" name="name" value='.$username.' disabled="disabled"/>
 		<br/>
@@ -41,9 +41,9 @@ $html= '
 			<input type="submit" value="Submit" />
 		</div>
 		';
+}
 echo $html;
-?>
-	</form>
+?></form>
 </div>
 
 </div>
