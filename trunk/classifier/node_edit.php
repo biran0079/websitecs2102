@@ -6,6 +6,9 @@
    $query_get = "SELECT n_name, n_url from post_node WHERE nid = $nid";
    $result = db_query($query_get);
    $row = db_fetch_array($result);
+   $query_get_c = "SELECT cid from node_category WHERE nid = $nid";
+   $result_c = db_query($query_get_c);
+   $row_c = db_fetch_array($result_c);
    
 
    echo'<div class="edit_nodes">
@@ -18,7 +21,7 @@
 		         <input type="text" name="url" value = "'.$row['n_url'].'" >
 		         <br/>
 		         <div>Select a Category:</div>
-                 <select name="category">'.
+                 <select name="category" value = "'.$row_c[cid].'"  >'.
                  g_formatter_ui_list_all_category().
                  '</select>
                  </div>
