@@ -335,7 +335,7 @@ function g_formatter_sidebar_list_newly_added_node(){
 
 	$result = db_query($query);
 
-	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$html_template = '<li><a href="#t_1#" target="_blank">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 
 	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
