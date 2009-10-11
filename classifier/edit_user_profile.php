@@ -11,13 +11,19 @@ require_once('template/header.php');
 <form name="user_input" action="update_user_profile.php" method="post">
 
 <?php
-$uid=g_get_login_uid();
+$login_uid=g_get_login_uid();
+$role=g_get_user_role();
+$uid=$_GET['uid'];
 $query="SELECT * from user where uid=$uid";
 $result=db_query($query);
 $arr=db_fetch_array($result);
 $username=$arr["username"];
 $email=$arr["email"];
-echo '
+if($role==2 && $login_uid!=$uid){
+	$role=
+	
+}
+$html= '
 		<div>Login Name*:</div>
 		<input type="text" name="name" value='.$username.' disabled="disabled"/>
 		<br/>
@@ -35,6 +41,7 @@ echo '
 			<input type="submit" value="Submit" />
 		</div>
 		';
+echo $html;
 ?>
 	</form>
 </div>
