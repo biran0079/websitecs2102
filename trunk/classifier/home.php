@@ -62,7 +62,6 @@ else
 				    <input type="hidden" value="logout" name="op">
 							<td><a href="edit_user_profile.php?uid='.g_get_login_uid().'">edit profile</a></td>
 							&nbsp
-							<td><a href="deactive_profile_confirmation.php">deactive profile</a></td>	
 		</form>';	
 	$role=g_get_user_role();
 	// roles:

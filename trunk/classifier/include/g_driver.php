@@ -51,8 +51,23 @@ function g_get_section(){
 		return DEFAULT_KEY_WORD;
 }
 
-function g_formatter_username_edit_delete(){
-	//TODO
+function g_formatter_list_username_edit_delete(){
+	
+	$query="SELECT uid,username FROM `user` u;";
+	$result=db_query($query);
+	
+	$html_template = '"#t_1#"&nbsp<a href="#t_2#">edit</a>&nbsp<a href="#t_3#">delete</a><br \>';
+	$formatter = new Formatter($html_template);
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['username']);
+		$edit_url=SITE_ROOT.'/edit_user_profile.php?uid='.$row['uid'];
+		$formatter->addContent('t_2',$edit_url);
+		$delete_url=SITE_ROOT.'/deactive_profile_confirmation.php?uid='.$row['uid'];
+		$formatter->addContent('t_3',$delete_url);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
 }
 
 function g_formatter_list_nodes_by_tag_id(){
