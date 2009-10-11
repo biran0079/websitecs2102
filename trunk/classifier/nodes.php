@@ -21,7 +21,7 @@ else
 		         <br/>
 		         <div>Select a Category:</div>
                  <select name="category">'.
-	g_formatter_ui_list_all_category().
+	             g_formatter_ui_list_all_category().
                  '</select>
                  </div>
 		         <div>Tag:</div>
