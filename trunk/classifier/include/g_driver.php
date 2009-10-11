@@ -92,7 +92,7 @@ $section = g_get_section();
 
 function g_add_tag_by_node($tags, $nid){
 	
-    $add_by = g_get_user_id();
+    $add_by = g_get_login_uid();
 	$num = count($tags);
 	$query_tag = "INSERT IGNORE INTO tag (t_name, add_by) VALUES ('%s', '%d')";
 	$query_node_tag = "INSERT IGNORE INTO node_tag (nid, tid) VALUES ('%d', '%d')";
