@@ -1,9 +1,37 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.8.1deb1ubuntu0.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Oct 11, 2009 at 09:37 AM
+-- Server version: 5.0.67
+-- PHP Version: 5.2.6-2ubuntu4.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `cs2102`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
 CREATE TABLE IF NOT EXISTS `category` (
   `cid` int(11) NOT NULL auto_increment,
   `c_name` varchar(40) NOT NULL,
   `add_by` int(11) NOT NULL,
-  PRIMARY KEY  (`cid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY  (`cid`),
+  UNIQUE KEY `c_name` (`c_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -17,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `node_category` (
   `cid` int(11) NOT NULL,
   PRIMARY KEY  (`nc_id`),
   KEY `nid` (`nid`,`cid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -30,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `node_tag` (
   `nid` int(11) NOT NULL,
   `tid` int(11) NOT NULL,
   PRIMARY KEY  (`nt_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -39,15 +67,16 @@ CREATE TABLE IF NOT EXISTS `node_tag` (
 --
 
 CREATE TABLE IF NOT EXISTS `post_node` (
-  `nid` int(11) NOT NULL AUTO_INCREMENT,
+  `nid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL,
   `n_url` varchar(200) NOT NULL,
   `n_name` varchar(100) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_update` datetime NOT NULL,
+  `visit_times` int(11) NOT NULL default '0',
   PRIMARY KEY  (`nid`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -58,10 +87,9 @@ CREATE TABLE IF NOT EXISTS `post_node` (
 CREATE TABLE IF NOT EXISTS `tag` (
   `tid` int(11) NOT NULL auto_increment,
   `t_name` varchar(30) NOT NULL,
-  `add_by` int(11) NOT NULL,
   PRIMARY KEY  (`tid`),
   UNIQUE KEY `t_name` (`t_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -79,4 +107,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_update_date` datetime NOT NULL,
   PRIMARY KEY  (`uid`),
   UNIQUE KEY `username` (`username`,`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
