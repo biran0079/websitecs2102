@@ -11,14 +11,13 @@
 	if ($op == 'Add'){
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
         $result= db_query($query_add,$uid,$url,$title,0);
-        $query_add_nc="INSERT INTO node_category(nid,cid)VALUES(%d,%d)";
-        $result_nc= db_query_debug($query_add_nc,$nid,$cid);
-        $t_names=$_POST["t_names"];
-	    g_add_tag_by_node($t_names, $nid);
-
-
+        
         if($result) {
         	$last_nid =db_last_insert_id(post_node,nid);
+        	$t_names=$_POST["t_names"];
+	        g_add_tag_by_node($t_names, $last_nid);
+        	$query_add_nc="INSERT INTO node_category(nid,cid)VALUES(%d,%d)";
+            $result_nc= db_query_debug($query_add_nc,$last_nid,$cid);
         	header( "Location: ".SITE_ROOT."/nodes.php?nid=$last_nid");
         	print "A new entry has been successfully added.";
         }
