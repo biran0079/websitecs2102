@@ -21,7 +21,7 @@
 		         <br/>
 		         <div>Select a Category:</div>
                  <select name="category" value = '.$cid.' >'.
-                 g_formatter_ui_list_all_category().
+                 g_formatter_ui_list_all_category($nid).
                  '</select>
                  </div>
 		         <div>New Tag:</div>
