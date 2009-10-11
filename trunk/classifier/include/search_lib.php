@@ -13,17 +13,19 @@ function s_search(&$result){
 	$sql_search_category = " SELECT DISTINCT(pn.nid),pn.* FROM post_node AS pn ";
 	$sql_search_category.= " INNER JOIN node_category AS nc ON (nc.nid = pn.nid)";
 	$sql_search_category.= " INNER JOIN category AS c ON (c.cid = nc.cid)";
-	$sql_search_category.= " WHERE ";
+	$sql_search_category.= " WHERE 1=0 ";
 	// CUSTOMIZED WHERE CONDITION
-	
+	$keys = explode(" ", $key_words);
 	// dummy version
-	$sql_search_category.= " LOWER(c_name) LIKE LOWER('%$key_words%')";
+	foreach ($keys as $key)
+		$sql_search_category.= " OR LOWER(c_name) LIKE LOWER('%$key%')";
 	
-	
+		
+		
 	$sql_search_tag.= " INNER JOIN node_tag AS nt ON (nt.nid = pn.nid)";
 	$sql_search_tag.= " INNER JOIN tag AS t ON (t.tid = nt.tid)";
 	
-	$result = db_query($sql_search_category);
+	$result = db_query_debug($sql_search_category);
 }
 
 ?>
