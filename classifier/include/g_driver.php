@@ -391,12 +391,9 @@ function g_formatter_list_user_nodes(){
 	$result = db_query($query);
 
 	$html_template = '<li><div>
-	                      	<div>#t_1#</div>
-	                      	<div>#t_2#</div>
-	                      	<div>
+	                      	    <a href="#t_2#" target="_blank">#t_1#</a>
 	                      		<a href="node_edit.php?op=edit&nid=#t_3#"> Edit</a>
 	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#"> Delete </a>
-	                      	</div>
 	                      </div>	
 	                   </li>';
 	$formatter = new Formatter($html_template);
