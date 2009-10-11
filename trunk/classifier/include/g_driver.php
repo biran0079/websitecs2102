@@ -56,7 +56,7 @@ function g_formatter_list_username_edit_delete(){
 	$query="SELECT uid,username FROM `user` u;";
 	$result=db_query($query);
 	
-	$html_template = '"#t_1#"&nbsp<a href="#t_2#">edit</a>&nbsp<a href="#t_3#">delete</a><br \>';
+	$html_template = '<li>#t_1#&nbsp<a href="#t_2#">edit</a>&nbsp<a href="#t_3#">delete</a></li>';
 	$formatter = new Formatter($html_template);
 	
 	while ($row = db_fetch_array($result)){
