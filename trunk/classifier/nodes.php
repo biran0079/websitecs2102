@@ -17,7 +17,7 @@
 		         <input type="text" name="title" />
 		         <br/>
 		         <div>URL:</div>
-		         <input type="text" name="url" />
+		         <input type="text" name="url" value="http://" />
 		         <br/>
 		         <div>Select a Category:</div>
                  <select name="category">'.
