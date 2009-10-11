@@ -128,9 +128,10 @@ function g_get_entry_title(){
 	}
 }
 
-function g_add_tag_by_node($tags, $nid){
+function g_add_tag_by_node($tags_string, $nid){
 	
     $add_by = g_get_login_uid();
+    $tags = explode(",", $tags_string);
 	$num = count($tags);
 	$query_tag = "INSERT IGNORE INTO tag (t_name, add_by) VALUES ('%s', '%d')";
 	$query_node_tag = "INSERT IGNORE INTO node_tag (nid, tid) VALUES ('%d', '%d')";
@@ -349,9 +350,5 @@ function g_formatter_ui_list_all_category(){
 	}
 	return $formatter->finalize();
 }
-
-
-
-
 
 ?>
