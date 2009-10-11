@@ -19,6 +19,13 @@
 		         <div>URL:</div>
 		         <input type="text" name="url" />
 		         <br/>
+		         <div>
+                 <select name="mydropdown">
+                 <option value="1">Fresh Milk</option>
+                 <option value="2">Old Cheese</option>
+                 <option value="3">Hot Bread</option>
+                 </select>
+                 </div>
 		         <div>Tag:</div>
 		         <input type="text" name="t_names" />
 		         <br/>
