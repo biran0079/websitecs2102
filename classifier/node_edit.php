@@ -17,6 +17,11 @@
 		         <div>New URL:</div>
 		         <input type="text" name="url" value = "'.$row['n_url'].'" >
 		         <br/>
+		         <div>Select a Category:</div>
+                 <select name="category">'.
+                 g_formatter_ui_list_all_category().
+                 '</select>
+                 </div>
 		         <div>New Tag:</div>
 		         <input type="text" name="t_names" />
 		         <br/>
