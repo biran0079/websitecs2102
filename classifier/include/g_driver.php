@@ -303,7 +303,6 @@ function g_formatter_ui_list_all_category(){
 	$html_template = '<option value="#t_1#">#t_2#</option>';
 	$formatter = new Formatter($html_template);
 	
-	$default_url = SITE_ROOT.'/home.php?op=show_category&cid=';
 	
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['cid']);
