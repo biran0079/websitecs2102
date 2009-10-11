@@ -20,11 +20,9 @@
 		         <input type="text" name="url" />
 		         <br/>
 		         <div>Select a Category:</div>
-                 <select name="category">
-                 <option value="1">Fresh Milk</option>
-                 <option value="2">Old Cheese</option>
-                 <option value="3">Hot Bread</option>
-                 </select>
+                 <select name="category">'.
+                 g_formatter_ui_list_all_category().
+                 '</select>
                  </div>
 		         <div>Tag:</div>
 		         <input type="text" name="t_names" />
