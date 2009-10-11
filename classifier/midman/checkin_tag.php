@@ -19,6 +19,7 @@ if ($op == 'add'){
 	}
 	if ( $num>=1)
 	db_query($query);
+	//echo $query;
 	header( "Location: ".SITE_ROOT."/add_tag.php");
 }
 if ($op =='edit'){

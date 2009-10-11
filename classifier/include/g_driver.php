@@ -51,6 +51,24 @@ function g_get_section(){
 		return DEFAULT_KEY_WORD;
 }
 
+function g_formatter_list_nodes_by_tag_id(){
+		
+	$tid = $_GET['tid'];
+	$query = "SELECT n_url,n_name FROM post_node AS pn,node_tag AS nt WHERE pn.nid=nt.nid AND nt.tid=%s";
+	
+	$result = db_query($query,$tid);
+	
+	$html_template = '<a href="#t_1#">#t_2#</a>';
+	$formatter = new Formatter($html_template);
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
 function g_get_section_content(){
 	$section = g_get_section();
 	switch ($section){
@@ -60,6 +78,8 @@ function g_get_section_content(){
 				return g_formatter_list_search_result();
 		case SHOW_NODES_BY_CATEGORY:
 				return g_formatter_list_nodes_by_category_id();	
+		case SHOW_TAG:
+				return g_formatter_list_nodes_by_tag_id();
 		default: 
 		//default action;
 				return g_formatter_list_add_recently();				
@@ -75,8 +95,16 @@ function g_get_category_name_by_cid($cid){
 	return $row['c_name'];
 }
 
+function g_get_tag_name_by_tid($tid){
+	
+	$query = " SELECT * FROM tag WHERE tid = %d LIMIT 1";
+	$result = db_query($query,$tid);
+	$row = db_fetch_array($result);
+	return $row['t_name'];
+}
+
 function g_get_entry_title(){
-$section = g_get_section();
+	$section = g_get_section();
 	switch ($section){
 		case DEFAULT_KEY_WORD:
 				return "Recently Added";
@@ -84,6 +112,8 @@ $section = g_get_section();
 				return "Search Result";
 		case SHOW_NODES_BY_CATEGORY:
 				return "Category: ".g_get_category_name_by_cid($_GET['cid']);		
+		case SHOW_TAG:
+				return "Tag: ".g_get_tag_name_by_tid($_GET['tid']);
 		default: 
 		//default action;
 				return "Recently Added";		
