@@ -290,6 +290,29 @@ function g_formatter_sidebar_list_newly_added_node(){
 	return $formatter->finalize();
 }
 
+/**
+ * 
+ * list most popular page
+ * @location: home page
+ */
+function g_formatter_ui_list_all_category(){
+	$query = " SELECT * FROM category";
+
+	$result = db_query($query);
+	
+	$html_template = '<option value="#t_1#">#t_2#</option>';
+	$formatter = new Formatter($html_template);
+	
+	$default_url = SITE_ROOT.'/home.php?op=show_category&cid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['cid']);
+		$formatter->addContent('t_2',$row['c_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
 
 
 
