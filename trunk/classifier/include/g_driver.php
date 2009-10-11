@@ -51,6 +51,10 @@ function g_get_section(){
 		return DEFAULT_KEY_WORD;
 }
 
+function g_formatter_username_edit_delete(){
+	//TODO
+}
+
 function g_formatter_list_nodes_by_tag_id(){
 		
 	$tid = $_GET['tid'];
