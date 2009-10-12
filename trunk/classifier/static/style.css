@@ -42,10 +42,11 @@ strong {
 
 a {
 	color: #B40000;
+	text-decoration: none;
 }
 
 a:hover {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 a img {
