@@ -13,6 +13,9 @@
 <link href="static/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="static/register.css" rel="stylesheet" type="text/css" media="all" />
 
+<script type="text/javascript" src="http://shots.snap.com/ss/3cf7953b9c494608e3df33f350247fb8/snap_shots.js">
+</script>
+
 </head>
 <body>
 <!-- start wrapper -->

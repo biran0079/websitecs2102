@@ -41,6 +41,12 @@ function g_get_user_role(){
 	return $_SESSION['user']['role'];
 }
 
+
+function g_get_person_post_last_update_entry(){
+	$query = " SELECT * FROM post_node HAVING date_add = MAX(date_add) GROUP BY date_add";
+	
+}
+
 function g_get_section(){
 	if (isset($_POST['op']))
 	return $_POST['op'];

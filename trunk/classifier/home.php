@@ -14,6 +14,7 @@ $page_entry_title = g_get_entry_title();
 			<h2><?php echo $page_entry_title;?></h2>
 				<p>Last updated by <a href="#">admin</a> 4 hours 8 minutes ago</p>
 		</div>
+
 <div class="entry">
 <p><?php 
 echo g_get_section_content();
