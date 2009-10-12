@@ -43,8 +43,10 @@ function g_get_user_role(){
 
 
 function g_get_person_post_last_update_entry(){
-	$query = " SELECT * FROM post_node HAVING date_add = MAX(date_add) GROUP BY date_add";
-	
+	$query = " SELECT UNIX_TIMESTAMP(date_add) AS t,user.username FROM post_node,user WHERE user.uid =post_node.uid  ORDER BY t DESC limit 1";
+	$result = db_query($query);
+	if ($row = db_fetch_array($result))
+		return $row['username'];
 }
 
 function g_get_section(){
