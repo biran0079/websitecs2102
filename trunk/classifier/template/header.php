@@ -12,7 +12,8 @@
 
 <link href="static/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="static/register.css" rel="stylesheet" type="text/css" media="all" />
-
+<script type="text/javascript" src="static/javascript/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="static/javascript/customize.js"></script>
 <script type="text/javascript" src="http://shots.snap.com/ss/3cf7953b9c494608e3df33f350247fb8/snap_shots.js">
 </script>
 
@@ -47,7 +48,7 @@
 			<div>
 			<ul>
 				<li class="active"><a href="home.php">Home</a></li>
-				<li><a href="#">Profile</a></li>
+				<li><a href="#" onclick="update_visit_times();">Profile</a></li>
 				<li><a href="#">Contact</a></li>
 			</ul>
 			</div>	
