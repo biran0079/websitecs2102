@@ -205,12 +205,13 @@ function g_formatter_list_add_recently(){
 
 	$result = db_query($query);
 
-	$html_template = '<a href="#t_1#">#t_2#</a>';
+	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a>';
 	$formatter = new Formatter($html_template);
 
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_url']);
 		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->addContent('t_3',$row['nid']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
@@ -225,12 +226,13 @@ function g_formatter_list_search_result(){
 
 	//$result = db_query($query);
 
-	$html_template = '<a href="#t_1#">#t_2#</a>';
+	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a>';
 	$formatter = new Formatter($html_template);
 
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_url']);
 		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->addContent('t_3',$row['nid']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
@@ -253,12 +255,13 @@ function g_formatter_list_nodes_by_category_id(){
 
 	$result = db_query($query);
 
-	$html_template = '<a href="#t_1#">#t_2#</a>';
+	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a>';
 	$formatter = new Formatter($html_template);
 
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_url']);
 		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->addContent('t_3',$row['nid']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
