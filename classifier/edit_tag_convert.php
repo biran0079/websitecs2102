@@ -3,7 +3,6 @@ require_once("template/header.php");
 require_once("include/init.php");
 
 $t_name_pre = $POST["t_name"];
-
 	echo '
 	<div class = "form">
 	<form name = "admin_input" action = "midman/checkin_tag.php" method = "post">

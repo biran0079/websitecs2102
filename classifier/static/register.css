@@ -25,3 +25,14 @@
 .register .submit {
 	padding-top:30px;
 }
+
+
+.authwarning {
+	padding-left: 50px; 
+	padding-top: 30px; 
+	width:700px;
+}
+
+.authwarning h2{
+	color: #FF0000;	
+}

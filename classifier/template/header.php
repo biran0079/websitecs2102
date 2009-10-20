@@ -47,9 +47,9 @@
 			</div>
 			<div>
 			<ul>
-				<li class="active"><a href="home.php">Home</a></li>
-				<li><a href="#" onclick="update_visit_times();">Profile</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="home.php">Home</a></li>
+				<li><a href="edit_user_profile.php">Profile</a></li>
+				<li><a href="contact_us.php">Contact</a></li>
 			</ul>
 			</div>	
 		</div>
