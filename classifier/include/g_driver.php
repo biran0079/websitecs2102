@@ -220,19 +220,42 @@ function g_formatter_list_add_recently(){
 
 function g_formatter_list_search_result(){
 
-	s_search($result);
-
-	//$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 10";
-
-	//$result = db_query($query);
-
+	$counter = 0;
 	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a>';
 	$formatter = new Formatter($html_template);
-
+	
+	/*
+	s_search_by_category($result);
 	while ($row = db_fetch_array($result)){
+		$counter++;
+		if ($counter > SEARCH_UPPER_LIMIT)
+			break;
 		$formatter->addContent('t_1',$row['n_url']);
 		$formatter->addContent('t_2',$row['n_name']);
 		$formatter->addContent('t_3',$row['nid']);
+		$formatter->flush();
+	}
+	
+	s_search_by_tag($result);
+	while ($row = db_fetch_array($result)){
+		$counter++;
+		if ($counter > SEARCH_UPPER_LIMIT)
+			break;
+		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->addContent('t_3',$row['nid']);
+		$formatter->flush();
+	}
+	*/
+	
+	$nodes = s_search_master();
+	foreach ($nodes as $node){
+		$counter++;
+		if ($counter > SEARCH_UPPER_LIMIT)
+			break;
+		$formatter->addContent('t_1',$node['n_url']);
+		$formatter->addContent('t_2',$node['n_name']);
+		$formatter->addContent('t_3',$node['nid']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
