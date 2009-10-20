@@ -57,12 +57,10 @@ else
 {
 	// section shown to login user
 	$name = g_get_username();
-	echo "<div><h2> Hello, $name!</h2></div>";
+	echo '<div id="welcome"><h2> Hello, '.$name.'!</h2></div>';
 	echo '<form action="checkin.php" method="post">
 					<input type="submit" value="Log out" style="width:70px">
 				    <input type="hidden" value="logout" name="op">
-							<td><a href="edit_user_profile.php?uid='.g_get_login_uid().'">edit profile</a></td>
-							&nbsp
 		</form>';	
 	$role=g_get_user_role();
 	// roles:
@@ -72,11 +70,11 @@ else
 
 	if($role=='0' || $role=='1'){			//super user
 		echo'
-						<table>
-								<tr>
-									<td><a href="grant_admin.php">Grant admin privilege</a></td>
-								</tr>
-						</table> ';
+						<div class="admin">
+							<li><a href="grant_admin.php">Grant Admin Privilege</a></li>
+							<li><a href="#">Content Administration</a></li>
+						</div>
+							';
 	}else if($role=='1'){	//admin
 	}else if($role=='3'){	//normal user
 
