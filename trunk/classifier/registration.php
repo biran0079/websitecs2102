@@ -3,6 +3,7 @@
 require_once("./include/init.php");
 require_once('template/header.php');
 ?>
+
 <div class="register">
 	<div><h2>Registration</h2></div>
 	<div class="form">
