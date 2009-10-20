@@ -294,6 +294,11 @@ hr {
 	width: 10px;
 }
 
+
+#sidebar .section1 .admin{
+	padding-top:10px
+}
+
 #sidebar .section2, #sidebar .section3 {
 	float: left;
 	width: 148px;
