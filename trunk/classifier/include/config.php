@@ -24,7 +24,8 @@ define('SITE_ROOT', 'http://localhost/CS2102_Website/classifier');
 // define debug sql
 define('PRINT_QUERY',FALSE);
 
-
+//show search result limit
+define('SEARCH_UPPER_LIMIT',30);
 //-----------------------------------Key Word-----------------------
 // define default key word
 define('DEFAULT_KEY_WORD','list_add_recently');
