@@ -118,17 +118,17 @@ $page_entry_title = g_get_entry_title();
 													<a href="edit_category.php">edit</a>
 												</div>'; 
 								?>
-								<ul>		
+								
 									<?php 
-									g_formatter_sidebar_list_category();
+										echo g_formatter_sidebar_list_category();
 									?>
-								</ul>	
+								
 						</li>
 				</ul>
 		</div>
 
 
-		<div class="section3">
+		<div class="section4">
 				<ul>
 						<li>
 								<h2>Tag</h2>

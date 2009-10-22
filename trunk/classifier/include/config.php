@@ -36,4 +36,10 @@ define('SHOW_NODES_BY_CATEGORY','show_category');
 
 define('SHOW_TAG','show_tag');
 
+//-----------------------------------constant ------------------------
+define('SMALL_TEXT_SIZE',20);
+define('MEDIUM_TEXT_SIZE',27);
+define('LARGE_TEXT_SIZE',35);
+
+
 ?>

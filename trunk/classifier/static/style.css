@@ -230,7 +230,8 @@ hr {
 
 .post .entry a{
  	font-size: 20px;
-	padding-left:4px;	
+	padding-left:4px;
+	padding-right:4px;	
 }
 
 .post .meta {
@@ -299,12 +300,12 @@ hr {
 	padding-top:10px
 }
 
-#sidebar .section2, #sidebar .section3 {
+#sidebar .section2, #sidebar .section3 , #sidebar .section4 {
 	float: left;
 	width: 148px;
 }
 
-#sidebar .section2 h2, #sidebar .section3 h2 {
+#sidebar .section2 h2, #sidebar .section3 h2, #sidebar .section4 h2 {
 	padding-top: 42px;
 	background: url(images/homepage07.jpg) no-repeat 0 100%; 
 }
@@ -319,6 +320,19 @@ hr {
 #sidebar .section3 a {
 	padding-bottom: 25px;
 	font-size: 20px;
+}
+
+
+#sidebar .section4 {
+	margin-left: 30px;
+}
+
+#sidebar .section4 a {
+	padding-bottom: 3px;
+	font-size: 15px;
+	float:left;
+	padding-left:3px;
+	
 }
 /** FOOTER */
 
