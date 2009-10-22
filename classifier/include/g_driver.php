@@ -49,6 +49,14 @@ function g_get_person_post_last_update_entry(){
 		return $row['username'];
 }
 
+function g_get_time_post_last_update(){
+	$query = " SELECT UNIX_TIMESTAMP(date_add) AS t,DATE_FORMAT(date_add,'%e,%M,%Y') AS tf FROM post_node,user WHERE user.uid =post_node.uid  ORDER BY t DESC limit 1";
+	$result = db_query_debug($query);
+	if ($row = db_fetch_array($result))
+		return $row['tf'];
+	
+}
+
 function g_get_section(){
 	if (isset($_POST['op']))
 	return $_POST['op'];

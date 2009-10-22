@@ -12,7 +12,7 @@ $page_entry_title = g_get_entry_title();
 		<div class="post">
 				<div class="title">
 					<h2><?php echo $page_entry_title;?></h2>
-							<p>Last updated by <a href="#"><?php echo g_get_person_post_last_update_entry();?></a> 4 hours 8 minutes ago</p>
+							<p>Last updated by <a href="#"><?php echo g_get_person_post_last_update_entry();?></a> <?php echo g_get_time_post_last_update();?></p>
 				</div>
 
 				<div class="entry">
