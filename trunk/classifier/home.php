@@ -83,67 +83,69 @@ $page_entry_title = g_get_entry_title();
 
 	}
 }
-?></div>
-<div class="section2">
-<ul>
-	<li>
-	<h2>Most Popular</h2>
-	<ul>
-	<?php
-	echo g_formatter_sidebar_list_most_popular_node();
-	?>
-	</ul>
-	</li>
-	<li>
-	<h2>Newly Added</h2>
-	<ul>
-	<?php
-	echo g_formatter_sidebar_list_newly_added_node();
-	?>
-	</ul>
-	</li>
-</ul>
+?>
+
 </div>
-<div class="section3">
-<ul>
-	<li>
-	<h2>Category</h2>
-	<?php
-	if($login && ($role == '1' || $role == '0'))
-	echo '
-									<div>
-										<a href="add_category.php">add</a>
-										<a href="edit_category.php">edit</a>
-									</div>'; 
-	?>
-	<ul>
-	<?php
-	echo g_formatter_sidebar_list_category();
-	?>
-	</ul>
-	</li>
-</ul>
-</div>
+		<div class="section2">
+				<ul>
+						<li>
+								<h2>Most Popular</h2>
+								<ul>
+								<?php
+									echo g_formatter_sidebar_list_most_popular_node();
+								?>
+								</ul>
+						</li>
+						<li>
+								<h2>Newly Added</h2>
+								<ul>
+								<?php
+									echo g_formatter_sidebar_list_newly_added_node();
+								?>
+								</ul>
+						</li>
+				</ul>
+		</div>
+		<div class="section3">
+				<ul>
+						<li>
+								<h2>Category</h2>
+								<?php
+									if($login && ($role == '1' || $role == '0'))
+										echo '
+												<div>
+													<a href="add_category.php">add</a>
+													<a href="edit_category.php">edit</a>
+												</div>'; 
+								?>
+								<ul>		
+									<?php 
+									g_formatter_sidebar_list_category();
+									?>
+								</ul>	
+						</li>
+				</ul>
+		</div>
 
 
-<div class="section3">
-<ul>
-	<li>
-	<h2>Tag</h2>
-	<?php
-	if($login && (($role = g_get_user_role()) == '1'))
-	echo
-									'<a href="add_tag.php">add</a>
-									 <a href="edit_tag.php">edit</a>';
-	?>
-	<ul>
-	<?php
-	echo g_formatter_sidebar_list_tags();
-	?>
-	</ul>
-	</li>
-</ul>
-</div>
+		<div class="section3">
+				<ul>
+						<li>
+								<h2>Tag</h2>
+								<?php
+									if($login && (($role = g_get_user_role()) == '1'))
+											echo
+												'<a href="add_tag.php">add</a>
+											 <a href="edit_tag.php">edit</a>';
+								?>
+								<ul>
+									<?php
+										echo g_formatter_sidebar_list_tags();
+									?>
+								</ul>
+						</li>
+				</ul>
+		</div>
 </div>
 <!-- sidebar end -->
 <div class="clearfix">&nbsp;</div>
