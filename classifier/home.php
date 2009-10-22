@@ -9,64 +9,67 @@ $page_entry_title = g_get_entry_title();
 <!-- content start -->
 
 <div id="content">
-	<div class="post">
-		<div class="title">
-			<h2><?php echo $page_entry_title;?></h2>
-				<p>Last updated by <a href="#"><?php echo g_get_person_post_last_update_entry();?></a> 4 hours 8 minutes ago</p>
+		<div class="post">
+				<div class="title">
+					<h2><?php echo $page_entry_title;?></h2>
+							<p>Last updated by <a href="#"><?php echo g_get_person_post_last_update_entry();?></a> 4 hours 8 minutes ago</p>
+				</div>
+
+				<div class="entry">
+					<p>
+						<?php 
+							echo g_get_section_content();
+						?>
+					</p>
+				</div>
+
+				<div class="meta">
+					<p><a href="nodes.php" class="more">Add More</a></p>
+				</div>
 		</div>
-
-<div class="entry">
-<p><?php 
-echo g_get_section_content();
-?></p>
 </div>
 
-<div class="meta">
-<p><a href="nodes.php" class="more">Add More</a></p>
-</div>
-</div>
-</div>
 <!-- content end -->
-<!-- sidebar start -->
-<div id="sidebar">
-<div class="section1"><?php 
-if (!$login){
-	if (login_fail()){
-		echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';
-	}
-
-	echo '
-						<h2>Login</h2>
-						<form action="checkin.php" method="post">
-						<input type="hidden" value="login" name="op">
-						<table><tr>
-									<td>Username:</td> 
-									<td><input type="text" name="user_name"></td>
-									<td>Password:</td>
-									<td><input type="password" name="password"></td>
-								</tr>
-								<tr>
-									<td><input type="submit" value="Log in" style="width:50px"></td>
-									<td><a href="registration.php">Register Here</a></td>	
-									<td colspan="2"><a href="#">Forget Password?</a></td>
-								</tr>
-						</table> 
-						</form>';
-}
-else
-{
-	// section shown to login user
-	$name = g_get_username();
-	echo '<div id="welcome"><h2> Hello, '.$name.'!</h2></div>';
-	echo '<form action="checkin.php" method="post">
+	<!-- sidebar start -->
+		<div id="sidebar">
+				<div class="section1"><?php 
+						if (!$login){
+								if (login_fail()){
+										echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';
+								}
+						echo '
+								<h2>Login</h2>
+								<form action="checkin.php" method="post">
+									<input type="hidden" value="login" name="op">
+										<table>
+											<tr>
+												<td>Username:</td> 
+												<td><input type="text" name="user_name"></td>
+												<td>Password:</td>
+												<td><input type="password" name="password"></td>
+											</tr>
+											<tr>
+												<td><input type="submit" value="Log in" style="width:50px"></td>
+												<td><a href="registration.php">Register Here</a></td>	
+												<td colspan="2"><a href="#">Forget Password?</a></td>
+											</tr>
+										</table> 
+								</form>';
+			}	
+		else
+		{
+		// section shown to login user
+		$name = g_get_username();
+		echo '<div id="welcome"><h2> Hello, '.$name.'!</h2></div>';
+		echo '<form action="checkin.php" method="post">
 					<input type="submit" value="Log out" style="width:70px">
 				    <input type="hidden" value="logout" name="op">
-		</form>';	
-	$role=g_get_user_role();
-	// roles:
-	// 0: super user
-	// 1: administrator
-	// 2: normal user
+				</form>';	
+		$role=g_get_user_role();
+		// roles:
+		// 0: super user
+		// 1: administrator
+		// 2: normal user
 
 	if($role=='0' || $role=='1'){			//super user
 		echo'
