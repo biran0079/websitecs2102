@@ -22,7 +22,7 @@ define('DB_QUERY_REGEXP', '/(%d|%s|%%|%f|%b|%n)/');
 define('SITE_ROOT', 'http://localhost/CS2102_Website/classifier');
 
 // define debug sql
-define('PRINT_QUERY',FALSE);
+define('PRINT_QUERY',TRUE);
 
 //show search result limit
 define('SEARCH_UPPER_LIMIT',30);

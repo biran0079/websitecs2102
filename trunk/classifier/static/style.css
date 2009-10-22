@@ -357,3 +357,32 @@ hr {
 #footer a {
 	color: #919191;
 }
+
+
+#panel {
+	margin-left: 50px; 
+	margin-top: 20px;	
+}
+#panel form{
+	width:30%;
+}	
+
+#panel h2{
+	color:#FF0000;
+	padding-bottom:20px;
+}
+
+#panel .item_category label{
+	font-size:20px;	
+	width:100px;
+}
+
+#panel .item_category{
+	width: 100%;
+	height:30px;	
+}
+
+#panel .item_category input{	
+	float:right;
+	margin-top:-24px;
+}
