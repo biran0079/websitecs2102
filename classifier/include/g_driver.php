@@ -51,7 +51,7 @@ function g_get_person_post_last_update_entry(){
 
 function g_get_time_post_last_update(){
 	$query = " SELECT UNIX_TIMESTAMP(date_add) AS t,DATE_FORMAT(date_add,'%e,%M,%Y') AS tf FROM post_node,user WHERE user.uid =post_node.uid  ORDER BY t DESC limit 1";
-	$result = db_query_debug($query);
+	$result = db_query($query);
 	if ($row = db_fetch_array($result))
 		return $row['tf'];
 	
@@ -211,7 +211,7 @@ function g_get_tag_by_node($nid){
 function g_formatter_list_add_recently(){
 	$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 20";
 
-	$result = db_query_debug($query);
+	$result = db_query($query);
 
 	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
 	$formatter = new Formatter($html_template);
@@ -303,7 +303,7 @@ function g_formatter_list_nodes_by_category_id(){
 function g_formatter_sidebar_list_category(){
 	$query = " SELECT * FROM category";
 
-	$result = db_query_debug($query);
+	$result = db_query($query);
 
 	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
@@ -352,7 +352,7 @@ function g_formatter_sidebar_list_most_popular_node(){
 
 	$result = db_query($query);
 
-	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
+	$html_template = '<li><a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 
 	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
@@ -360,6 +360,7 @@ function g_formatter_sidebar_list_most_popular_node(){
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_url']);
 		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->addContent('t_3',$row['nid']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
@@ -431,9 +432,9 @@ function g_formatter_list_user_nodes(){
 	$result = db_query($query);
 
 	$html_template = '<li><div>
-	                      	    <a href="#t_2#" target="_blank">#t_1#</a>
-	                      		<a href="node_edit.php?op=edit&nid=#t_3#"> Edit</a>
-	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#"> Delete </a>
+	                      	    <a href="#t_2#" target="_blank" class="links">#t_1#</a>
+	                      		<a href="node_edit.php?op=edit&nid=#t_3#" class="edit"> Edit</a>
+	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#" class="delete"> Delete </a>
 	                      </div>	
 	                   </li>';
 	$formatter = new Formatter($html_template);
@@ -442,6 +443,26 @@ function g_formatter_list_user_nodes(){
 		$formatter->addContent('t_1',$row['n_name']);
 		$formatter->addContent('t_2',$row['n_url']);
 		$formatter->addContent('t_3',$row['nid']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+function g_formatter_list_all_categories(){
+	$query="SELECT * FROM category";
+	$result = db_query($query);
+	$html_template = '<li>
+							<form name = "admin_input" action = "edit_category_convert.php" method = "post">
+										<label>#t_1#</label>
+										<input type = "hidden" name = "c_name" value="#t_1#"/>
+										<input type = "hidden" name = "cid" value="#t_2#"/>
+										<input class="btn" type = "submit" value = "Edit" />
+							</form>
+					</li>';
+	$formatter = new Formatter($html_template);
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['c_name']);
+		$formatter->addContent('t_2',$row['cid']);
 		$formatter->flush();
 	}
 	return $formatter->finalize();
