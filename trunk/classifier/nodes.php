@@ -4,12 +4,13 @@ require_once('template/header.php');
 $login = check_logged_in();   //where to go if login fail
 $nid = 1;
 
-if (!$login){
-	echo "login in fail";
-}
+
 ?>
 <div id="page" class="node">
-	
+	<?php if (!$login){
+			ui_show_login_warning();
+		}
+	?>
 		<div class="node_add" >
 			<h2> Add New </h2>
 	    	      <form name="add" action="midman/node_op.php" method="post">
@@ -27,7 +28,7 @@ if (!$login){
 		        		 	<div>Tag:</div>
 		        			<input type="text" name="t_names" />
 		         			<br/>
-				 			<input type="submit" name="op" value="Add" <?php if (!$login) echo 'disabled="disabled"';?>/>
+				 			<input type="submit" name="op" value="Add" <?php if (!$login) ui_disable_submit_btn();?>/>
 			  	</form>
 		</div>
 		<div class="node_display">

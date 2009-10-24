@@ -11,12 +11,11 @@ require_once("include/init.php");
 		?>
 		<div class = "node_add">
 			<form name = "admin_input" action = "midman/checkin_category.php" method = "post">
-				<div>Category:</div>
 					<input type="hidden" name="op" value="add">
 					<input type = "text" name = "c_name"/>
 
 					<div class = "submit">
-						<input type = "submit" value = "Add" <?php if (!$login) ui_disable_submit_btn();?>/>
+						<input type = "submit" value = "Add New" <?php if (!$login) ui_disable_submit_btn();?>/>
 					</div>
 			</form>
 		</div>
