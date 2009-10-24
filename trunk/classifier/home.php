@@ -35,7 +35,7 @@ $page_entry_title = g_get_entry_title();
 				<div class="section1"><?php 
 						if (!$login){
 								if (login_fail()){
-										echo '<span class="warning">Authorization Failed, Please verify your username & password</span>';
+										ui_show_login_warning();
 								}
 						echo '
 								<h2>Login</h2>
@@ -60,11 +60,11 @@ $page_entry_title = g_get_entry_title();
 		{
 		// section shown to login user
 		$name = g_get_username();
-		echo '<div id="welcome"><h2> Hello, '.$name.'!</h2></div>';
+		echo '<div class="welcome"><h2> Hello, '.$name.'!</h2>';
 		echo '<form action="checkin.php" method="post">
 					<input type="submit" value="Log out" style="width:70px">
 				    <input type="hidden" value="logout" name="op">
-				</form>';	
+				</form></div>';	
 		$role=g_get_user_role();
 		// roles:
 		// 0: super user
@@ -75,7 +75,7 @@ $page_entry_title = g_get_entry_title();
 		echo'
 						<div class="admin">
 							<li><a href="grant_admin.php">Grant Admin Privilege</a></li>
-							<li><a href="#">Content Administration</a></li>
+							<li><a href="content_admin.php">Content Administration</a></li>
 						</div>
 							';
 	}else if($role=='1'){	//admin

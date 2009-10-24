@@ -5,6 +5,11 @@ require_once("include/init.php");
 $c_name_pre = $_POST['c_name'];
 $cid = $_POST['cid'];
 
+if (!isset($_POST['cid'])){
+	$cid = $_GET['cid'];
+	$c_name_pre=$_GET['c_name'];
+}
+
 echo '
 	<div class = "edit_category">
 		<form name = "admin_input" action = "midman/checkin_category.php" method = "post">

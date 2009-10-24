@@ -1,2 +1,112 @@
 @CHARSET "GB18030";
 
+#page .node_add{
+	float:left;
+	width: 300px;
+	margin-top:30px;
+	margin-left:100px;
+}
+
+#page .node_add h2{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#page .node_display{
+	float:right;
+	width: 430px;
+	margin-right:100px;
+	background: url(images/homepage07.jpg) no-repeat 0 100%; 
+}
+
+#page .node_display h2{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#page .node_display .links {
+	float:left;
+	width:200px;
+	font-size:20px;
+}
+
+#page .node_display li {
+	width:400px;;
+}
+
+#page .node_display .edit,#page .node_display .delete{
+	font-size:15px;
+	padding-right:10px;
+}
+
+#page .left-side{
+	float:left;
+	width:50%;
+}
+
+#page .right-side{
+	float:right;
+	width:50%;
+}
+
+
+#page .admin {
+	margin-left:120px;
+	width:30%;
+}
+
+
+#page .admin li {
+	width:380px;
+	float:left;
+}
+
+#page .admin .admin_nodes {
+	width:150px;	
+}
+
+#page .admin .links {
+	float:left;
+	width:100px;
+	font-size:20px;
+}
+
+#page .admin .edit,#page .admin .delete{
+	font-size:15px;
+	padding-left:10px;
+}
+
+
+
+#warning{
+	background-color : red;
+	font-size:15px;
+	text-align: center;
+}
+
+#page .show_category{
+	float:right;
+	width: 430px;
+	background: url(images/homepage07.jpg) no-repeat 0 100%; 	
+}
+
+#page .show_category form {
+	padding-left:20px;
+	float:right;
+}
+
+#page .show_category li {
+	width:300px;
+	padding-top:30px;
+}
+
+#page .show_category label {
+	float:left;
+	width:100px;
+	font-size: 20px;
+}
+
+#page .show_category .btn {
+	width:50px;
+	
+}

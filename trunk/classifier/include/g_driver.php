@@ -115,6 +115,8 @@ function g_get_section_content(){
 			return g_formatter_list_nodes_by_category_id();
 		case SHOW_TAG:
 			return g_formatter_list_nodes_by_tag_id();
+		case SHOW_ALL_NODES:
+			return g_formatter_list_admin_nodes();	
 		default:
 			//default action;
 			return g_formatter_list_add_recently();
@@ -295,6 +297,63 @@ function g_formatter_list_nodes_by_category_id(){
 	}
 	return $formatter->finalize();
 }
+
+
+
+function g_formatter_list_admin_nodes($section){
+	
+	$db_result = db_query("SELECT COUNT(*) FROM post_node");
+	$count_rows = db_result($db_result);
+	
+	$query = " SELECT pn.*,c.*,DATE_FORMAT(date_add,'%e-%m-%Y') AS date_add_format FROM post_node AS pn";
+	$query.= " LEFT JOIN node_category AS nc ON (nc.nid = pn.nid)";
+	$query.= " LEFT JOIN category AS c ON (c.cid = nc.cid)";
+	$query.= " ORDER BY n_name LIMIT %d,%d";
+	
+	if ($section == 'col_1')
+		$result = db_query($query,0,$count_rows / 2);
+	else
+		$result = db_query($query,$count_rows /2+1,$count_rows);
+	$html_template = '<li><div>
+	                      	    <a href="#t_2#" target="_blank" class="links">#t_1#</a>
+	                      	   
+	                      		<a href="node_edit.php?op=edit&nid=#t_3#" class="edit"> Edit</a>
+	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#" class="delete"> Delete </a>
+	                      	    <span> #t_5# <span>	
+	                      	    <span> #t_4# </span>
+	                      </div>	
+	                   </li>';
+	$formatter = new Formatter($html_template);
+
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['n_name']);
+		$formatter->addContent('t_2',$row['n_url']);
+		$formatter->addContent('t_3',$row['nid']);
+		$formatter->addContent('t_4',$row['c_name']);
+		$formatter->addContent('t_5',$row['date_add_format']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+function g_formatter_list_admin_categories(){
+	$query="SELECT * FROM category";
+	$result = db_query($query);
+	$html_template = '<li>
+						<a href="home.php?op=show_category&cid=#t_1#" target="_blank" class="links">#t_2#</a>
+	                    <a href="edit_category.php?cid=#t_1#" class="edit"> Edit</a>
+	                    <a href="midman/node_op.php?op=Delete&nid=#t_3#" class="delete"> Delete </a>
+					</li>';
+	$formatter = new Formatter($html_template);
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['cid']);
+		$formatter->addContent('t_2',$row['c_name']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+
 /**
  *
  * list all category
@@ -452,12 +511,18 @@ function g_formatter_list_all_categories(){
 	$query="SELECT * FROM category";
 	$result = db_query($query);
 	$html_template = '<li>
+							<label>#t_1#</label>
+							<form name = "admin_input" action = "delete_category.php" method = "post">
+										<input type = "hidden" name = "c_name" value="#t_1#"/>
+										<input type = "hidden" name = "cid" value="#t_2#"/>
+										<input class="btn" type = "submit" value = "Delete" />
+							</form>
 							<form name = "admin_input" action = "edit_category_convert.php" method = "post">
-										<label>#t_1#</label>
 										<input type = "hidden" name = "c_name" value="#t_1#"/>
 										<input type = "hidden" name = "cid" value="#t_2#"/>
 										<input class="btn" type = "submit" value = "Edit" />
 							</form>
+							
 					</li>';
 	$formatter = new Formatter($html_template);
 	while ($row = db_fetch_array($result)){

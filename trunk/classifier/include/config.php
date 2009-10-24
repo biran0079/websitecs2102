@@ -36,6 +36,8 @@ define('SHOW_NODES_BY_CATEGORY','show_category');
 
 define('SHOW_TAG','show_tag');
 
+define('SHOW_ALL_NODES','show_to_admin');
+
 //-----------------------------------constant ------------------------
 define('SMALL_TEXT_SIZE',20);
 define('MEDIUM_TEXT_SIZE',27);
