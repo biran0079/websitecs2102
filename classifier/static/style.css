@@ -272,6 +272,18 @@ hr {
 #sidebar .section1 {
 }
 
+#sidebar .section1 .admin {
+	width:130px;
+}
+
+#sidebar .section1 .welcome {
+	width:160px;
+}
+
+#sidebar .section1 .welcome h2 {
+	padding-bottom:10px;
+}
+
 #sidebar .section1 h2 {
       /*background: url(images/homepage06.jpg) no-repeat 0 100%;
 		*/
