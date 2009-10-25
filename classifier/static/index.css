@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+a   {   font-size:   12px;   color:   #243D9F;   font-family:"Arial";   text-decoration:none   }  
+  A:link   {   font-size:12px;font-family:"Arial";   color:   #000000;   text-decoration:   none}  
+  A:visited   {   font-size:   12px;font-family:"Arial";   color:   #00a600;   text-decoration:   none}  
+  A:active   {   font-size:   12px;font-family:"Arial";   color:   #990000;   text-decoration:   none}  
+  a:hover   {   font-size:   12px;font-family:"Arial";   color:   blue;   text-decoration:   none}   
