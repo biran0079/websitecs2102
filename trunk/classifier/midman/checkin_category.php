@@ -9,7 +9,7 @@ $op = $_POST["op"];
 if ($op == 'add'){
 	$query="INSERT IGNORE INTO category(c_name, add_by) VALUES ('%s','%d')";
 	db_query($query,$c_name,$add_by);
-	header( "Location: ".SITE_ROOT."/add_category.php");
+	header( "Location: ".SITE_ROOT."/edit_category.php");
 }
 if ($op =='edit'){
 	$c_name_pre = $_POST["c_name_pre"];
@@ -22,7 +22,7 @@ if ($op == 'delete'){
 	db_query($query);
 	$query = "DELETE FROM category WHERE c_name = '$c_name'";
 	db_query($query);
-	header( "Location: ".SITE_ROOT."/add_category.php");
+	header( "Location: ".SITE_ROOT."/edit_category.php");
 }
 
 ?>

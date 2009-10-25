@@ -1,35 +1,31 @@
 <?php
 require_once("template/header.php");
-require_once("include/init.php");//where to go if login fail
-?><!--  -->
-<div id="panel">
-	<?php 
-		$login = check_logged_in();
-			if (!$login){
-				echo "login in fail";
-			} else {
-					$query="SELECT * from category";
-					$result = db_query($query);
-					$rows = array();
-					while ($row = db_fetch_array($result)){
-						$rows[] = $row;
-					}	
-					$num = count($rows);
-	
-					echo "<h2>Edit Category</h2>";
-					for ($i = 0; $i < $num; $i++){
-						echo '	<div class = "item_category">
-									<form name = "admin_input" action = "edit_category_convert.php" method = "post">
-										<label>'.$rows[$i]['c_name'].'</label>
-										<input type = "hidden" name = "c_name" value="'.$rows[$i]['c_name'].'"/>
-										<input type = "hidden" name = "cid" value="'.$rows[$i]['cid'].'"/>
-										<input class="btn" type = "submit" value = "Edit" />
-									</form>
-								</div>';
-					}	 
-			}
+require_once("include/init.php");
 ?>
-</div>
-<?php
-	require_once('template/footer.php');
+	<div>
+		<?php
+			$login = check_logged_in();   //where to go if login fail
+			if (!$login){		
+				ui_show_login_warning();
+			} 
+		?>
+		<div class = "node_add">
+			<form name = "admin_input" action = "midman/checkin_category.php" method = "post">
+					<input type="hidden" name="op" value="add">
+					<input type = "text" name = "c_name"/>
+
+					<div class = "submit">
+						<input type = "submit" value = "Add New" <?php if (!$login) ui_disable_submit_btn();?>/>
+					</div>
+			</form>
+		</div>
+		<div class="show_category">
+			<h2>Categories</h2>
+				<?php echo g_formatter_list_all_categories();?>
+		</div>
+		
+	</div>	
+<div class="clearfix">&nbsp;</div>	
+<?php 
+require_once('template/footer.php');
 ?>
