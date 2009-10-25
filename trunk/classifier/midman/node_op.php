@@ -7,7 +7,7 @@
    $url = $_POST['url'];
    $uid = g_get_login_uid();
    $cid = $_POST['category'];
-   $role=g_get_user_role;
+   $role= g_get_user_role();
 
 	if ($op == 'Add'){
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
