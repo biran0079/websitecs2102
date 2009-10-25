@@ -26,11 +26,10 @@ $page_entry_title = g_get_entry_title();
 			$t_num++;
 		}
 	}
-<<<<<<< .mine
+
 	$visit_times=$_POST['visit_time'];
 	$posted_before_pre=$_POST['posted_before'];
 	$post_after_pre=$_POST['posted_after'];
-=======
 	if($_POST['visit_time']=="")
 	   $visit_times="0";
 	else
@@ -40,9 +39,7 @@ $page_entry_title = g_get_entry_title();
 		$posted_before="9999:12:31 00:00:00";
 	else
 		$posted_before=$_POST['posted_before'].' 00:00:00';
->>>>>>> .r231
-	
-<<<<<<< .mine
+
 	//$posted_before = mktime($posted_before_pre);
 	//$post_after = mktime($post_after_pre);
 	
