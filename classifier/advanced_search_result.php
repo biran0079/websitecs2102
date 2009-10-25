@@ -30,15 +30,7 @@ $page_entry_title = g_get_entry_title();
 	$visit_times=$_POST['visit_time'];
 	$posted_before_pre=$_POST['posted_before'];
 	$post_after_pre=$_POST['posted_after'];
-	if($_POST['visit_time']=="")
-	   $visit_times="0";
-	else
-	   $visit_times=$_POST['visit_time'];
 	   
-	if($_POST['posted_before']=="")
-		$posted_before="9999:12:31 00:00:00";
-	else
-		$posted_before=$_POST['posted_before'].' 00:00:00';
 
 	//$posted_before = mktime($posted_before_pre);
 	//$post_after = mktime($post_after_pre);
@@ -69,13 +61,20 @@ $page_entry_title = g_get_entry_title();
 	$sql_search.= " AND pn.visit_times > $visit_times )";
 	
     $result = db_query_debug($sql_search);
-	if($_POST['posted_after']=="")
-		$post_after="1900-01-01 00:00:00";
-	else
-		$post_after=$_POST['posted_after'].' 00:00:00';
 	
 
-
+   if($_POST['visit_time']=="")
+	   $visit_times="0";
+	else
+	   $visit_times=$_POST['visit_time'];
+    if($_POST['posted_before']=="")
+		$posted_before="2011:12:31 00:00:00";
+	else
+		$posted_before=$_POST['posted_before'].' 00:00:00';
+	if($_POST['posted_after']=="")
+		$post_after="2000:01:01 00:00:00";
+	else
+		$post_after=$_POST['posted_after'].' 00:00:00';
 	
 ?>
 <?php
