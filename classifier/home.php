@@ -135,7 +135,9 @@ $page_entry_title = g_get_entry_title();
 								<?php
 									if($login && (($role = g_get_user_role()) == '1'))
 											echo
-												'<a href="edit_tag.php">edit</a>';
+											'<div>
+												<a href="edit_tag.php"><font color="#8b7d6b">Edit</font></a>
+										    </div>';
 								?>
 								<ul>
 									<?php
