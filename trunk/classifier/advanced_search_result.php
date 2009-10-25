@@ -48,9 +48,6 @@ $post_after=$_POST['posted_after'].' 00:00:00';
 //$posted_before = mktime($posted_before_pre);
 //$post_after = mktime($post_after_pre);
 
-$posted_before_pre=$_POST['posted_before'];
-$post_after_pre=$_POST['posted_after'];
-
 $sql_search = " SELECT DISTINCT(pn.nid),pn.* FROM post_node AS pn ";
 $sql_search.= " LEFT JOIN node_category AS nc ON (nc.nid = pn.nid)";
 $sql_search.= " LEFT JOIN category AS c ON (c.cid = nc.cid)";
@@ -69,7 +66,9 @@ if($c_num > 0){
 
 
 if($t_num > 0){
-	$sql_search.= " AND (1=0 OR pn.visit_times > $visit_times";
+	$sql_search.= " AND (1=0 OR pn.visit_times >= $visit_times";
+	$sql_search.= " AND pn.date_add >= '".$posted_before."'";
+	$sql_search.= " AND pn.date_add <= '".$post_after."'";
 	$t_num--;
     while($t_num > 1){
 	    $sql_search.= " AND t.tid = '".$chosen_t[$t_num - 1]."'";
@@ -78,7 +77,9 @@ if($t_num > 0){
     $sql_search.= " AND t.tid = '".$chosen_t[0]."'))";
 }else{
 	$sql_search.= " AND (1=0 ";
-	$sql_search.= " OR pn.visit_times > $visit_times )";
+	$sql_search.= " OR pn.visit_times >= $visit_times";
+	$sql_search.= " AND pn.date_add >= '".$posted_before."'";
+	$sql_search.= " AND pn.date_add <= '".$post_after."'))";
 }
 
 
