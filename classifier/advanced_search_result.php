@@ -53,41 +53,38 @@ $sql_search.= " LEFT JOIN node_category AS nc ON (nc.nid = pn.nid)";
 $sql_search.= " LEFT JOIN category AS c ON (c.cid = nc.cid)";
 $sql_search.= " LEFT JOIN node_tag AS nt ON (nt.nid = pn.nid)";
 $sql_search.= " LEFT JOIN tag AS t ON (t.tid = nt.tid)";
-$sql_search.= " WHERE (1=0 ";
+$sql_search.= " WHERE pn.visit_times >= $visit_times";
+$sql_search.= " AND pn.date_add <= '".$posted_before."'";
+$sql_search.= " AND pn.date_add <= '".$posted_before."'";
 
-if($c_num > 0){
-	while($c_num > 1){
-	$sql_search.= " OR c.cid = '".$chosen_c[$c_num - 1]."'";
-	$c_num--;
-    }
-    $sql_search.= " OR c.cid = $chosen_c[0])";
-}
+if(!($c_num > 0 && $t_num > 0)){
 
+	if($c_num > 0){
+		$sql_search.= " AND (1=0";
+		while($c_num > 1){
+			$sql_search.= " OR nc.cid = '".$chosen_c[$c_num - 1]."'";
+			$c_num--;
+		}
+		$sql_search.= " OR nc.cid = $chosen_c[0])";
+	}
 
-
-if($t_num > 0){
-	$sql_search.= " AND (1=0 OR pn.visit_times >= $visit_times";
-	$sql_search.= " AND pn.date_add >= '".$posted_before."'";
-	$sql_search.= " AND pn.date_add <= '".$post_after."'";
-	$t_num--;
-    while($t_num > 1){
-	    $sql_search.= " AND t.tid = '".$chosen_t[$t_num - 1]."'";
-	    $t_num--;
-    }
-    $sql_search.= " AND t.tid = '".$chosen_t[0]."'))";
+	if($t_num > 0){
+		$sql_search.= " AND (1=0";
+		while($t_num > 1){
+			$sql_search.= " OR nt.tid = '".$chosen_t[$t_num - 1]."'";
+			$t_num--;
+		}
+		$sql_search.= " OR nt.tid = '".$chosen_t[0]."')";
+	}
 }else{
-	$sql_search.= " AND (1=0 ";
-	$sql_search.= " OR pn.visit_times >= $visit_times";
-	$sql_search.= " AND pn.date_add >= '".$posted_before."'";
-	$sql_search.= " AND pn.date_add <= '".$post_after."'))";
+	$sql_search.= " AND 1=0";
 }
-
 
 
 $result = db_query_debug($sql_search);
 
 while ($row = db_fetch_array($result)){
-	
+
 	print_r($row);
 }
 
