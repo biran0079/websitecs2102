@@ -13,8 +13,10 @@
 <link href="static/style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="static/register.css" rel="stylesheet" type="text/css" media="all" />
 <link href="static/nodes.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="static/javascript/jquery-1.3.2.min.js"></script>
+<link href="static/jquery.validate.password.css" rel="stylesheet" type="text/css" media="screen"  />
+<script type="text/javascript" src="static/javascript/jquery.js"></script>
 <script type="text/javascript" src="static/javascript/customize.js"></script>
+<script type="text/javascript" src="static/javascript/jquery.validate.js"></script>
 <script type="text/javascript" src="http://shots.snap.com/ss/3cf7953b9c494608e3df33f350247fb8/snap_shots.js">
 </script>
 
@@ -24,7 +26,7 @@
 <div id="wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">My Development Site</a></h1>
+			<h1><a href="#">Dummy Navigator</a></h1>
 			<p>Proudly brought you by br,pwx,zd,zxl,zc</p>
 		</div>
 		<div id="menu">
