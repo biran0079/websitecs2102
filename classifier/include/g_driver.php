@@ -93,7 +93,7 @@ function g_formatter_list_nodes_by_tag_id(){
 
 	$result = db_query($query,$tid);
 
-	$html_template = '<a href="#t_1#">#t_2#</a>';
+	$html_template = '<a href="#t_1#" target="_blank">#t_2# </a>';
 	$formatter = new Formatter($html_template);
 
 	while ($row = db_fetch_array($result)){
@@ -215,7 +215,7 @@ function g_formatter_list_add_recently(){
 
 	$result = db_query($query);
 
-	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
+	$html_template = '<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
 	$formatter = new Formatter($html_template);
 
 	while ($row = db_fetch_array($result)){
@@ -239,7 +239,7 @@ function g_formatter_list_add_recently(){
 function g_formatter_list_search_result(){
 
 	$counter = 0;
-	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
+	$html_template = '<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
 	$formatter = new Formatter($html_template);
 
 	
@@ -411,7 +411,7 @@ function g_formatter_sidebar_list_most_popular_node(){
 
 	$result = db_query($query);
 
-	$html_template = '<li><a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a></li>';
+	$html_template = '<li><a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 
 	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
