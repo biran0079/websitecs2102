@@ -114,7 +114,7 @@ $page_entry_title = g_get_entry_title();
 									if($login && ($role == '1' || $role == '0'))
 										echo '
 												<div>
-													<a href="edit_category.php"><font color="#009900">Edit</font></a>
+													<a href="edit_category.php"><font color="#8b7d6b">Edit</font></a>
 													
 												</div>'; 
 								?>
