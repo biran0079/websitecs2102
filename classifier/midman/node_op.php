@@ -33,7 +33,10 @@
 	    $result_nc= db_query($query_delete_nc);
 	    
 	    if($result){
-	        header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
+	    	$role=g_get_user_role;
+	        if($role==0||$role==1)
+	        header( "Location: ".SITE_ROOT."/content_admin.php?nid=$nid");
+	    	else header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
 	        //print "An entry has been successfully deleted.";
 	    }
 	    else{
