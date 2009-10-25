@@ -44,6 +44,10 @@
 								<input type="hidden" name="op" value="show_search_result"/>
 							</div>
 							</td>
+							
+							<td>
+								<a href = "advanced_search.php";  >advanced search</a>
+							</td>
 						</tr>
 					</table>
 				</form>	
