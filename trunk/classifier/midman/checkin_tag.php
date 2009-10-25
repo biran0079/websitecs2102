@@ -20,12 +20,20 @@ if ($op == 'add'){
 	if ( $num>=1)
 	db_query($query);
 	//echo $query;
-	header( "Location: ".SITE_ROOT."/add_tag.php");
+	header( "Location: ".SITE_ROOT."/edit_tag.php");
 }
 if ($op =='edit'){
 	$t_name = $_POST["t_name"];
-	$t_name_pre = $_POST["t_name_pre"];
-	$query="UPDATE category SET t_name = '$t_name' WHERE t_name = '$t_name_pre'";
+	$tid = $_POST["tid"];
+	$query="UPDATE tag SET t_name = '$t_name' WHERE tid = '$tid'";
+	db_query($query);
+	header( "Location: ".SITE_ROOT."/edit_tag.php");
+}
+if ($op == 'delete'){
+	$t_name = $_POST["t_name"];
+	$query = "UPDATE node_tag SET tid = 0 WHERE tid = '$tid'";
+	db_query($query);
+	$query = "DELETE FROM tag WHERE t_name = '$t_name'";
 	db_query($query);
 	header( "Location: ".SITE_ROOT."/edit_tag.php");
 }
