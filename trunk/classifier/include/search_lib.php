@@ -53,7 +53,7 @@ function s_search_by_title(&$result){
 	// dummy version
 	foreach ($keys as $key){
 		$key = strtoupper($key);
-		$sql_search_title.= " OR UPPER(t.n_name) LIKE UPPER('%$key%')";
+		$sql_search_title.= " OR UPPER(pn.n_name) LIKE UPPER('%$key%')";
 	}
 	$result = mysql_query($sql_search_title);
 	
