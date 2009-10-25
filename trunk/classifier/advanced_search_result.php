@@ -26,9 +26,20 @@ $page_entry_title = g_get_entry_title();
 			$t_num++;
 		}
 	}
-	$visit_times=$_POST['visit_time'];
-	$posted_before=$_POST['posted_before'].' 00:00:00';
-	$post_after=$_POST['posted_after'].' 00:00:00';
+	if($_POST['visit_time']=="")
+	   $visit_times="0";
+	else
+	   $visit_times=$_POST['visit_time'];
+	   
+	if($_POST['posted_before']=="")
+		$posted_before="9999:12:31 00:00:00";
+	else
+		$posted_before=$_POST['posted_before'].' 00:00:00';
+	
+	if($_POST['posted_after']=="")
+		$post_after="0000:01:01 00:00:00";
+	else
+		$post_after=$_POST['posted_after'].' 00:00:00';
 	
 
 	
