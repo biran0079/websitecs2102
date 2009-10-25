@@ -318,7 +318,7 @@ function g_formatter_list_admin_nodes($section){
 	                      	    <a href="#t_2#" target="_blank" class="links">#t_1#</a>
 	                      	   
 	                      		<a href="node_edit.php?op=edit&nid=#t_3#" class="edit"> Edit</a>
-	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#" class="delete"> Delete </a>
+	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#" class="delete" onclick="return confirm(\'Are you sure to delete this node?\')"> Delete </a>
 	                      	    <span> #t_5# <span>	
 	                      	    <span> #t_4# </span>
 	                      </div>	
