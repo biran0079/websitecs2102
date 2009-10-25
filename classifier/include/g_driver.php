@@ -493,7 +493,7 @@ function g_formatter_list_user_nodes(){
 	$html_template = '<li><div>
 	                      	    <a href="#t_2#" target="_blank" class="links">#t_1#</a>
 	                      		<a href="node_edit.php?op=edit&nid=#t_3#" class="edit"> Edit</a>
-	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#" class="delete"> Delete </a>
+	                      		<a href="midman/node_op.php?op=Delete&nid=#t_3#" onclick="javascript:return confirm(\'are you sure you want to delete the link?\')" class="delete"> Delete </a> 
 	                      </div>	
 	                   </li>';
 	$formatter = new Formatter($html_template);
