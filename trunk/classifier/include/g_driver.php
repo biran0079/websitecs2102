@@ -177,7 +177,7 @@ function g_add_tag_by_node($tags_string, $nid){
 		db_query($query_tag, $tags[$i], $add_by);
 		$query = "SELECT tid FROM tag WHERE t_name = '$tags[$i]'";
 		$result = db_query($query);
-		$tid = db_fetch_array($result);
+		$tid = db_result($result);
 		db_query($query_node_tag, $nid, $tid);
 	}
 	return;
