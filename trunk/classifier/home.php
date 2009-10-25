@@ -115,7 +115,7 @@ $page_entry_title = g_get_entry_title();
 										echo '
 												<div>
 												    <font color="#009900">
-													<a href="edit_category.php">edit</a>
+													<a href="edit_category.php">Edit</a>
 													</font>
 												</div>'; 
 								?>
