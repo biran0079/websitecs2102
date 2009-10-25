@@ -336,6 +336,42 @@ function g_formatter_list_admin_nodes($section){
 	return $formatter->finalize();
 }
 
+function g_formatter_list_all_categories($section){
+	$db_result = db_query("SELECT COUNT(*) FROM category");
+	$count_rows = db_result($db_result);
+	$query = "SELECT * FROM category LIMIT %d,%d";
+	
+	if ($section == 'col_1')
+		$result = db_query($query,0,$count_rows / 2);
+	else
+		$result = db_query($query,$count_rows /2+1,$count_rows);	
+	
+	$html_template = '<li>
+							<label>#t_1#</label>
+							<form name = "admin_input" action = "midman/checkin_category.php" method = "post">
+							            <input type="hidden" name="op" value="delete">
+										<input type = "hidden" name = "c_name" value="#t_1#"/>
+										<input type = "hidden" name = "cid" value="#t_2#"/>
+										<input class="btn" type = "submit" onclick="javascript:return confirm(\'are you sure you want to delete the link?\')" value = "Delete" />
+							</form>
+							<form name = "admin_input" action = "edit_category_convert.php" method = "post">
+										<input type = "hidden" name = "c_name" value="#t_1#"/>
+										<input type = "hidden" name = "cid" value="#t_2#"/>
+										<input class="btn" type = "submit" value = "Edit" />
+							</form>
+							
+					</li>';
+	$formatter = new Formatter($html_template);
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['c_name']);
+		$formatter->addContent('t_2',$row['cid']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+
+
 function g_formatter_list_admin_categories(){
 	$query="SELECT * FROM category";
 	$result = db_query($query);
@@ -507,36 +543,18 @@ function g_formatter_list_user_nodes(){
 	return $formatter->finalize();
 }
 
-function g_formatter_list_all_categories(){
-	$query="SELECT * FROM category";
-	$result = db_query($query);
-	$html_template = '<li>
-							<label>#t_1#</label>
-							<form name = "admin_input" action = "midman/checkin_category.php" method = "post">
-							            <input type="hidden" name="op" value="delete">
-										<input type = "hidden" name = "c_name" value="#t_1#"/>
-										<input type = "hidden" name = "cid" value="#t_2#"/>
-										<input class="btn" type = "submit" onclick="javascript:return confirm(\'are you sure you want to delete the link?\')" value = "Delete" />
-							</form>
-							<form name = "admin_input" action = "edit_category_convert.php" method = "post">
-										<input type = "hidden" name = "c_name" value="#t_1#"/>
-										<input type = "hidden" name = "cid" value="#t_2#"/>
-										<input class="btn" type = "submit" value = "Edit" />
-							</form>
-							
-					</li>';
-	$formatter = new Formatter($html_template);
-	while ($row = db_fetch_array($result)){
-		$formatter->addContent('t_1',$row['c_name']);
-		$formatter->addContent('t_2',$row['cid']);
-		$formatter->flush();
-	}
-	return $formatter->finalize();
-}
+
 
 function g_formatter_list_all_tags(){
-	$query="SELECT * FROM tag";
-	$result = db_query($query);
+	$db_result = db_query("SELECT COUNT(*) FROM category");
+	$count_rows = db_result($db_result);
+	$query = "SELECT * FROM tag LIMIT %d,%d";
+	
+	if ($section == 'col_1')
+		$result = db_query_debug($query,0,$count_rows / 2);
+	else
+		$result = db_query_debug($query,$count_rows /2+1,$count_rows);
+		
 	$html_template = '<li>
 							<label>#t_1#</label>
 							<form name = "admin_input" action = "midman/checkin_tag.php" method = "post">
