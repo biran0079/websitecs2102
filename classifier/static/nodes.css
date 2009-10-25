@@ -86,7 +86,7 @@
 
 #page .show_category{
 	float:right;
-	width: 430px;
+	width: 550px;
 }
 
 #page .show_category h2{
@@ -99,7 +99,7 @@
 }
 
 #page .show_category li {
-	width:300px;
+	width:450px;
 	padding-top:30px;
 }
 
