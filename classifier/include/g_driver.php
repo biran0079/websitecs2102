@@ -516,7 +516,7 @@ function g_formatter_list_all_categories(){
 							            <input type="hidden" name="op" value="delete">
 										<input type = "hidden" name = "c_name" value="#t_1#"/>
 										<input type = "hidden" name = "cid" value="#t_2#"/>
-										<input class="btn" type = "submit" value = "Delete" />
+										<input class="btn" type = "submit" onclick="javascript:return confirm(\'are you sure you want to delete the link?\')" value = "Delete" />
 							</form>
 							<form name = "admin_input" action = "edit_category_convert.php" method = "post">
 										<input type = "hidden" name = "c_name" value="#t_1#"/>
@@ -543,7 +543,7 @@ function g_formatter_list_all_tags(){
 							            <input type="hidden" name="op" value="delete">
 										<input type = "hidden" name = "t_name" value="#t_1#"/>
 										<input type = "hidden" name = "tid" value="#t_2#"/>
-										<input class="btn" type = "submit" value = "Delete" />
+										<input class="btn" type = "submit" onclick="javascript:return confirm(\'are you sure you want to delete the link?\')" value = "Delete" />
 							</form>
 							<form name = "admin_input" action = "edit_tag_convert.php" method = "post">
 										<input type = "hidden" name = "t_name" value="#t_1#"/>
