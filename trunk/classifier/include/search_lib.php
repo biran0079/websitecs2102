@@ -14,9 +14,10 @@ function s_search_by_category(&$result){
 	// CUSTOMIZED WHERE CONDITION
 	$keys = explode(" ", $key_words);
 	// dummy version
-	foreach ($keys as $key)
-		$sql_search_category.= " OR LOWER(c_name) LIKE LOWER('%$key%')";
-	
+	foreach ($keys as $key){
+		$key = strtoupper($key);
+		$sql_search_category.= " OR UPPER(c_name) LIKE UPPER('%$key%')";
+	}
 		
 		
 	$sql_search_tag.= " INNER JOIN node_tag AS nt ON (nt.nid = pn.nid)";
@@ -35,17 +36,34 @@ function s_search_by_tag(&$result){
 	// CUSTOMIZED WHERE CONDITION
 	$keys = explode(" ", $key_words);
 	// dummy version
-	foreach ($keys as $key)
-		$sql_search_tag.= " OR LOWER(t.t_name) LIKE LOWER('%$key%')";
-	
+	foreach ($keys as $key){
+		$key = strtoupper($key);
+		$sql_search_tag.= " OR UPPER(t.t_name) LIKE UPPER('%$key%')";
+	}
 	$result = db_query($sql_search_tag);
+}
+
+
+function s_search_by_title(&$result){
+	$key_words = $_POST['search_text'];
+	$sql_search_title = " SELECT pn.* FROM post_node AS pn ";
+	$sql_search_title.= " WHERE 1=0 ";
+	// CUSTOMIZED WHERE CONDITION
+	$keys = explode(" ", $key_words);
+	// dummy version
+	foreach ($keys as $key){
+		$key = strtoupper($key);
+		$sql_search_title.= " OR UPPER(t.n_name) LIKE UPPER('%$key%')";
+	}
+	$result = mysql_query($sql_search_title);
+	
 }
 
 
 function s_search_master(){
 	s_search_by_category($result_category);
 	s_search_by_tag($result_tag);
-	//s_search_by_name($result_name);
+	s_search_by_title($result_title);
 	
 	//override is allowed
 	$nodes_array = array();
@@ -54,6 +72,10 @@ function s_search_master(){
 	}
 	
 	while($row = db_fetch_array($result_tag)){
+		$nodes_array[$row['nid']] = $row;
+	}
+	
+	while($row = db_fetch_array($result_title)){
 		$nodes_array[$row['nid']] = $row;
 	}
 	return $nodes_array;
