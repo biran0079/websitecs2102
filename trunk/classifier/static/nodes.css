@@ -4,7 +4,7 @@
 	float:left;
 	width: 300px;
 	margin-top:30px;
-	margin-left:100px;
+	margin-left:60px;
 }
 
 #page .node_add h2{
@@ -26,7 +26,7 @@
 
 #page .node_display .links {
 	float:left;
-	width:200px;
+	width:300px;
 	font-size:20px;
 }
 
