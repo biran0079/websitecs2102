@@ -545,15 +545,15 @@ function g_formatter_list_user_nodes(){
 
 
 
-function g_formatter_list_all_tags(){
-	$db_result = db_query("SELECT COUNT(*) FROM category");
+function g_formatter_list_all_tags($section){
+	$db_result = db_query("SELECT COUNT(*) FROM tag");
 	$count_rows = db_result($db_result);
-	$query = "SELECT * FROM tag LIMIT %d,%d";
+	$query = "SELECT * FROM tag ORDER BY tid LIMIT %d,%d";
 	
 	if ($section == 'col_1')
-		$result = db_query_debug($query,0,$count_rows / 2);
+		$result = db_query($query,0,$count_rows / 2);
 	else
-		$result = db_query_debug($query,$count_rows /2+1,$count_rows);
+		$result = db_query($query,$count_rows /2+1,$count_rows);
 		
 	$html_template = '<li>
 							<label>#t_1#</label>
