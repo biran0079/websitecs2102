@@ -134,8 +134,7 @@ $page_entry_title = g_get_entry_title();
 								<?php
 									if($login && (($role = g_get_user_role()) == '1'))
 											echo
-												'<a href="add_tag.php">add</a>
-											 <a href="edit_tag.php">edit</a>';
+												'<a href="edit_tag.php">edit</a>';
 								?>
 								<ul>
 									<?php

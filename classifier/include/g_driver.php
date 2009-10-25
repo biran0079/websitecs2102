@@ -534,5 +534,32 @@ function g_formatter_list_all_categories(){
 	return $formatter->finalize();
 }
 
+function g_formatter_list_all_tags(){
+	$query="SELECT * FROM tag";
+	$result = db_query($query);
+	$html_template = '<li>
+							<label>#t_1#</label>
+							<form name = "admin_input" action = "midman/checkin_tag.php" method = "post">
+							            <input type="hidden" name="op" value="delete">
+										<input type = "hidden" name = "t_name" value="#t_1#"/>
+										<input type = "hidden" name = "tid" value="#t_2#"/>
+										<input class="btn" type = "submit" value = "Delete" />
+							</form>
+							<form name = "admin_input" action = "edit_tag_convert.php" method = "post">
+										<input type = "hidden" name = "t_name" value="#t_1#"/>
+										<input type = "hidden" name = "tid" value="#t_2#"/>
+										<input class="btn" type = "submit" value = "Edit" />
+							</form>
+							
+					</li>';
+	$formatter = new Formatter($html_template);
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$row['t_name']);
+		$formatter->addContent('t_2',$row['tid']);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
 
 ?>
