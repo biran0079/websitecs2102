@@ -27,8 +27,8 @@ $page_entry_title = g_get_entry_title();
 		}
 	}
 	$visit_times=$_POST['visit_time'];
-	$posted_before=$_POST['posted_before'];
-	$post_after=$_POST['posted_after'];
+	$posted_before=$_POST['posted_before'].' 00:00:00';
+	$post_after=$_POST['posted_after'].' 00:00:00';
 	
 
 	

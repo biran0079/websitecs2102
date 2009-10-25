@@ -52,7 +52,7 @@ $page_entry_title = g_get_entry_title();
 </td></tr>
 
 <tr><td>
-<input type="text" name="posted_before"> (dd/mm/yy)
+<input type="text" name="posted_before"> (yyyy-mm-dd)
 </td></tr>
 
 <tr><td>
@@ -60,7 +60,7 @@ $page_entry_title = g_get_entry_title();
 </td></tr>
 
 <tr><td>
-<input type="text" name="posted_after"> (dd/mm/yy)
+<input type="text" name="posted_after"> (yyyy-mm-dd)
 </td></tr>
 
 <tr><td>
