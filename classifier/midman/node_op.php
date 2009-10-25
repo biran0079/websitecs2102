@@ -7,6 +7,7 @@
    $url = $_POST['url'];
    $uid = g_get_login_uid();
    $cid = $_POST['category'];
+   $role=g_get_user_role;
 
 	if ($op == 'Add'){
 		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
@@ -32,8 +33,7 @@
 	    $query_delete_nc = "DELETE FROM node_category WHERE nid=$nid";
 	    $result_nc= db_query($query_delete_nc);
 	    
-	    if($result){
-	    	$role=g_get_user_role;
+	    if($result){    	
 	        if($role==0||$role==1) header( "Location: ".SITE_ROOT."/content_admin.php?nid=$nid");
 	    	else header( "Location: ".SITE_ROOT."/nodes.php?nid=$nid");
 	        //print "An entry has been successfully deleted.";
