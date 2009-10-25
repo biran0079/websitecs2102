@@ -19,9 +19,21 @@ require_once("include/init.php");
 					</div>
 			</form>
 		</div>
-		<div class="show_category">
-			<h2>Categories</h2>
-				<?php echo g_formatter_list_all_categories();?>
+		<div class = "frame">
+
+			<div class="left-side">
+					<div class="show_category">
+					<h2>Nodes</h2>
+						<?php echo g_formatter_list_all_categories('col_1');?>
+					</div>
+			</div>
+		
+			<div class="right-side">
+					<div class = "frame_right">
+					<h2>&nbsp;</h2>
+						<?php echo g_formatter_list_all_categories('col_2');?>
+					</div>
+			</div>
 		</div>
 		
 	</div>	
