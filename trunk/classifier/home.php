@@ -139,11 +139,11 @@ $page_entry_title = g_get_entry_title();
 												<a href="edit_tag.php"><font color="#8b7d6b">Edit</font></a>
 										    </div>';
 								?>
-								<ul>
+								
 									<?php
 										echo g_formatter_sidebar_list_tags();
 									?>
-								</ul>
+								
 						</li>
 				</ul>
 		</div>
