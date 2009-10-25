@@ -54,10 +54,10 @@ $page_entry_title = g_get_entry_title();
 	$sql_search.= " WHERE (1=0 ";
 	
 	while($c_num > 1){
-		$sql_search.= " OR c.cid = $chosen_c[$c_num - 1]";
+		$sql_search.= " OR c.cid = '".$chosen_c[$c_num - 1]."'";
 		$c_num--;
 	}
-	$sql_search.= " c.cid = $chosen_c[0])";
+	$sql_search.= " OR c.cid = $chosen_c[0])";
 	
 	$sql_search.= " AND (1=0 OR t.tid = '".$chosen_t[$t_num - 1]."'";
 	$t_num--;
