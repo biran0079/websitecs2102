@@ -512,7 +512,8 @@ function g_formatter_list_all_categories(){
 	$result = db_query($query);
 	$html_template = '<li>
 							<label>#t_1#</label>
-							<form name = "admin_input" action = "delete_category.php" method = "post">
+							<form name = "admin_input" action = "midman/checkin_category.php" method = "post">
+							            <input type="hidden" name="op" value="delete">
 										<input type = "hidden" name = "c_name" value="#t_1#"/>
 										<input type = "hidden" name = "cid" value="#t_2#"/>
 										<input class="btn" type = "submit" value = "Delete" />
