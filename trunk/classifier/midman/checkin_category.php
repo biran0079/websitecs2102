@@ -17,5 +17,12 @@ if ($op =='edit'){
 	db_query($query);
 	header( "Location: ".SITE_ROOT."/edit_category.php");
 }
+if ($op == 'delete'){
+	$query = "UPDATE node_category SET cid = 0 WHERE cid = '$cid'";
+	db_query($query);
+	$query = "DELETE FROM category WHERE c_name = '$c_name'";
+	db_query($query);
+	header( "Location: ".SITE_ROOT."/add_category.php");
+}
 
 ?>
