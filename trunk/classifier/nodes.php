@@ -15,11 +15,20 @@ $nid = 1;
 			<h2> Add New </h2>
 	    	      <form name="add" action="midman/node_op.php" method="post">
 					     	<input type="hidden" name="node_id" value="0" >
-				 			<div>Title:</div>
+				 			<div>Company Name:</div>
 		         			<input type="text" name="title" />
 		         			<br/>
-		         			<div>URL:</div>
+		         			<div>Location:</div>
+		         			<input type="text" name="location" value="" />
+		         			<br/>
+		         			<div>Website:</div>
 		         			<input type="text" name="url" value="http://" />
+		         			<br/>
+		         			<div>Phone:</div>
+		         			<input type="text" name="phone" value="" />
+		         			<br/>
+		         			<div>Email:</div>
+		         			<input type="text" name="email" value="" />
 		         			<br/>
 		         			<div>Select a Category:</div>
                  			<select name="category">'.
