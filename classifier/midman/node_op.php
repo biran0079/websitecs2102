@@ -3,15 +3,19 @@
    
    $nid = isset($_POST['node_id'])?$_POST['node_id']:$_GET['nid'];
    $op = isset($_POST['op'])?$_POST['op']:$_GET['op'];
-   $title = $_POST['title'];
+   $title = trim($_POST['title']);
    $url = $_POST['url'];
    $uid = g_get_login_uid();
-   $cid = $_POST['category'];
+   $location = $_POST['location'];
+   $email = trim($_POST['email']);
+   $phone = trim($_POST['phone']);
+   $cid = trim($_POST['category']);
    $role= g_get_user_role();
 
 	if ($op == 'Add'){
-		$query_add="INSERT INTO post_node(uid,n_url,n_name,visit_times,date_add,date_update) VALUES(%d,'%s','%s',%d,NOW(),NOW())";
-        $result= db_query($query_add,$uid,$url,$title,0);
+		$query_add="INSERT INTO post_node(uid,n_url,n_name,phone,email,location,visit_times,date_add,date_update) 
+				VALUES(%d,'%s','%s','%s','%s','%s',%d,NOW(),NOW())";
+        $result= db_query($query_add,$uid,$url,$title,$phone,$email,$location,0);
         
         if($result) {
         	$last_nid =db_last_insert_id(post_node,nid);
