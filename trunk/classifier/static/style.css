@@ -228,11 +228,14 @@ hr {
 	padding: 10px;
 }
 
+.post .entry .link{
+    height:35px;	
+}	
+
 .post .entry a{
  	font-size: 20px;
 	padding-left:10px;
-	padding-right:10px;
-	padding-top:50px;	
+	margin:0px;
 }
 
 .post .meta {

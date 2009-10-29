@@ -86,23 +86,6 @@ function g_formatter_list_username_edit_delete(){
 	return $formatter->finalize();
 }
 
-function g_formatter_list_nodes_by_tag_id(){
-
-	$tid = $_GET['tid'];
-	$query = "SELECT n_url,n_name FROM post_node AS pn,node_tag AS nt WHERE pn.nid=nt.nid AND nt.tid=%s";
-
-	$result = db_query($query,$tid);
-
-	$html_template = '<a href="#t_1#" target="_blank">#t_2# </a>';
-	$formatter = new Formatter($html_template);
-
-	while ($row = db_fetch_array($result)){
-		$formatter->addContent('t_1',$row['n_url']);
-		$formatter->addContent('t_2',$row['n_name']);
-		$formatter->flush();
-	}
-	return $formatter->finalize();
-}
 
 function g_get_section_content(){
 	$section = g_get_section();
@@ -211,18 +194,28 @@ function g_get_tag_by_node($nid){
  * @location: home page
  */
 function g_formatter_list_add_recently(){
-	$query = " SELECT * FROM post_node ORDER BY date_add DESC LIMIT 20";
+	$query = " SELECT * FROM post_node AS p LEFT JOIN node_category AS nc 
+			   ON(nc.nid = p.nid) LEFT JOIN category AS c ON (c.cid = nc.cid)
+	           ORDER BY date_add DESC LIMIT 20";
 
-	$result = db_query($query);
-
-	$html_template = '<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
+	$result = db_query($query);	
+	$html_template = '<div class="link">
+						<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>
+						<label style="margin-left:10px;">#t_5#</label><label style="margin-left:10px;">#t_6#</label>
+					 </div>';
 	$formatter = new Formatter($html_template);
 
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
+	
 	while ($row = db_fetch_array($result)){
-		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_1',$default_url.$row['nid']);
 		$formatter->addContent('t_2',$row['n_name']);
 		$formatter->addContent('t_3',$row['nid']);
-		
+		$formatter->addContent('t_5',$row['c_name']);
+		if ($row['visit_times']>1)
+			$formatter->addContent('t_6',$row['visit_times']." visits");
+		else
+			$formatter->addContent('t_6',$row['visit_times']." visit");	
 		
 		if ($row['visit_times'] < 5)
 			$formatter->addContent('t_4',SMALL_TEXT_SIZE);
@@ -239,22 +232,30 @@ function g_formatter_list_add_recently(){
 function g_formatter_list_search_result(){
 
 	$counter = 0;
-	$html_template = '<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
-	$formatter = new Formatter($html_template);
-
-	
+	$html_template = '<div class="link">
+						<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>
+						<label style="margin-left:10px;">#t_5#</label><label style="margin-left:10px;">#t_6#</label>
+					 </div>';
+	$formatter = new Formatter($html_template);	
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
 	$nodes = s_search_master();
 	foreach ($nodes as $node){
 		$counter++;
 		if ($counter > SEARCH_UPPER_LIMIT)
 			break;
-		$formatter->addContent('t_1',$node['n_url']);
+		$formatter->addContent('t_1',$default_url.$node['nid']);
 		$formatter->addContent('t_2',$node['n_name']);
 		$formatter->addContent('t_3',$node['nid']);
+		$formatter->addContent('t_5',$node['c_name']);
+		if ($row['visit_times']>1)
+			$formatter->addContent('t_6',$node['visit_times']." visits");
+		else
+			$formatter->addContent('t_6',$node['visit_times']." visit");	
 		
-		if ($row['visit_times'] < 5)
+		
+		if ($node['visit_times'] < 5)
 			$formatter->addContent('t_4',SMALL_TEXT_SIZE);
-		else if ($row['visit_times'] < 10)
+		else if ($node['visit_times'] < 10)
 			$formatter->addContent('t_4',MEDIUM_TEXT_SIZE);
 		else 
 			$formatter->addContent('t_4',LARGE_TEXT_SIZE);
@@ -272,7 +273,7 @@ function g_formatter_list_nodes_by_category_id(){
 
 	$cid = $_GET['cid'];
 
-	$query = " SELECT pn.* FROM post_node AS pn";
+	$query = " SELECT pn.*,c.* FROM post_node AS pn";
 	$query.= " INNER JOIN node_category AS nc ON (nc.nid = pn.nid)";
 	$query.= " INNER JOIN category AS c ON (c.cid = nc.cid)";
 	$query.= " WHERE c.cid = $cid ORDER BY date_add DESC";
@@ -280,13 +281,24 @@ function g_formatter_list_nodes_by_category_id(){
 
 	$result = db_query($query);
 
-	$html_template = '<a href="#t_1#" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>';
+	$html_template = '<div class="link">
+						<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>
+						<label style="margin-left:10px;">#t_5#</label><label style="margin-left:10px;">#t_6#</label>
+					 </div>';
 	$formatter = new Formatter($html_template);
 
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
+	
 	while ($row = db_fetch_array($result)){
-		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_1',$default_url.$row['nid']);
 		$formatter->addContent('t_2',$row['n_name']);
 		$formatter->addContent('t_3',$row['nid']);
+		$formatter->addContent('t_5',$row['c_name']);
+		if ($row['visit_times']>1)
+			$formatter->addContent('t_6',$row['visit_times']." visits");
+		else
+			$formatter->addContent('t_6',$row['visit_times']." visit");	
+		
 		if ($row['visit_times'] < 5)
 			$formatter->addContent('t_4',SMALL_TEXT_SIZE);
 		else if ($row['visit_times'] < 10)
@@ -299,6 +311,45 @@ function g_formatter_list_nodes_by_category_id(){
 }
 
 
+function g_formatter_list_nodes_by_tag_id(){
+
+	$tid = $_GET['tid'];
+	$query = "SELECT p.*,c.* FROM post_node AS p
+	LEFT JOIN node_category AS nc ON(nc.nid = p.nid) 
+	LEFT JOIN category AS c ON (c.cid = nc.cid)
+	INNER JOIN node_tag AS nt ON (p.nid=nt.nid)
+	WHERE nt.tid=%d";
+
+	$result = db_query($query,$tid);
+
+	$html_template = '<div class="link">
+						<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>
+						<label style="margin-left:10px;">#t_5#</label><label style="margin-left:10px;">#t_6#</label>
+					 </div>';
+	$formatter = new Formatter($html_template);
+
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
+	
+	while ($row = db_fetch_array($result)){
+		$formatter->addContent('t_1',$default_url.$row['nid']);
+		$formatter->addContent('t_2',$row['n_name']);
+		$formatter->addContent('t_3',$row['nid']);
+		$formatter->addContent('t_5',$row['c_name']);
+		if ($row['visit_times']>1)
+			$formatter->addContent('t_6',$row['visit_times']." visits");
+		else
+			$formatter->addContent('t_6',$row['visit_times']." visit");	
+		
+		if ($row['visit_times'] < 5)
+			$formatter->addContent('t_4',SMALL_TEXT_SIZE);
+		else if ($row['visit_times'] < 10)
+			$formatter->addContent('t_4',MEDIUM_TEXT_SIZE);
+		else 
+			$formatter->addContent('t_4',LARGE_TEXT_SIZE);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
 
 function g_formatter_list_admin_nodes($section){
 	
@@ -447,13 +498,13 @@ function g_formatter_sidebar_list_most_popular_node(){
 
 	$result = db_query($query);
 
-	$html_template = '<li><a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)">#t_2#</a></li>';
+	$html_template = '<li><a href="#t_1#" onclick="updateVisitTimes(#t_3#)">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 
-	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
 
 	while ($row = db_fetch_array($result)){
-		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_1',$default_url.$row['nid']);
 		$formatter->addContent('t_2',$row['n_name']);
 		$formatter->addContent('t_3',$row['nid']);
 		$formatter->flush();
@@ -471,13 +522,13 @@ function g_formatter_sidebar_list_newly_added_node(){
 
 	$result = db_query($query);
 
-	$html_template = '<li><a href="#t_1#" target="_blank">#t_2#</a></li>';
+	$html_template = '<li><a href="#t_1#">#t_2#</a></li>';
 	$formatter = new Formatter($html_template);
 
-	//$default_url = SITE_ROOT.'/home.php?op=show_tag&tid=';
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
 
 	while ($row = db_fetch_array($result)){
-		$formatter->addContent('t_1',$row['n_url']);
+		$formatter->addContent('t_1',$default_url.$row['nid']);
 		$formatter->addContent('t_2',$row['n_name']);
 		$formatter->flush();
 	}
@@ -534,9 +585,11 @@ function g_formatter_list_user_nodes(){
 	                   </li>';
 	$formatter = new Formatter($html_template);
 
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
+	
 	while ($row = db_fetch_array($result)){
 		$formatter->addContent('t_1',$row['n_name']);
-		$formatter->addContent('t_2',$row['n_url']);
+		$formatter->addContent('t_2',$default_url.$row['nid']);
 		$formatter->addContent('t_3',$row['nid']);
 		$formatter->flush();
 	}

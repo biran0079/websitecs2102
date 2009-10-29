@@ -148,3 +148,41 @@
 	width: 50px; height: 20px;
 	
 }
+
+
+#page .node-view {
+	padding-left:100px;
+	height:500px;	
+	
+}
+
+#page .node-view table {
+	margin-top:10px;
+	font-size:20px;	
+	text-align : center;
+	border: 2px solid rgb(192, 0, 0);
+    
+	
+}
+
+#page .node-view td {
+	padding-left:10px;
+	border-top-width:	0;
+border-right-width:	0;
+border-bottom-width:	0;
+border-left-width:0;
+	
+}
+
+#page .node-view span {
+	color: #333333;
+	
+}
+
+#page .node-view .description{
+	border-top-width:	1;
+border-right-width:	1;
+border-bottom-width:	1;
+border-left-width:1;
+	
+}

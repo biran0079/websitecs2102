@@ -30,6 +30,8 @@ $nid = 1;
 		         			<div>Email:</div>
 		         			<input type="text" name="email" value="" />
 		         			<br/>
+		         			<div>Description:</div>
+		         			<textarea name="description" cols="35" rows="4"></textarea>
 		         			<div>Select a Category:</div>
                  			<select name="category">'.
 	             				<?php echo g_formatter_ui_list_all_category(); ?>
