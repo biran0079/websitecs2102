@@ -10,12 +10,13 @@
    $email = trim($_POST['email']);
    $phone = trim($_POST['phone']);
    $cid = trim($_POST['category']);
+   $des = trim($_POST['description']);
    $role= g_get_user_role();
 
 	if ($op == 'Add'){
-		$query_add="INSERT INTO post_node(uid,n_url,n_name,phone,email,location,visit_times,date_add,date_update) 
-				VALUES(%d,'%s','%s','%s','%s','%s',%d,NOW(),NOW())";
-        $result= db_query($query_add,$uid,$url,$title,$phone,$email,$location,0);
+		$query_add="INSERT INTO post_node(uid,n_url,n_name,phone,email,location,description,visit_times,date_add,date_update) 
+				VALUES(%d,'%s','%s','%s','%s','%s','%s',%d,NOW(),NOW())";
+        $result= db_query($query_add,$uid,$url,$title,$phone,$email,$location,$des,0);
         
         if($result) {
         	$last_nid =db_last_insert_id(post_node,nid);
@@ -51,8 +52,10 @@
 
 	else{	
 		
-		$query_edit = "UPDATE post_node SET n_name='%s',n_url='%s',date_update='NOW()' WHERE nid=%d";		
-        $result = db_query($query_edit,$title,$url,$nid);
+		$query_edit = "UPDATE post_node SET 
+					   n_name='%s',n_url='%s',date_update='NOW()',phone ='%s',email='%s',location='%s',description='%s' 
+					   WHERE nid=%d";		
+        $result = db_query($query_edit,$title,$url,$phone,$email,$location,$des,$nid);
 	    $query_edit_nc = "UPDATE node_category SET cid=%d WHERE nid=%d";		
         $result_nc = db_query($query_edit_nc,$cid,$nid);
         

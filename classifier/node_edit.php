@@ -4,7 +4,7 @@
    $login = check_logged_in(); 
    $nid = isset($_POST['node_id'])?$_POST['node_id']:$_GET['nid'];
    $query_get = "SELECT * from post_node WHERE nid = $nid";
-   $result = db_query_debug($query_get);
+   $result = db_query($query_get);
    $row = db_fetch_array($result);
 ?><!-- 
  -->   
@@ -35,6 +35,9 @@
 		         		<input type="text" name="email" value = "'.$row['email'].'" >
 		         		<br/>
 
+		         		<div>Description:</div>
+		         		<textarea name="description" cols="35" rows="4">'.$row['description'].'</textarea>
+		         		<br/>
 				         <div>Select a Category:</div>
         		         <select name="category">'.
                 		 	g_formatter_ui_list_all_category($nid).

@@ -131,7 +131,7 @@ $page_entry_title = g_get_entry_title();
 		<div class="section4">
 				<ul>
 						<li>
-								<h2>Tag</h2>
+								<h2 style="font-size:20px;">Tag</h2>
 								<?php
 									if($login && (($role = g_get_user_role()) == '1'))
 											echo

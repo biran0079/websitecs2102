@@ -7,7 +7,7 @@
 
 function s_search_by_category(&$result){
 	$key_words = $_POST['search_text'];
-	$sql_search_category = " SELECT DISTINCT(pn.nid),pn.* FROM post_node AS pn ";
+	$sql_search_category = " SELECT DISTINCT(pn.nid),pn.*,c.* FROM post_node AS pn ";
 	$sql_search_category.= " INNER JOIN node_category AS nc ON (nc.nid = pn.nid)";
 	$sql_search_category.= " INNER JOIN category AS c ON (c.cid = nc.cid)";
 	$sql_search_category.= " WHERE 1=0 ";
@@ -32,6 +32,8 @@ function s_search_by_tag(&$result){
 	$sql_search_tag = " SELECT DISTINCT(pn.nid),pn.* FROM post_node AS pn ";
 	$sql_search_tag.= " INNER JOIN node_tag AS nt ON (nt.nid = pn.nid)";
 	$sql_search_tag.= " INNER JOIN tag AS t ON (t.tid = nt.tid)";
+	$sql_search_tag.= " LEFT JOIN node_category AS nc ON(nc.nid = pn.nid) 
+			   			LEFT JOIN category AS c ON (c.cid = nc.cid)";
 	$sql_search_tag.= " WHERE 1=0 ";
 	// CUSTOMIZED WHERE CONDITION
 	$keys = explode(" ", $key_words);
@@ -46,7 +48,8 @@ function s_search_by_tag(&$result){
 
 function s_search_by_title(&$result){
 	$key_words = $_POST['search_text'];
-	$sql_search_title = " SELECT pn.* FROM post_node AS pn ";
+	$sql_search_title = " SELECT pn.*,c.* FROM post_node AS pn LEFT JOIN node_category AS nc 
+			   ON(nc.nid = pn.nid) LEFT JOIN category AS c ON (c.cid = nc.cid)";
 	$sql_search_title.= " WHERE 1=0 ";
 	// CUSTOMIZED WHERE CONDITION
 	$keys = explode(" ", $key_words);
@@ -55,7 +58,7 @@ function s_search_by_title(&$result){
 		$key = strtoupper($key);
 		$sql_search_title.= " OR UPPER(pn.n_name) LIKE UPPER('%$key%')";
 	}
-	$result = mysql_query($sql_search_title);
+	$result = db_query($sql_search_title);
 	
 }
 
