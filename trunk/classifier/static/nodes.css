@@ -186,3 +186,15 @@ border-bottom-width:	1;
 border-left-width:1;
 	
 }
+
+
+#page #adv-search {
+	margin-left:100px;	
+	width:80%;
+}
+
+#page #adv-search h3{
+	font-size:20px;
+	margin-top:20px;
+}
+
