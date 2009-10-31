@@ -94,6 +94,8 @@ function g_get_section_content(){
 			return g_formatter_list_add_recently();
 		case SHOW_SEARCH_RESULT:
 			return g_formatter_list_search_result();
+		case SHOW_AD_SEARCH_RESULT:
+			return g_formatter_list_advance_search_result();	
 		case SHOW_NODES_BY_CATEGORY:
 			return g_formatter_list_nodes_by_category_id();
 		case SHOW_TAG:
@@ -138,6 +140,8 @@ function g_get_entry_title(){
 			return "Recently Added";
 		case SHOW_SEARCH_RESULT:
 			return "Search Result";
+		case SHOW_AD_SEARCH_RESULT:
+			return "Search Result";	
 		case SHOW_NODES_BY_CATEGORY:
 			return "Category: ".g_get_category_name_by_cid($_GET['cid']);
 		case SHOW_TAG:
@@ -239,6 +243,43 @@ function g_formatter_list_search_result(){
 	$formatter = new Formatter($html_template);	
 	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
 	$nodes = s_search_master();
+	foreach ($nodes as $node){
+		$counter++;
+		if ($counter > SEARCH_UPPER_LIMIT)
+			break;
+		$formatter->addContent('t_1',$default_url.$node['nid']);
+		$formatter->addContent('t_2',$node['n_name']);
+		$formatter->addContent('t_3',$node['nid']);
+		$formatter->addContent('t_5',$node['c_name']);
+		if ($row['visit_times']>1)
+			$formatter->addContent('t_6',$node['visit_times']." visits");
+		else
+			$formatter->addContent('t_6',$node['visit_times']." visit");	
+		
+		
+		if ($node['visit_times'] < 5)
+			$formatter->addContent('t_4',SMALL_TEXT_SIZE);
+		else if ($node['visit_times'] < 10)
+			$formatter->addContent('t_4',MEDIUM_TEXT_SIZE);
+		else 
+			$formatter->addContent('t_4',LARGE_TEXT_SIZE);
+		$formatter->flush();
+	}
+	return $formatter->finalize();
+}
+
+
+
+function g_formatter_list_advance_search_result(){
+
+	$counter = 0;
+	$html_template = '<div class="link">
+						<a href="#t_1#" target="_blank" onclick="updateVisitTimes(#t_3#)"  style="font-size:#t_4#px">#t_2#</a>
+						<label style="margin-left:10px;">#t_5#</label><label style="margin-left:10px;">#t_6#</label>
+					 </div>';
+	$formatter = new Formatter($html_template);	
+	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
+	$nodes = s_advance_search();
 	foreach ($nodes as $node){
 		$counter++;
 		if ($counter > SEARCH_UPPER_LIMIT)
