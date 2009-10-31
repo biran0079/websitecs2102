@@ -38,6 +38,8 @@ define('SHOW_TAG','show_tag');
 
 define('SHOW_ALL_NODES','show_to_admin');
 
+define('SHOW_AD_SEARCH_RESULT','adsearch');
+
 //-----------------------------------constant ------------------------
 define('SMALL_TEXT_SIZE',20);
 define('MEDIUM_TEXT_SIZE',27);
