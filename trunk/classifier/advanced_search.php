@@ -7,7 +7,7 @@ $page_entry_title = g_get_entry_title();
 ?>
 <div id ="adv-search">
 
-<form action="advanced_search_result.php" method="post">
+<form action="home.php" method="post">
 
 <h3>Category</h3>
 
@@ -42,6 +42,7 @@ $page_entry_title = g_get_entry_title();
 
 <input type="text" name="posted_after"> (yyyy-mm-dd)
 <div style="margin-top:10px;">
+<input type="hidden" name="op" value="<?php echo SHOW_AD_SEARCH_RESULT;?>" />
 <input type="submit" value="Submit" />
 </div>
 </form>

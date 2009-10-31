@@ -115,7 +115,7 @@ $sql_search.= " LEFT JOIN node_tag AS nt ON (nt.nid = pn.nid)";
 $sql_search.= " LEFT JOIN tag AS t ON (t.tid = nt.tid)";
 $sql_search.= " WHERE pn.visit_times >= $visit_times";
 $sql_search.= " AND pn.date_add <= '".$posted_before."'";
-$sql_search.= " AND pn.date_add <= '".$posted_before."' ORDER BY visit_times DESC";
+$sql_search.= " AND pn.date_add >= '".$post_after."'";
 
 if(!($c_num > 0 && $t_num > 0)){
 
@@ -140,7 +140,7 @@ if(!($c_num > 0 && $t_num > 0)){
 	$sql_search.= " AND 1=0";
 	}
 
-
+$sql_search .=" ORDER BY visit_times DESC";
 $result = db_query($sql_search);
 while($row = db_fetch_array($result)){
 		$nodes_array[$row['nid']] = $row;
