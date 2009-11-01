@@ -1,13 +1,25 @@
 <?php
-   require_once("./include/init.php");
-   require_once('template/header.php');
-   $login = check_logged_in(); 
-   $nid = isset($_POST['node_id'])?$_POST['node_id']:$_GET['nid'];
-    $query_get = "SELECT * from post_node WHERE nid = $nid";
-   $result = db_query($query_get);
-   $row = db_fetch_array($result);
-   
-?><!-- 
+require_once("./include/init.php");
+require_once('template/header.php');
+$login = check_logged_in();
+$nid = isset($_POST['node_id'])?$_POST['node_id']:$_GET['nid'];
+
+
+$result=db_query("SELECT c_name FROM post_node AS p,node_category AS nc,category AS c WHERE 
+				p.nid=nc.nid AND nc.cid=c.cid AND p.nid=".$nid);
+$row=db_fetch_array($result);
+$catagory=$row["c_name"];
+$result=db_query("SELECT t_name FROM post_node AS p,node_tag AS nt,tag AS t WHERE 
+				p.nid=nt.nid AND nt.tid=t.tid AND p.nid=".$nid);
+$tags="";
+while($row=db_fetch_array($result)){
+	$tags=$tags.$row['t_name']." ";
+}
+
+$query_get = "SELECT * from post_node WHERE nid = $nid";
+$result = db_query($query_get);
+$row = db_fetch_array($result);
+?><!--
  -->   
  
 <div class="node-view">
@@ -25,9 +37,9 @@
 		          		 <tr><td><span>Email:</span></td>
 		         		 <td>'.$row['email'].'</td></tr>
 		         		 <tr><td><span>Category</span></td>
-        		         <td>'.$row['category'].'</td></tr>
+        		         <td>'.$catagory.'</td></tr>
 		        		 <tr><td><span>Tag:</span></td>
-		         		 <td>'.$row['tags'].'</td></tr>
+		         		 <td>'.$tags.'</td></tr>
 		         		 <tr style="height:50px"><td><span>Description</span></td>
         		         <td>'.$row['description'].'</td></tr></table>';	
 	?>

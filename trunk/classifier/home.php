@@ -51,7 +51,6 @@ $page_entry_title = g_get_entry_title();
 											<tr>
 												<td><input type="submit" value="Log in" style="width:50px"></td>
 												<td><a href="registration.php">Register Here</a></td>	
-												<td colspan="2"><a href="#">Forget Password?</a></td>
 											</tr>
 										</table> 
 								</form>';

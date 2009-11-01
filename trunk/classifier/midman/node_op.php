@@ -23,7 +23,7 @@
         	$t_names=$_POST["t_names"];
 	        g_add_tag_by_node($t_names, $last_nid);
         	$query_add_nc="INSERT INTO node_category(nid,cid)VALUES(%d,%d)";
-            $result_nc= db_query_debug($query_add_nc,$last_nid,$cid);
+            $result_nc= db_query($query_add_nc,$last_nid,$cid);
         	header( "Location: ".SITE_ROOT."/nodes.php?nid=$last_nid");
         	print "A new entry has been successfully added.";
         }
