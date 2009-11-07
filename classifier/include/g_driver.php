@@ -280,28 +280,31 @@ function g_formatter_list_advance_search_result(){
 	$formatter = new Formatter($html_template);	
 	$default_url = SITE_ROOT.'/node_view.php?op=view&nid=';
 	$nodes = s_advance_search();
-	foreach ($nodes as $node){
-		$counter++;
-		if ($counter > SEARCH_UPPER_LIMIT)
-			break;
-		$formatter->addContent('t_1',$default_url.$node['nid']);
-		$formatter->addContent('t_2',$node['n_name']);
-		$formatter->addContent('t_3',$node['nid']);
-		$formatter->addContent('t_5',$node['c_name']);
-		if ($row['visit_times']>1)
-			$formatter->addContent('t_6',$node['visit_times']." visits");
+	if (is_array($nodes))
+		foreach ($nodes as $node){
+					$counter++;
+					if ($counter > SEARCH_UPPER_LIMIT)
+					break;
+					$formatter->addContent('t_1',$default_url.$node['nid']);
+					$formatter->addContent('t_2',$node['n_name']);
+					$formatter->addContent('t_3',$node['nid']);
+					$formatter->addContent('t_5',$node['c_name']);
+					if ($row['visit_times']>1)
+						$formatter->addContent('t_6',$node['visit_times']." visits");
+					else
+						$formatter->addContent('t_6',$node['visit_times']." visit");	
+					
+					
+					if ($node['visit_times'] < 5)
+						$formatter->addContent('t_4',SMALL_TEXT_SIZE);
+					else if ($node['visit_times'] < 10)
+						$formatter->addContent('t_4',MEDIUM_TEXT_SIZE);
+					else 
+						$formatter->addContent('t_4',LARGE_TEXT_SIZE);
+					$formatter->flush();
+			}
 		else
-			$formatter->addContent('t_6',$node['visit_times']." visit");	
-		
-		
-		if ($node['visit_times'] < 5)
-			$formatter->addContent('t_4',SMALL_TEXT_SIZE);
-		else if ($node['visit_times'] < 10)
-			$formatter->addContent('t_4',MEDIUM_TEXT_SIZE);
-		else 
-			$formatter->addContent('t_4',LARGE_TEXT_SIZE);
-		$formatter->flush();
-	}
+			return "No Result Matches Your Search Criteria";	
 	return $formatter->finalize();
 }
 
