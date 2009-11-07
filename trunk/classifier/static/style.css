@@ -175,7 +175,7 @@ hr {
 
 #content {
 	float: left;
-	width: 442px;
+	width: 402px;
 	padding: 47px 26px 30px 82px;
 	background: url(images/bg06.jpg) no-repeat;
 }
@@ -257,7 +257,7 @@ hr {
 
 #sidebar {
 	float: right;
-	width: 330px;
+	width: 370px;
 	padding: 45px 58px 0 27px;
 	background: url(images/homepage06.jpg) no-repeat;
 }
@@ -330,7 +330,8 @@ hr {
 }
 
 #sidebar .section3 {
-	margin-left: 30px;
+	width: 200px; 
+	margin-left: 15px;
 }
 
 #sidebar .section3 a {
