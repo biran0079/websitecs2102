@@ -7,13 +7,13 @@
 define('D_HOST','localhost');
 
 //database username
-define('D_USER','cs2102');
+define('D_USER','wangsha');
 
 //database password
-define('D_PASS','cs2102');
+define('D_PASS','wangsha');
 
 //database name
-define('D_DB_NAME','cs2102');
+define('D_DB_NAME','cs2102_zc');
 
 // define regular expression
 define('DB_QUERY_REGEXP', '/(%d|%s|%%|%f|%b|%n)/');
